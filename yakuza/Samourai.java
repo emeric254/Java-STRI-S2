@@ -8,4 +8,8 @@ public class Samourai extends Humain
         Seigneur = pSeigneur;
     }
 
+    public void boire(String pBoisson)
+    {
+        parler("Ahhh, un bon verre de " + pBoisson + " ! GLOUPS!");
+    }
 }
