@@ -4,8 +4,11 @@ public class Humain
     private int Argent;
     public String Boisson;
 
-    public Humain()
+    public Humain(String pNom, int pArgent, String pBoisson)
     {
+        Nom = pNom;
+        Argent = pArgent;
+        Boisson = pBoisson;
     }
 
     public void parler(String texte)

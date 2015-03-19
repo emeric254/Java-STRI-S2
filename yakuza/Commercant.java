@@ -1,9 +1,9 @@
 public class Commercant extends Humain
 {
 
-    public Commercant()
+    public Commercant(String pNom, int pArgent, String pBoisson)
     {
-        super();
+        super(pNom, pArgent, pBoisson);
         Boisson = "thé";
     }
 

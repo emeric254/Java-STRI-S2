@@ -2,17 +2,23 @@ public class Yakuza extends Humain
 {
     private String Clan;
     private int Reputation;
-
-    public Yakuza()
+/*
+    public Yakuza(String pNom, int pArgent, String pBoisson)
     {
-        this("");
+        this(pNom, pArgent, pBoisson, "");
     }
-
-    public Yakuza(String nomClan)
+*/
+    public Yakuza(String pNom, int pArgent, String pBoisson, String nomClan)
     {
-        super();
+        super(pNom, pArgent, pBoisson);
         Clan = nomClan;
         Reputation = 0;
+    }
+
+    public void direBonjour()
+    {
+        super.direBonjour();
+        parler("je fais partit du clan " + Clan);
     }
 
     public String getClan()

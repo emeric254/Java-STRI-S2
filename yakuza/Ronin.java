@@ -2,9 +2,9 @@ public class Ronin extends Humain
 {
     private int Honneur;
 
-    public Ronin()
+    public Ronin(String pNom, int pArgent, String pBoisson)
     {
-        super();
+        super(pNom, pArgent, pBoisson);
         Honneur = 1;
     }
 
