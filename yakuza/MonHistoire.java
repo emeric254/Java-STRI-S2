@@ -14,5 +14,4 @@ public class MonHistoire
         r.provoquer(y);
         r.direBonjour();
     }
-
 }

@@ -48,7 +48,7 @@ public class Yakuza extends Humain
     {
         int montant = getArgent();
         perdreArgent(montant);
-        parler("J'ai perdu ...");
+        parler("J'ai perdu ..." + " mes preciuex " + montant + " sous ...");
         return montant;
     }
 

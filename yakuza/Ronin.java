@@ -27,7 +27,8 @@ public class Ronin extends Humain
     public void donner(int montant, Commercant c)
     {
         perdreArgent(montant);
-        c.gagnerArgent(montant);
+        parler("voila " + montant + " sous marchand !");
+        c.recevoir(montant);
     }
 
     public int getHonneur()
