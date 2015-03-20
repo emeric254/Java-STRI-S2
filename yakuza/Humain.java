@@ -13,7 +13,7 @@ public class Humain
 
     public void parler(String texte)
     {
-        System.out.println(Nom + texte);
+        System.out.println(Nom + " - " + texte);
     }
 
     public void direBonjour()

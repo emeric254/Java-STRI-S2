@@ -24,11 +24,10 @@ public class Ronin extends Humain
         }
     }
 
-    public int donner()
+    public void donner(int montant, Commercant c)
     {
-        int montant = getArgent();
         perdreArgent(montant);
-        return montant;
+        c.gagnerArgent(montant);
     }
 
     public int getHonneur()
