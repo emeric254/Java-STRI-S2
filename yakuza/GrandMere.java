@@ -17,7 +17,10 @@ public class GrandMere extends Humain
 
     public void faireConnaissanceAvec(Humain h)
     {
-
+        if(memoire.contains(h))
+            parler("Ah mais je vous connais deja !");
+        else
+            memoire.add(h);
     }
 
     public void ragoter()

@@ -20,6 +20,20 @@ public class Traitre extends Samourai
         perdreArgent(don);
         parler("hé mec, voila " + don + " sous ! ami ?");
         h.gagnerArgent(don);
-        Traitrise -= Traitrise/10;
+        Traitrise -= ( don/10 > Traitrise) ? 0 : don/10 ;
+    }
+
+    public void extorquer(Commercant c)
+    {
+        if(Traitrise<3)
+        {
+            gagnerArgent(c.seFaireExtorquer());
+            parler("trahis ? xP");
+            Traitrise +=1;
+        }
+        else
+        {
+            parler(" Je suis deja niveau " + Traitrise + ", impossible que je vole plus malheureusement ...");
+        }
     }
 }
