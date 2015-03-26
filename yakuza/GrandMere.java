@@ -39,6 +39,56 @@ public class GrandMere extends Humain
         }
     }
 
+    public void reunion()
+    {
+        for(Humain h : memoire)
+        {
+            h.direBonjour();
+        }
+    }
+
+    public void sauvegarde()
+    {
+        ObjectOutputStream o;
+        FileOutputStream f;
+        try
+        {
+            f = new FileOutputStream(getNom());
+            o = new  ObjectOutputStream(f);
+
+            for(Humain h : memoire)
+            {
+                o.writeObject(h);
+            }
+            o.flush();
+            o.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Pb fichier") ;
+            e.printStackTrace();
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println("Pb output nul");
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Pb stream d'entrée/sortie");
+            e.printStackTrace();
+        }
+        catch (SecurityException e)
+        {
+            System.out.println("Pb droit écriture");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void lecture()
+    {
+    }
+
     private String humainHasard()
     {
         Random r = new Random();
