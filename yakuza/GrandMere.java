@@ -53,7 +53,7 @@ public class GrandMere extends Humain
         FileOutputStream f;
         try
         {
-            f = new FileOutputStream(getNom());
+            f = new FileOutputStream(getNom() + ".memoire");
             o = new  ObjectOutputStream(f);
 
             for(Humain h : memoire)
