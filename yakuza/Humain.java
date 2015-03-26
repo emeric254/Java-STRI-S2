@@ -1,4 +1,6 @@
-public class Humain
+import java.io.*;
+
+public class Humain implements Serializable
 {
     private String Nom;
     private int Argent;

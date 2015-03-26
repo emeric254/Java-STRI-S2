@@ -82,11 +82,12 @@ public class GrandMere extends Humain
             System.out.println("Pb droit écriture");
             e.printStackTrace();
         }
-
     }
 
     public void lecture()
     {
+        ObjectInputStream o;
+        FileInputStream f;
     }
 
     private String humainHasard()
