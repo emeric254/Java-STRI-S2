@@ -1,6 +1,7 @@
 import java.io.*;
+import java.util.*;
 
-public class Humain implements Serializable
+public class Humain implements Serializable, Comparable<Humain>
 {
     private String Nom;
     private int Argent;
@@ -54,5 +55,10 @@ public class Humain implements Serializable
     public void perdreArgent(int perte)
     {
         Argent -= perte;
+    }
+
+    public int compareTo(Humain h)
+    {
+        return (Argent == h.getArgent())? Nom.compareTo(h.getNom()) : h.getArgent() - Argent;
     }
 }

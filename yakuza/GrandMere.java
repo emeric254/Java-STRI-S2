@@ -56,10 +56,7 @@ public class GrandMere extends Humain
             f = new FileOutputStream(getNom() + ".memoire");
             o = new  ObjectOutputStream(f);
 
-            for(Humain h : memoire)
-            {
-                o.writeObject(h);
-            }
+            o.writeObject(memoire);
             o.flush();
             o.close();
         }
@@ -79,7 +76,7 @@ public class GrandMere extends Humain
         }
         catch (SecurityException e)
         {
-            System.out.println("Pb droit écriture");
+            System.out.println("Pb droit");
             e.printStackTrace();
         }
     }
@@ -88,6 +85,39 @@ public class GrandMere extends Humain
     {
         ObjectInputStream o;
         FileInputStream f;
+        try
+        {
+            f = new FileInputStream(getNom() + ".memoire");
+            o = new  ObjectInputStream(f);
+
+            memoire =  (ArrayList) o.readObject();
+
+            o.close();
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("Pb lecture");
+            e.printStackTrace();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Pb fichier") ;
+            e.printStackTrace();
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println("Pb input nul");
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Pb stream d'entrée/sortie");
+            e.printStackTrace();
+        }
+        catch (SecurityException e)
+        {
+            System.out.println("Pb droit");
+            e.printStackTrace();
+        }
     }
 
     private String humainHasard()
@@ -106,6 +136,11 @@ public class GrandMere extends Humain
             default:
                 return "Humain";
         }
+    }
+
+    public void trier()
+    {
+        Collections.sort(memoire);
     }
 
     public void menuHumain()
