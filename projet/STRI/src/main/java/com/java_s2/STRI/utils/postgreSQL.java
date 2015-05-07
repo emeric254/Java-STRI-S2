@@ -1,6 +1,11 @@
 package com.java_s2.STRI.utils;
 import java.sql.*;
 
+/*
+ * doc > http://www.postgresql.org/docs/7.2/static/jdbc.html
+ */
+
+
 public class postgreSQL {
 	
 	public postgreSQL() {
