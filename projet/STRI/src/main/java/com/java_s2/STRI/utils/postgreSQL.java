@@ -10,6 +10,28 @@ public class postgreSQL {
 			e.printStackTrace();
 		}
 	}
+	/*
+		int foovalue = 500; // var
+		
+		// ecriture requete avec une var
+		PreparedStatement st = db.prepareStatement("SELECT * FROM mytable where columnfoo = ?");
+		
+		//application de la var
+		st.setInt(1, foovalue);
+		
+		// ecup resluts par exec de la requete
+		ResultSet rs = st.executeQuery();
+		
+		//parcours results
+		while(rs.next())
+		{
+		    System.out.print("Column 1 returned ");
+		    System.out.println(rs.getString(1));
+		}
+		
+		rs.close(); // fermer les resultats
+		st.close(); // fermer la requete
+	 */
 
 	public boolean importBase(){
 		
