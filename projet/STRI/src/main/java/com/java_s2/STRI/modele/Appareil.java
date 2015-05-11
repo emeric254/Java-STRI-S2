@@ -15,7 +15,7 @@ public class Appareil {
 	private String marqueAppareil;
 	private String modeleAppareil;
 	private boolean etatAppareil;
-	private SystemeExploitation os; 
+	private SystemeExploitation os;
   
     //
     // Constructors

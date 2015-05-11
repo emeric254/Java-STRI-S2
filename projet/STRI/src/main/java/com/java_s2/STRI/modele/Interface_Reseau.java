@@ -13,11 +13,17 @@ public class Interface_Reseau {
 
 	private String adresse_MAC;
 	private String nomInterface;
+	private Firmware firmware;
   
     //
     // Constructors
     //
-    public Interface_Reseau () { };
+    public Interface_Reseau (String adresse_MAC, String nomInterface, Firmware firmware)
+    {
+    	this.adresse_MAC= adresse_MAC;
+    	this.nomInterface= nomInterface;
+    	this.firmware= firmware;
+    };
   
     //
     // Methods
