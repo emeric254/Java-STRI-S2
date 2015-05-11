@@ -15,11 +15,20 @@ public class Appareil {
 	private String marqueAppareil;
 	private String modeleAppareil;
 	private boolean etatAppareil;
+	private SystemeExploitation os; 
   
     //
     // Constructors
     //
-    public Appareil () { };
+    public Appareil (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os)
+    {
+    	this.idAppareil= idAppareil;
+    	this.nomAppareil= new String (nomAppareil);
+    	this.marqueAppareil= new String (marqueAppareil);
+    	this.modeleAppareil= new String (modeleAppareil);
+    	this.etatAppareil= etatAppareil;
+    	this.os= os;
+    };
   
     //
     // Methods
@@ -109,6 +118,11 @@ public class Appareil {
     public boolean getEtatAppareil () {
     	return etatAppareil;
     }
+
+	public SystemeExploitation getOs() {
+		return os;
+	}
+
 
     //
     // Other methods
