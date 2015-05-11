@@ -9,12 +9,16 @@ public class Terminal extends Appareil {
     //
     // Fields
     //
-
-  
+	private Type type;
     //
     // Constructors
     //
-    public Terminal () { };
+    public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, Type type)
+    {
+    	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os);
+    	this.setType(type);
+    }
+
   
     //
     // Methods
@@ -24,6 +28,12 @@ public class Terminal extends Appareil {
     //
     // Accessor methods
     //
+	public Type getType() {
+		return type;
+	}
+	public void setType(Type type) {
+		this.type = type;
+	};
 
     //
     // Other methods
