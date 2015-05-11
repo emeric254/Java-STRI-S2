@@ -18,7 +18,12 @@ public class Firmware {
     //
     // Constructors
     //
-    public Firmware () { };
+    public Firmware (int idFirmware, String versionFirmware, String nomFirmware)
+    {
+    	this.idFirmware= idFirmware;
+    	this.versionFirmware= versionFirmware;
+    	this.nomFirmware= nomFirmware;
+    };
   
     //
     // Methods
