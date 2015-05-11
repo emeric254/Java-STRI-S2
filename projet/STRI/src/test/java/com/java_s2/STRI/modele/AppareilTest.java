@@ -17,21 +17,21 @@ public class AppareilTest extends TestCase
     {
         super( testName );
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppareilTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    Appareil appareil = new Appareil (0, fName, fName, fName, null, null, null);
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+//
+//    /**
+//     * @return the suite of tests being tested
+//     */
+//    public static Test suite()
+//    {
+//        return new TestSuite( AppareilTest.class );
+//    }
+//
+//    /**
+//     * Rigourous Test :-)
+//     */
+//    Appareil appareil = new Appareil (0, "nom", fName, fName, null, null, null);
+//    public void testApp()
+//    {
+//        assertTrue( true );
+//    }
 }
