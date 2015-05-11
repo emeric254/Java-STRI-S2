@@ -22,10 +22,6 @@ public class Switch extends Appareil {
     	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os, interfaceReseau);
     	this.equipements= new ArrayList<Appareil>();
     }
-
-	public ArrayList<Appareil> getEquipements() {
-		return equipements;
-	}
 	
     //
     // Methods
@@ -35,9 +31,26 @@ public class Switch extends Appareil {
     //
     // Accessor methods
     //
-
+    public ArrayList<Appareil> getEquipementsAppareil()
+    {
+    	return this.equipements;
+    }
+    
     //
     // Other methods
     //
+    public ArrayList<Appareil> connecter(Appareil appareil) throws Exception 
+	{
+		for (Appareil var : this.equipements)
+		{
+			if (var.getIdAppareil()== appareil.getIdAppareil() || appareil.getInterfaceReseau().getAdresse_MAC().equalsIgnoreCase(appareil.getInterfaceReseau().getAdresse_MAC()))
+			{
+				throw new Exception ("L'appareil est déja dans le switch !");
+			}
+		}
+		
+		this.equipements.add(appareil);
+		return equipements;
+	}
 
 }
