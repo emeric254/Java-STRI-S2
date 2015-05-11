@@ -21,7 +21,12 @@ public class Local {
     //
     // Constructors
     //
-    public Local () { };
+    public Local(int idLocal, String nomLocal, String lieuLocal)
+    {
+    	this.idLocal= idLocal;
+    	this.nomLocal= new String (nomLocal);
+    	this.lieuLocal= new String (lieuLocal);
+    };
   
     //
     // Methods
