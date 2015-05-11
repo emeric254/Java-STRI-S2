@@ -13,7 +13,7 @@ public class Terminal extends Appareil {
     //
     // Constructors
     //
-    public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, Type type, InterfaceReseau interfaceReseau)
+    public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau, Type type)
     {
     	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os, interfaceReseau);
     	this.setType(type);
