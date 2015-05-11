@@ -5,7 +5,7 @@ package com.java_s2.STRI.modele;
 /**
  * Class Interface_réseau
  */
-public class Interface_Reseau {
+public class InterfaceReseau {
 
     //
     // Fields
@@ -18,11 +18,11 @@ public class Interface_Reseau {
     //
     // Constructors
     //
-    public Interface_Reseau (String adresse_MAC, String nomInterface, Firmware firmware)
+    public InterfaceReseau (String adresse_MAC, String nomInterface, Firmware firmware)
     {
     	this.adresse_MAC= adresse_MAC;
     	this.nomInterface= nomInterface;
-    	this.firmware= firmware;
+    	this.setFirmware(firmware);
     };
   
     //
@@ -65,6 +65,14 @@ public class Interface_Reseau {
     public String getNomInterface () {
     	return nomInterface;
     }
+
+	public Firmware getFirmware() {
+		return firmware;
+	}
+
+	public void setFirmware(Firmware firmware) {
+		this.firmware = firmware;
+	}
 
     //
     // Other methods

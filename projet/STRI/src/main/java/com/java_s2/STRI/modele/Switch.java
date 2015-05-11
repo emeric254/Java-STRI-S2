@@ -17,8 +17,9 @@ public class Switch extends Appareil {
     //
     // Constructors
     //
-    public Switch () 
+    public Switch (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, Type type, InterfaceReseau interfaceReseau) 
     { 
+    	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os, interfaceReseau);
     	this.equipements= new ArrayList<Appareil>();
     }
 
