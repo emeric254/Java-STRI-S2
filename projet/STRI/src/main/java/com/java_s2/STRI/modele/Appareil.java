@@ -16,11 +16,12 @@ public class Appareil {
 	private String modeleAppareil;
 	private boolean etatAppareil;
 	private SystemeExploitation os;
+	private InterfaceReseau interfaceReseau;
   
     //
     // Constructors
     //
-    public Appareil (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os)
+    public Appareil (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau)
     {
     	this.idAppareil= idAppareil;
     	this.nomAppareil= new String (nomAppareil);
@@ -28,6 +29,7 @@ public class Appareil {
     	this.modeleAppareil= new String (modeleAppareil);
     	this.etatAppareil= etatAppareil;
     	this.os= os;
+    	this.setInterfaceReseau(interfaceReseau);
     };
   
     //
@@ -121,6 +123,14 @@ public class Appareil {
 
 	public SystemeExploitation getOs() {
 		return os;
+	}
+
+	public InterfaceReseau getInterfaceReseau() {
+		return interfaceReseau;
+	}
+
+	public void setInterfaceReseau(InterfaceReseau interfaceReseau) {
+		this.interfaceReseau = interfaceReseau;
 	}
 
 

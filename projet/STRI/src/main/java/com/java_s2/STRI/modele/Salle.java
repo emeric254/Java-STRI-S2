@@ -1,5 +1,7 @@
 package com.java_s2.STRI.modele;
 
+import java.util.ArrayList;
+
 
 
 /**
@@ -13,11 +15,17 @@ public class Salle {
 
 	private int idSalle;
 	private String nomSalle;
+	private ArrayList<Appareil> appareils;
   
     //
     // Constructors
     //
-    public Salle () { };
+    public Salle (int idSalle, String nomSalle)
+    {
+    	this.idSalle= idSalle;
+    	this.nomSalle= new String (nomSalle);
+    	this.setAppareils(new ArrayList<Appareil>());
+    };
   
     //
     // Methods
@@ -59,6 +67,14 @@ public class Salle {
     public String getNomSalle () {
     	return nomSalle;
     }
+
+	public ArrayList<Appareil> getAppareils() {
+		return appareils;
+	}
+
+	public void setAppareils(ArrayList<Appareil> appareils) {
+		this.appareils = appareils;
+	}
 
     //
     // Other methods
