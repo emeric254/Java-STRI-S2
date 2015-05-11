@@ -104,5 +104,32 @@ public class Local {
     //
     // Other methods
     //
+    
+    private int newIdSalle()
+    {
+    	int id=1;
+    	for (Salle salle : this.salles)
+    	{
+    		if (salle.getIdSalle()>=id)
+    		{
+    			id= salle.getIdSalle();
+    		}
+    	}
+    	return (++id);
+    }
+    
+    public Boolean ajouterSalle (String nom) throws Exception 
+    {
+    	Salle ajout = new Salle(this.newIdSalle(), nom);
+    	for (Salle salle : this.salles)
+    	{
+    		if (salle.getNomSalle().equalsIgnoreCase(nom))
+    		{
+    			throw new Exception ("La salle existe déjà dans ce batiment !");
+    		}
+    	}
+    	this.salles.add(ajout);
+    	return true;
+    }
 
 }
