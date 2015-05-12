@@ -30,7 +30,7 @@ public class AppareilTest extends TestCase
      * Rigourous Test :-)
      */
     Firmware firmware = new Firmware(0, "version", "nom");
-    InterfaceReseau carteR= new InterfaceReseau("00:00:00:00:00:00", "nom", firmware);
+    InterfaceReseau carteR= new InterfaceReseau(0, "nom", firmware);
     SystemeExploitation os = new SystemeExploitation(0, "nom", "version");
     Appareil appareil = new Appareil (0, "nom", "marque", "modele", true, os, carteR);
     

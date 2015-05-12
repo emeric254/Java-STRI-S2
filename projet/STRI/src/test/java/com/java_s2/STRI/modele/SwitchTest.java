@@ -27,18 +27,20 @@ public class SwitchTest extends TestCase {
      * Rigourous Test :-)
      */
     Firmware firmware = new Firmware(0, "version", "nom");
-    InterfaceReseau carteR= new InterfaceReseau("00:00:00:00:00:00", "nom", firmware);
+    InterfaceReseau carteR= new InterfaceReseau(0, "nom", firmware);
     SystemeExploitation os = new SystemeExploitation(0, "nom", "version");
-    Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
-    Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.TABLETTE);
+
     
     public void testNbOrdis()
     {
+        Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
     	assertEquals(0, switch0.getEquipementsAppareil().size());
     }
     
     public void testAjout()
     {	
+        Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
+        Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.TABLETTE);
     	try
     	{
     		switch0.connecter(terminal);
@@ -52,9 +54,12 @@ public class SwitchTest extends TestCase {
     
     public void testDoulon()
     {
+        Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
+        Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.TABLETTE);
     	Boolean retour=false;
     	try
     	{
+    		switch0.connecter(terminal);
     		switch0.connecter(terminal);
     	}
     	catch (Exception e)
@@ -62,7 +67,6 @@ public class SwitchTest extends TestCase {
     		System.err.println(e.getMessage());
     		retour=true;
     	}
-    	assertEquals(1, switch0.getEquipementsAppareil().size());
     	assertTrue(retour);
     }
 

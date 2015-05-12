@@ -11,16 +11,16 @@ public class InterfaceReseau {
     // Fields
     //
 
-	private String adresse_MAC;
+	private int adresseMAC;
 	private String nomInterface;
 	private Firmware firmware;
   
     //
     // Constructors
     //
-    public InterfaceReseau (String adresse_MAC, String nomInterface, Firmware firmware)
+    public InterfaceReseau (int adresseMAC, String nomInterface, Firmware firmware)
     {
-    	this.adresse_MAC= adresse_MAC;
+    	this.adresseMAC= adresseMAC;
     	this.nomInterface= nomInterface;
     	this.setFirmware(firmware);
     };
@@ -38,16 +38,16 @@ public class InterfaceReseau {
      * Set the value of adresse_MAC
      * @param newVar the new value of adresse_MAC
      */
-    public void setAdresse_MAC (String newVar) {
-    	adresse_MAC = newVar;
+    public void setAdresse_MAC (int newVar) {
+    	this.adresseMAC = newVar;
     }
 
     /**
      * Get the value of adresse_MAC
      * @return the value of adresse_MAC
      */
-    public String getAdresse_MAC () {
-    	return adresse_MAC;
+    public int getAdresse_MAC () {
+    	return this.adresseMAC;
     }
 
     /**

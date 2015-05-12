@@ -29,7 +29,7 @@ public class InterfaceReseauTest extends TestCase
      * Test
     */
     Firmware firmware = new Firmware(0, "version", "nom");
-    InterfaceReseau carteR= new InterfaceReseau("00:00:00:00:00:00", "nom", firmware);
+    InterfaceReseau carteR= new InterfaceReseau(0, "nom", firmware);
     
     public void testAddMAC ()
     {
