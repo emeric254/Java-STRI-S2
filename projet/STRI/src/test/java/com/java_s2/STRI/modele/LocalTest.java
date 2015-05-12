@@ -24,7 +24,7 @@ public class LocalTest extends TestCase {
     }
 
     Local local= new Local(0, "nom", "lieu");
-    Salle salle= new salle Salle(0, "nom");
+    Salle salle= new Salle(0, "nom");
 
     /**
      * Test
@@ -44,4 +44,5 @@ public class LocalTest extends TestCase {
     {
     	assertEquals("lieu", local.getLieuLocal());
     }
+
 }

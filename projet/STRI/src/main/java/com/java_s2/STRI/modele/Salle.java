@@ -79,5 +79,19 @@ public class Salle {
     //
     // Other methods
     //
+	
+	public ArrayList<Appareil> ajouterAppareil (Appareil appareil) throws Exception
+	{
+		for (Appareil var : this.appareils)
+		{
+			if (var.getIdAppareil()== appareil.getIdAppareil() || var.getInterfaceReseau().getAdresseMAC()==appareil.getInterfaceReseau().getAdresseMAC())
+			{
+				throw new Exception ("L'appareil est déja dans la salle!");
+			}
+		}
+		
+		this.appareils.add(appareil);
+		return this.appareils;
+	}
 
 }
