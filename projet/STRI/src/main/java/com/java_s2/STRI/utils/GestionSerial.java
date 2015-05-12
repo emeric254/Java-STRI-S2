@@ -4,12 +4,12 @@ import java.util.*;
 
 public class GestionSerial {
 
-	public boolean verifExistenceSerial(Map<Integer,Object> ensemble, int Serial)
+	public static boolean verifExistenceSerial(Map<Integer,Object> ensemble, int Serial)
 	{
 		return ensemble.containsKey(Serial);
 	}
 	
-	public int prochainSerial(Map<Integer,Object> ensemble)
+	public static int prochainSerial(Map<Integer,Object> ensemble)
 	{
 		int Serial = 0;
 		
