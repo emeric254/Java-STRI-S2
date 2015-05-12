@@ -4,13 +4,11 @@ import java.util.*;
 
 public class GestionSerial {
 
-	//@TODO changer Set par dico
 	public boolean verifExistenceSerial(Map<Integer,Object> ensemble, int Serial)
 	{
 		return ensemble.containsKey(Serial);
 	}
 	
-	//@TODO changer Set par dico
 	public int prochainSerial(Map<Integer,Object> ensemble)
 	{
 		int Serial = 0;
