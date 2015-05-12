@@ -5,21 +5,21 @@ import java.util.*;
 public class GestionSerial {
 
 	//@TODO changer Set par dico
-	public boolean verifExistenceSerial(Set<Object> ensemble, int Serial)
+	public boolean verifExistenceSerial(Map<Integer,Object> ensemble, int Serial)
 	{
-		boolean found = false;
-		
-		//@TODO implements a faire
-		
-		return found;
+		return ensemble.containsKey(Serial);
 	}
 	
 	//@TODO changer Set par dico
-	public int prochainSerial(Set<Object> ensemble)
+	public int prochainSerial(Map<Integer,Object> ensemble)
 	{
 		int Serial = 0;
 		
-		//@TODO implements a faire
+		//@TODO re-implements a faire pour gros gains perf ...
+		while(verifExistenceSerial(ensemble, Serial))
+		{
+			Serial++;
+		}
 		
 		return Serial;
 	}
