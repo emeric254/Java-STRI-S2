@@ -19,7 +19,8 @@ public class GestionMAC {
 		String chaine = Integer.toHexString(addrMAC).toUpperCase();
 		while(chaine.length()<12)
 			chaine = "0"+chaine;
-		
+		for(int i=2;i<chaine.length()-1;i+=3)
+			chaine = chaine.substring(0, i) + ":" + chaine.substring(i);
 		return chaine;
 	}
 }
