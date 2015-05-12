@@ -86,7 +86,7 @@ public class Salle {
 		{
 			if (var.getIdAppareil()== appareil.getIdAppareil() || var.getInterfaceReseau().getAdresseMAC()==appareil.getInterfaceReseau().getAdresseMAC())
 			{
-				throw new Exception ("L'appareil est déja dans la salle!");
+				throw new Exception ("L'appareil "+appareil.getNomAppareil()+" "+appareil.getInterfaceReseau().getAdresseMAC()+" est déja dans la salle!");
 			}
 		}
 		
