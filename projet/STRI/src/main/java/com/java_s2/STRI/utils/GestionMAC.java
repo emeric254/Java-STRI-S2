@@ -13,4 +13,9 @@ public class GestionMAC {
 	{
 		return GestionSerial.prochainSerial(ensemble);
 	}
+	
+	public static String addrMACString(int addrMAC)
+	{
+		return Integer.toString(addrMAC);
+	}
 }
