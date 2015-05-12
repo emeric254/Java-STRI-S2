@@ -16,6 +16,6 @@ public class GestionMAC {
 	
 	public static String addrMACString(int addrMAC)
 	{
-		return Integer.toString(addrMAC);
+		return Integer.toHexString(addrMAC).toUpperCase();
 	}
 }
