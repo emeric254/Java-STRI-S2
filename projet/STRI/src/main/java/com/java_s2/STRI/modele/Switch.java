@@ -43,7 +43,7 @@ public class Switch extends Appareil {
 	{
 		for (Appareil var : this.equipements)
 		{
-			if (var.getIdAppareil()== appareil.getIdAppareil() || appareil.getInterfaceReseau().getAdresse_MAC().equalsIgnoreCase(appareil.getInterfaceReseau().getAdresse_MAC()))
+			if (var.getIdAppareil()== appareil.getIdAppareil() || var.getInterfaceReseau().getAdresseMAC()==appareil.getInterfaceReseau().getAdresseMAC())
 			{
 				throw new Exception ("L'appareil est déja dans le switch !");
 			}

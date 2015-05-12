@@ -38,7 +38,7 @@ public class InterfaceReseau {
      * Set the value of adresse_MAC
      * @param newVar the new value of adresse_MAC
      */
-    public void setAdresse_MAC (int newVar) {
+    public void setAdresseMAC (int newVar) {
     	this.adresseMAC = newVar;
     }
 
@@ -46,7 +46,7 @@ public class InterfaceReseau {
      * Get the value of adresse_MAC
      * @return the value of adresse_MAC
      */
-    public int getAdresse_MAC () {
+    public int getAdresseMAC () {
     	return this.adresseMAC;
     }
 

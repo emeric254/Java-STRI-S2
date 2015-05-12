@@ -33,7 +33,7 @@ public class InterfaceReseauTest extends TestCase
     
     public void testAddMAC ()
     {
-    	assertEquals("00:00:00:00:00:00", carteR.getAdresse_MAC());
+    	assertEquals("00:00:00:00:00:00", carteR.getAdresseMAC());
     }
     
     public void testNom ()
