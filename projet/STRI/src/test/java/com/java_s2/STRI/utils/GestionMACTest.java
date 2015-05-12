@@ -30,7 +30,7 @@ public class GestionMACTest extends TestCase
 	    {
 	        ensemble.put(0, "test");
 	    	assert(GestionMAC.verifExistenceMAC(ensemble, 0));
-	    	assertEquals("0", GestionMAC.addrMACString(0));
+	    	assertEquals("000000000000", GestionMAC.addrMACString(0));
 	    	assertEquals(1, GestionMAC.prochainMAC(ensemble));
 	    }
 	    
@@ -46,7 +46,7 @@ public class GestionMACTest extends TestCase
 	    	
 	        assert(GestionMAC.verifExistenceMAC(ensemble, 0x2890));
 	    	
-	    	assertEquals("2890", GestionMAC.addrMACString(0x2890));
+	    	assertEquals("000000002890", GestionMAC.addrMACString(0x2890));
 	    	
 	    	// car trou de serial entre 0 et le suivant
 	    	assertEquals(1, GestionMAC.prochainMAC(ensemble));
