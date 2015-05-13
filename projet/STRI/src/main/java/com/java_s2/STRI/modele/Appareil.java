@@ -139,7 +139,7 @@ public class Appareil {
 	{
 		if (!(this instanceof Switch))
 		{
-			throw new Exception ("Cet appareil n'est pas un switch, pas de dépendances !");
+			throw new Exception ("Appareil "+this.idAppareil+" n'est pas un switch, pas de dépendances !");
 		}
 		return null;
 	}
