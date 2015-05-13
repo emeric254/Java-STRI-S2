@@ -72,15 +72,20 @@ public class mainWindow extends JFrame implements ActionListener {
 		modelTree.insertNodeInto(child, parent, parent.getChildCount());
 	}
 	
+	public void removeComponent(MutableTreeNode child)
+	{
+		modelTree.removeNodeFromParent(child);
+	}
+	
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	/** gestionnaire d'évènement : **/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == bouton1)
-			addComponent(rootTree,new DefaultMutableTreeNode("creer"));
+			addComponent(rootTree,new DefaultMutableTreeNode("creer "+rootTree.getChildCount()));
 		else 
 			if(source == bouton2)
-				addComponent(rootTree,new DefaultMutableTreeNode("supprimer"));
+				removeComponent(rootTree.getLastLeaf());
 	}
 }
