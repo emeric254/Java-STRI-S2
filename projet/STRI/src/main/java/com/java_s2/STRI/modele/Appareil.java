@@ -98,14 +98,26 @@ public class Appareil {
     	return etatAppareil;
     }
 
+    /**
+     * Get the value of os
+     * @return the value of os
+     */
 	public SystemeExploitation getOs() {
 		return os;
 	}
 
+	/**
+	 * Get the value of interfaceReseau
+	 * @return the value of interfaceReseau
+	 */
 	public InterfaceReseau getInterfaceReseau() {
 		return interfaceReseau;
 	}
 
+	/**
+	 * Set the value of interfaceReseau
+	 * @param interfaceReseau the new value of interfaceReseau
+	 */
 	private void setInterfaceReseau(InterfaceReseau interfaceReseau) {
 		this.interfaceReseau = interfaceReseau;
 	}

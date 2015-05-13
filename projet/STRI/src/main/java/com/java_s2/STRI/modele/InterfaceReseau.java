@@ -66,10 +66,18 @@ public class InterfaceReseau {
     	return nomInterface;
     }
 
+    /**
+     * Get the value of firmware
+     * @return the value of firmware
+     */
 	public Firmware getFirmware() {
 		return firmware;
 	}
 
+	/**
+	 * Set the value of firmware
+	 * @param firmware the new value of firmware 
+	 */
 	public void setFirmware(Firmware firmware) {
 		this.firmware = firmware;
 	}

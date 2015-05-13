@@ -28,9 +28,19 @@ public class Terminal extends Appareil {
     //
     // Accessor methods
     //
+    
+    /**
+     * Get the value of type
+     * @return the value of type
+     */
 	public Type getType() {
 		return type;
 	}
+	
+	/**
+	 * Set the value of type
+	 * @param type the new value of type
+	 */
 	public void setType(Type type) {
 		this.type = type;
 	};
