@@ -6,14 +6,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-public class mainWindow extends JFrame implements ActionListener {
+public class mainWindow extends JFrame {
 
 	// boutons
 	private JButton bouton1;
 	private JButton bouton2;
 	
 	// model arborescence
-	private DefaultMutableTreeNode rootTree;
+	public DefaultMutableTreeNode rootTree; //@todo public pour le moment
 	private DefaultTreeModel modelTree;
 	
 	// vue arborescence
@@ -48,9 +48,7 @@ public class mainWindow extends JFrame implements ActionListener {
 		
 		//creation boutons
 		bouton1 = new JButton(" creer ");
-		bouton1.addActionListener(this);
 		bouton2 = new JButton(" supprimer ");
-		bouton2.addActionListener(this);
 		
 		// creation modele de l'arborescense
 		rootTree = new DefaultMutableTreeNode("/");
@@ -71,10 +69,10 @@ public class mainWindow extends JFrame implements ActionListener {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.insets = new Insets(10,5,5,5);
-		monPanneau.add(bouton1, c); // ajout bouton1 au layout
+		monPanneau.add(getBouton1(), c); // ajout bouton1 au layout
 		
 		c.gridx = 1;
-		monPanneau.add(bouton2, c); // ajout bouton2 au layout
+		monPanneau.add(getBouton2(), c); // ajout bouton2 au layout
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.gridheight = 2;
@@ -100,19 +98,13 @@ public class mainWindow extends JFrame implements ActionListener {
 		// suppression d'un noeud
 		modelTree.removeNodeFromParent(child);
 	}
-	
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//@TODO a bouger tout ce qui suit vers package controller !
-	
-	/** gestionnaire d'évènement : **/
-	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
-		if(source == bouton1)
-			addComponent(rootTree,new DefaultMutableTreeNode("node - "+rootTree.getChildCount()));
-		else 
-			if(source == bouton2)
-				removeComponent(rootTree.getLastLeaf());
+	public JButton getBouton1() {
+		return bouton1;
+	}
+
+	public JButton getBouton2() {
+		return bouton2;
 	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
