@@ -114,7 +114,7 @@ public class Appareil {
 	{
 		if (this.etatAppareil)
 		{
-			System.out.println(this.idAppareil+" est deja active !");
+			System.err.println(this.idAppareil+" est deja active !");
 		}
 		this.etatAppareil=true;
 		return this.etatAppareil;
@@ -124,8 +124,9 @@ public class Appareil {
 	{
 		if (!this.etatAppareil)
 		{
-			System.out.println(this.idAppareil+" est deja desactive !");
+			System.err.println(this.idAppareil+" est deja desactive !");
 		}
+		
 		this.etatAppareil=false;
 		return this.etatAppareil;
 	}

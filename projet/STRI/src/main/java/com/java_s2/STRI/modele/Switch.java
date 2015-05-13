@@ -52,5 +52,7 @@ public class Switch extends Appareil {
 		this.equipements.add(appareil);
 		return equipements;
 	}
+    
+   
 
 }

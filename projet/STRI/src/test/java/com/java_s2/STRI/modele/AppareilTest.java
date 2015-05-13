@@ -78,4 +78,6 @@ public class AppareilTest extends TestCase
     {
     	assertTrue(appareil.activer());
     }
+    
+   
 }

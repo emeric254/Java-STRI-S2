@@ -69,4 +69,5 @@ public class SwitchTest extends TestCase {
     	}
     	assertTrue(retour);
     }
+
 }
