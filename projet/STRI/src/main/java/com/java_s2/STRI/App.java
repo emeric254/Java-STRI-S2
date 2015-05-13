@@ -1,5 +1,7 @@
 package com.java_s2.STRI;
 
+import com.java_s2.STRI.vue.mainWindow;
+
 /**
  * Hello world!
  *
@@ -8,7 +10,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        System.out.println( "et ta soeur!" );
+        mainWindow fenetre = new mainWindow();
     }
 }
