@@ -11,18 +11,20 @@ public class App
 {
     public static void main( String[] args )
     {
+    	/*
     	//
     	createSalleWindow fenetre = new createSalleWindow();
     	createSalleWindowEventListener listener = new createSalleWindowEventListener(fenetre);
+    	//*/
     	/*
     	//
     	createLocalWindow fenetre = new createLocalWindow();
     	createLocalWindowEventListener listener = new createLocalWindowEventListener(fenetre);
-    	*/
+    	//*/
     	/*
         //
         mainWindow fenetre = new mainWindow();
         mainWindowEventListener controller = new mainWindowEventListener(fenetre);
-        */
+        //*/
     }
 }
