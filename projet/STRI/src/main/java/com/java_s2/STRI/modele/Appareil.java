@@ -41,13 +41,6 @@ public class Appareil {
     // Accessor methods
     //
 
-    /**
-     * Set the value of idAppareil
-     * @param newVar the new value of idAppareil
-     */
-    public void setIdAppareil (int newVar) {
-    	idAppareil = newVar;
-    }
 
     /**
      * Get the value of idAppareil
@@ -73,13 +66,6 @@ public class Appareil {
     	return nomAppareil;
     }
 
-    /**
-     * Set the value of marqueAppareil
-     * @param newVar the new value of marqueAppareil
-     */
-    public void setMarqueAppareil (String newVar) {
-    	marqueAppareil = newVar;
-    }
 
     /**
      * Get the value of marqueAppareil
@@ -89,13 +75,6 @@ public class Appareil {
     	return marqueAppareil;
     }
 
-    /**
-     * Set the value of modeleAppareil
-     * @param newVar the new value of modeleAppareil
-     */
-    public void setModeleAppareil (String newVar) {
-    	modeleAppareil = newVar;
-    }
 
     /**
      * Get the value of modeleAppareil
@@ -105,13 +84,6 @@ public class Appareil {
     	return modeleAppareil;
     }
 
-    /**
-     * Set the value of etatAppareil
-     * @param newVar the new value of etatAppareil
-     */
-    public void setEtatAppareil (boolean newVar) {
-    	etatAppareil = newVar;
-    }
 
     /**
      * Get the value of etatAppareil
@@ -129,7 +101,7 @@ public class Appareil {
 		return interfaceReseau;
 	}
 
-	public void setInterfaceReseau(InterfaceReseau interfaceReseau) {
+	private void setInterfaceReseau(InterfaceReseau interfaceReseau) {
 		this.interfaceReseau = interfaceReseau;
 	}
 
@@ -137,5 +109,25 @@ public class Appareil {
     //
     // Other methods
     //
+	
+	public Boolean activer()
+	{
+		if (this.etatAppareil)
+		{
+			System.out.println(this.idAppareil+" est deja active !");
+		}
+		this.etatAppareil=true;
+		return this.etatAppareil;
+	}
+	
+	public Boolean desactiver()
+	{
+		if (!this.etatAppareil)
+		{
+			System.out.println(this.idAppareil+" est deja desactive !");
+		}
+		this.etatAppareil=false;
+		return this.etatAppareil;
+	}
 
 }

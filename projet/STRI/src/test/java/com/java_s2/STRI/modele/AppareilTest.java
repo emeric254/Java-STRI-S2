@@ -68,4 +68,14 @@ public class AppareilTest extends TestCase
     {
     	assertEquals(carteR, appareil.getInterfaceReseau());
     }
+    
+    public void testDescativation()
+    {
+    	assertFalse(appareil.desactiver());
+    }
+    
+    public void testActivation()
+    {
+    	assertTrue(appareil.activer());
+    }
 }
