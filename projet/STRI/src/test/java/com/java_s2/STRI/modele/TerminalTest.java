@@ -36,4 +36,20 @@ public class TerminalTest extends TestCase {
     {
     	assertEquals(Type.TABLETTE, terminal.getType());
     }
+    
+    public void testDependances()
+    {
+    	Boolean retour=false;
+    	try
+    	{
+    		terminal.dependances();
+    	}
+    	catch (Exception e)
+    	{
+    		System.err.println(e.getMessage());
+    		retour= true;
+    	}
+    	
+    	assertTrue(retour);
+    }
 }
