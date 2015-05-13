@@ -1,5 +1,7 @@
 package com.java_s2.STRI.modele;
 
+import java.util.ArrayList;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -68,5 +70,24 @@ public class SwitchTest extends TestCase {
     		retour=true;
     	}
     	assertTrue(retour);
+    }
+    
+    public void testDependances()
+    {
+    	Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
+        Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.ORDINATEUR);
+    	Boolean retour=false;
+    	try
+    	{
+    		switch0.connecter(terminal);
+    	}
+    	catch (Exception e)
+    	{
+    		System.err.println(e.getMessage());
+    		assertTrue(false);
+    	}
+    	
+    	ArrayList<Appareil> dependances= switch0.dependences();
+    	assertEquals(1, dependances.size());
     }
 }

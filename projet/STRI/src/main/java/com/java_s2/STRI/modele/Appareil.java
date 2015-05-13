@@ -1,5 +1,10 @@
 package com.java_s2.STRI.modele;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 
 /**
  * Class Appareil
@@ -130,4 +135,12 @@ public class Appareil {
 		return this.etatAppareil;
 	}
 
+	public ArrayList<Appareil> dependances() throws Exception
+	{
+		if (!(this instanceof Switch))
+		{
+			throw new Exception ("Cet appareil n'est pas un switch, pas de dépendances !");
+		}
+		return null;
+	}
 }

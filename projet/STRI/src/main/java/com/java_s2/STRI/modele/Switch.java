@@ -52,5 +52,10 @@ public class Switch extends Appareil {
 		this.equipements.add(appareil);
 		return equipements;
 	}
-
+    
+    public ArrayList<Appareil> dependences()
+    {
+    	ArrayList<Appareil> dependances= (ArrayList<Appareil>) this.equipements.clone();
+    	return dependances;
+    }
 }
