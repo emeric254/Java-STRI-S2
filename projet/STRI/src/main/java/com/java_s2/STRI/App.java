@@ -11,6 +11,11 @@ public class App
 {
     public static void main( String[] args )
     {
+    	/**/
+    	//
+    	createAppareilWindow fenetre = new createAppareilWindow();/*
+    	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre);
+    	//*/
     	/*
     	//
     	createSalleWindow fenetre = new createSalleWindow();
