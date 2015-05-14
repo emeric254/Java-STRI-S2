@@ -3,6 +3,7 @@ package com.java_s2.STRI;
 import com.java_s2.STRI.controller.*;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
+import com.java_s2.STRI.modele.SystemeExploitation;
 import com.java_s2.STRI.vue.*;
 
 /**
@@ -18,10 +19,10 @@ public class App
     	createFirmwareWindow fenetre = new createFirmwareWindow();
     	createFirmwareWindowEventListener listener = new createFirmwareWindowEventListener(fenetre);
     	//*/
-    	/*
+    	/**/
     	//
     	createOSWindow fenetre = new createOSWindow();
-    	createOSWindowEventListener listener = new createOSWindowEventListener(fenetre);
+    	createOSWindowEventListener listener = new createOSWindowEventListener(fenetre, new SystemeExploitation(0, "", ""));
     	//*/
     	/*
     	//
@@ -38,7 +39,7 @@ public class App
     	createSalleWindow fenetre = new createSalleWindow();
     	createSalleWindowEventListener listener = new createSalleWindowEventListener(fenetre, new Salle(0, ""));
     	//*/
-    	/**/
+    	/*
     	//
     	createLocalWindow fenetre = new createLocalWindow();
     	createLocalWindowEventListener listener = new createLocalWindowEventListener(fenetre, new Local(0, "", ""));
