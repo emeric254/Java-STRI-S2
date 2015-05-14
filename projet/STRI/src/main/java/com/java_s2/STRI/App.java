@@ -1,6 +1,7 @@
 package com.java_s2.STRI;
 
 import com.java_s2.STRI.controller.*;
+import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.vue.*;
 
 /**
@@ -11,7 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	/**/
+    	/*
     	//
     	createFirmwareWindow fenetre = new createFirmwareWindow();
     	createFirmwareWindowEventListener listener = new createFirmwareWindowEventListener(fenetre);
@@ -31,10 +32,10 @@ public class App
     	createAppareilWindow fenetre = new createAppareilWindow();
     	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre);
     	//*/
-    	/*
+    	/**/
     	//
     	createSalleWindow fenetre = new createSalleWindow();
-    	createSalleWindowEventListener listener = new createSalleWindowEventListener(fenetre);
+    	createSalleWindowEventListener listener = new createSalleWindowEventListener(fenetre, new Salle(0, ""));
     	//*/
     	/*
     	//
