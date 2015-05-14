@@ -12,6 +12,8 @@ public class createAppareilWindow extends createWindow {
 	private JTextField modele;
 	private JCheckBox etat;
 	private JComboBox<String> type;
+	private JComboBox<String> os;
+	private JComboBox<String> firmware;
 	
 	
 	public createAppareilWindow()
@@ -27,6 +29,14 @@ public class createAppareilWindow extends createWindow {
 		nom = new JTextField(20);
 		marque = new JTextField(20);
 		modele = new JTextField(20);
+		etat = new JCheckBox();
+		DefaultComboBoxModel<String> choix = new DefaultComboBoxModel<String>();
+		choix.addElement("Terminal");
+		choix.addElement("Switch");
+		type = new JComboBox<String>(choix);
+
+		os = new JComboBox<String>();
+		firmware = new JComboBox<String>();
 		
 		// definition contraintes du layout
 		GridBagConstraints c = new GridBagConstraints();
@@ -50,6 +60,30 @@ public class createAppareilWindow extends createWindow {
 		getContenuPanel().add(new JLabel("modele"), c);
 		c.gridx = 1;
 		getContenuPanel().add(modele, c);
+
+		c.gridx = 0;
+		c.gridy = 3;
+		getContenuPanel().add(new JLabel("actif ?"), c);
+		c.gridx = 1;
+		getContenuPanel().add(etat, c);
+
+		c.gridx = 0;
+		c.gridy = 4;
+		getContenuPanel().add(new JLabel("type"), c);
+		c.gridx = 1;
+		getContenuPanel().add(type, c);
+
+		c.gridx = 0;
+		c.gridy = 5;
+		getContenuPanel().add(new JLabel("O/S"), c);
+		c.gridx = 1;
+		getContenuPanel().add(os, c);
+
+		c.gridx = 0;
+		c.gridy = 6;
+		getContenuPanel().add(new JLabel("firmware"), c);
+		c.gridx = 1;
+		getContenuPanel().add(firmware, c);
 
 	}
 

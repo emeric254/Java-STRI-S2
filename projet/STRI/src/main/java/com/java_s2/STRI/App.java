@@ -13,7 +13,12 @@ public class App
     {
     	/**/
     	//
-    	createAppareilWindow fenetre = new createAppareilWindow();/*
+    	createAppareilWindow fenetre = new createAppareilWindow();
+    	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre);
+    	//*/
+    	/*
+    	//
+    	createAppareilWindow fenetre = new createAppareilWindow();
     	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre);
     	//*/
     	/*
