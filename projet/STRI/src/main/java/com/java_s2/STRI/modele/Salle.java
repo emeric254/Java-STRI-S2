@@ -20,6 +20,12 @@ public class Salle {
     //
     // Constructors
     //
+	
+	/**
+	 * 
+	 * @param idSalle
+	 * @param nomSalle
+	 */
     public Salle (int idSalle, String nomSalle)
     {
     	this.idSalle= idSalle;
@@ -68,10 +74,18 @@ public class Salle {
     	return nomSalle;
     }
 
+    /**
+     * 
+     * @return
+     */
 	public ArrayList<Appareil> getAppareils() {
 		return appareils;
 	}
 
+	/**
+	 * 
+	 * @param appareils
+	 */
 	public void setAppareils(ArrayList<Appareil> appareils) {
 		this.appareils = appareils;
 	}
@@ -80,6 +94,12 @@ public class Salle {
     // Other methods
     //
 	
+	/**
+	 * 
+	 * @param appareil
+	 * @return
+	 * @throws Exception
+	 */
 	public ArrayList<Appareil> ajouterAppareil (Appareil appareil) throws Exception
 	{
 		for (Appareil var : this.appareils)

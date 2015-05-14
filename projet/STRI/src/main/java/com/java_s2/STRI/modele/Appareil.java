@@ -1,3 +1,4 @@
+
 package com.java_s2.STRI.modele;
 
 import java.lang.reflect.Array;
@@ -8,6 +9,8 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 /**
  * Class Appareil
+ * 
+ * @version 1.0
  */
 public class Appareil {
 
@@ -26,6 +29,19 @@ public class Appareil {
     //
     // Constructors
     //
+	
+	/**
+	 * Constructor Appareil
+	 * 
+	 *  
+	 * @param idAppareil 
+	 * @param nomAppareil
+	 * @param marqueAppareil
+	 * @param modeleAppareil
+	 * @param etatAppareil
+	 * @param os
+	 * @param interfaceReseau
+	 */
     public Appareil (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau)
     {
     	this.idAppareil= idAppareil;
@@ -127,6 +143,10 @@ public class Appareil {
     // Other methods
     //
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Boolean activer()
 	{
 		if (this.etatAppareil)
@@ -137,6 +157,10 @@ public class Appareil {
 		return this.etatAppareil;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Boolean desactiver()
 	{
 		if (!this.etatAppareil)
@@ -148,6 +172,11 @@ public class Appareil {
 		return this.etatAppareil;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public ArrayList<Appareil> dependances() throws Exception
 	{
 		if (!(this instanceof Switch))

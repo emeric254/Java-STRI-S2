@@ -17,6 +17,16 @@ public class Switch extends Appareil {
     //
     // Constructors
     //
+	/**
+	 * 
+	 * @param idAppareil
+	 * @param nomAppareil
+	 * @param marqueAppareil
+	 * @param modeleAppareil
+	 * @param etatAppareil
+	 * @param os
+	 * @param interfaceReseau
+	 */
     public Switch (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau) 
     { 
     	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os, interfaceReseau);
@@ -31,6 +41,11 @@ public class Switch extends Appareil {
     //
     // Accessor methods
     //
+    
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Appareil> getEquipementsAppareil()
     {
     	return this.equipements;
@@ -39,6 +54,13 @@ public class Switch extends Appareil {
     //
     // Other methods
     //
+    
+    /**
+     * 
+     * @param appareil
+     * @return
+     * @throws Exception
+     */
     public ArrayList<Appareil> connecter(Appareil appareil) throws Exception 
 	{
 		for (Appareil var : this.equipements)
@@ -54,6 +76,10 @@ public class Switch extends Appareil {
 	}
     
 
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Appareil> dependences()
     {
     	ArrayList<Appareil> dependances= (ArrayList<Appareil>) this.equipements.clone();

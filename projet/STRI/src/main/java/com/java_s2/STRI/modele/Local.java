@@ -21,6 +21,13 @@ public class Local {
     //
     // Constructors
     //
+	
+	/**
+	 * 
+	 * @param idLocal
+	 * @param nomLocal
+	 * @param lieuLocal
+	 */
     public Local(int idLocal, String nomLocal, String lieuLocal)
     {
     	this.idLocal= idLocal;
@@ -105,6 +112,10 @@ public class Local {
     // Other methods
     //
     
+    /**
+     * 
+     * @return
+     */
     private int newIdSalle()
     {
     	int id=1;
@@ -118,6 +129,12 @@ public class Local {
     	return (++id);
     }
     
+    /**
+     * 
+     * @param nom
+     * @return
+     * @throws Exception
+     */
     public Boolean ajouterSalle (String nom) throws Exception 
     {
     	Salle ajout = new Salle(this.newIdSalle(), nom);

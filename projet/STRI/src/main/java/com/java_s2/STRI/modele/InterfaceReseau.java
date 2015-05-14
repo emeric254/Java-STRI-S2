@@ -18,6 +18,13 @@ public class InterfaceReseau {
     //
     // Constructors
     //
+	
+	/**
+	 * 
+	 * @param adresseMAC
+	 * @param nomInterface
+	 * @param firmware
+	 */
     public InterfaceReseau (int adresseMAC, String nomInterface, Firmware firmware)
     {
     	this.adresseMAC= adresseMAC;

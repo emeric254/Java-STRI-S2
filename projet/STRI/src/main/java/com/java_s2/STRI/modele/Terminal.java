@@ -10,10 +10,22 @@ public class Terminal extends Appareil {
     // Fields
     //
 	private Type type;
-    //
+    
+	//
     // Constructors
     //
-    public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau, Type type)
+    /**
+     * 
+     * @param idAppareil
+     * @param nomAppareil
+     * @param marqueAppareil
+     * @param modeleAppareil
+     * @param etatAppareil
+     * @param os
+     * @param interfaceReseau
+     * @param type
+     */
+	public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau, Type type)
     {
     	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os, interfaceReseau);
     	this.setType(type);
