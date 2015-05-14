@@ -4,16 +4,19 @@ import java.awt.event.*;
 
 import javax.swing.tree.*;
 
+import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.vue.createLocalWindow;
 
 
 public class createLocalWindowEventListener implements ActionListener
 {
 	private createLocalWindow fenetre;
+	private Local local;
 	
-	public createLocalWindowEventListener(createLocalWindow pFenetre)
+	public createLocalWindowEventListener(createLocalWindow pFenetre, Local pLocal)
 	{
 		fenetre = pFenetre;
+		local = pLocal;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -22,10 +25,17 @@ public class createLocalWindowEventListener implements ActionListener
 	{
 		Object source = e.getSource();
 		if(source == fenetre.getAnnulerBouton())
-			fenetre.getNomField().setText("annuler !!!");
+		{
+			//@todo add a popup where user have to confirm
+			fenetre.dispose();
+		}
 		else 
 			if(source == fenetre.getCreerBouton())
-				fenetre.getNomField().setText("creeer !!!");
+				{
+					local.setLieuLocal(fenetre.getLieuField().getText());
+					local.setNomLocal(fenetre.getNomField().getText());
+					fenetre.dispose();
+				}
 	}
 
 }

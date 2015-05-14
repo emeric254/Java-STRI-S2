@@ -1,6 +1,7 @@
 package com.java_s2.STRI;
 
 import com.java_s2.STRI.controller.*;
+import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.vue.*;
 
@@ -32,15 +33,15 @@ public class App
     	createAppareilWindow fenetre = new createAppareilWindow();
     	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre);
     	//*/
-    	/**/
+    	/*
     	//
     	createSalleWindow fenetre = new createSalleWindow();
     	createSalleWindowEventListener listener = new createSalleWindowEventListener(fenetre, new Salle(0, ""));
     	//*/
-    	/*
+    	/**/
     	//
     	createLocalWindow fenetre = new createLocalWindow();
-    	createLocalWindowEventListener listener = new createLocalWindowEventListener(fenetre);
+    	createLocalWindowEventListener listener = new createLocalWindowEventListener(fenetre, new Local(0, "", ""));
     	//*/
     	/*
         //
