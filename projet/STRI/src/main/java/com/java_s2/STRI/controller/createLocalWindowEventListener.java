@@ -31,11 +31,11 @@ public class createLocalWindowEventListener implements ActionListener
 		}
 		else 
 			if(source == fenetre.getCreerBouton())
-				{
-					local.setLieuLocal(fenetre.getLieuField().getText());
-					local.setNomLocal(fenetre.getNomField().getText());
-					fenetre.dispose();
-				}
+			{
+				local.setLieuLocal(fenetre.getLieuField().getText());
+				local.setNomLocal(fenetre.getNomField().getText());
+				fenetre.dispose();
+			}
 	}
 
 }
