@@ -1,6 +1,7 @@
 package com.java_s2.STRI;
 
 import com.java_s2.STRI.controller.*;
+import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
@@ -19,15 +20,15 @@ public class App
     	createFirmwareWindow fenetre = new createFirmwareWindow();
     	createFirmwareWindowEventListener listener = new createFirmwareWindowEventListener(fenetre);
     	//*/
-    	/**/
+    	/*
     	//
     	createOSWindow fenetre = new createOSWindow();
     	createOSWindowEventListener listener = new createOSWindowEventListener(fenetre, new SystemeExploitation(0, "", ""));
     	//*/
-    	/*
+    	/**/
     	//
     	createInterfaceWindow fenetre = new createInterfaceWindow();
-    	createInterfaceWindowEventListener listener = new createInterfaceWindowEventListener(fenetre);
+    	createInterfaceWindowEventListener listener = new createInterfaceWindowEventListener(fenetre, new InterfaceReseau(0, "", null));
     	//*/
     	/*
     	//
