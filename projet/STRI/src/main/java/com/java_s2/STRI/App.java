@@ -13,8 +13,18 @@ public class App
     {
     	/**/
     	//
-    	createAppareilWindow fenetre = new createAppareilWindow();
-    	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre);
+    	createFirmwareWindow fenetre = new createFirmwareWindow();
+    	createFirmwareWindowEventListener listener = new createFirmwareWindowEventListener(fenetre);
+    	//*/
+    	/*
+    	//
+    	createOSWindow fenetre = new createOSWindow();
+    	createOSWindowEventListener listener = new createOSWindowEventListener(fenetre);
+    	//*/
+    	/*
+    	//
+    	createInterfaceWindow fenetre = new createInterfaceWindow();
+    	createInterfaceWindowEventListener listener = new createInterfaceWindowEventListener(fenetre);
     	//*/
     	/*
     	//
