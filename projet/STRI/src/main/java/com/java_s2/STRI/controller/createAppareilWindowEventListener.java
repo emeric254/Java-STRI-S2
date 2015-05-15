@@ -17,6 +17,10 @@ public class createAppareilWindowEventListener implements ActionListener
 	{
 		fenetre = pFenetre;
 		appareil = pAppareil;
+		
+		appareil.desactiver(); // par defaut non actif
+		
+		fenetre.getEtatCheck().addActionListener(this);;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -33,8 +37,18 @@ public class createAppareilWindowEventListener implements ActionListener
 			if(source == fenetre.getCreerBouton())
 			{
 				appareil.setNomAppareil(fenetre.getNomField().getText());
+				appareil.setMarqueAppareil(fenetre.getMarqueField().getText());
+				appareil.setModeleAppareil(fenetre.getModeleField().getText());
 				fenetre.dispose();
 			}
+			else
+				if(source == fenetre.getEtatCheck())
+				{
+					if(appareil.getEtatAppareil())
+						appareil.desactiver();
+					else
+						appareil.activer();
+				}
 	}
 
 }

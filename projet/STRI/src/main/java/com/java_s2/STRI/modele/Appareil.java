@@ -70,6 +70,10 @@ public class Appareil {
     public int getIdAppareil () {
     	return idAppareil;
     }
+    
+    public void setIdAppareil(int id) {
+    	idAppareil = id;
+    }
 
     /**
      * Set the value of nomAppareil
@@ -87,7 +91,6 @@ public class Appareil {
     	return nomAppareil;
     }
 
-
     /**
      * Get the value of marqueAppareil
      * @return the value of marqueAppareil
@@ -96,6 +99,9 @@ public class Appareil {
     	return marqueAppareil;
     }
 
+    public void setMarqueAppareil (String marque) {
+    	marqueAppareil = marque;
+    }
 
     /**
      * Get the value of modeleAppareil
@@ -105,6 +111,9 @@ public class Appareil {
     	return modeleAppareil;
     }
 
+    public void setModeleAppareil (String modele) {
+    	modeleAppareil = modele;
+    }
 
     /**
      * Get the value of etatAppareil
@@ -113,6 +122,38 @@ public class Appareil {
     public boolean getEtatAppareil () {
     	return etatAppareil;
     }
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Boolean activer()
+	{
+		/*
+		if (this.etatAppareil)
+		{
+			System.err.println(this.idAppareil+" est deja active !");
+		}
+		*/
+		this.etatAppareil=true;
+		return this.etatAppareil;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Boolean desactiver()
+	{
+		/*
+		if (!this.etatAppareil)
+		{
+			System.err.println(this.idAppareil+" est deja desactive !");
+		}
+		*/
+		this.etatAppareil=false;
+		return this.etatAppareil;
+	}
 
     /**
      * Get the value of os
@@ -121,6 +162,9 @@ public class Appareil {
 	public SystemeExploitation getOs() {
 		return os;
 	}
+    public void setOs (SystemeExploitation pOs) {
+    	os = pOs;
+    }
 
 	/**
 	 * Get the value of interfaceReseau
@@ -142,35 +186,6 @@ public class Appareil {
     //
     // Other methods
     //
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public Boolean activer()
-	{
-		if (this.etatAppareil)
-		{
-			System.err.println(this.idAppareil+" est deja active !");
-		}
-		this.etatAppareil=true;
-		return this.etatAppareil;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public Boolean desactiver()
-	{
-		if (!this.etatAppareil)
-		{
-			System.err.println(this.idAppareil+" est deja desactive !");
-		}
-		
-		this.etatAppareil=false;
-		return this.etatAppareil;
-	}
 
 	/**
 	 * 

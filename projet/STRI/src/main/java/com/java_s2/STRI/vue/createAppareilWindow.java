@@ -99,6 +99,10 @@ public class createAppareilWindow extends createWindow {
 	public JTextField getModeleField() {
 		return modele;
 	}
+	
+	public JCheckBox getEtatCheck() {
+		return etat;
+	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
