@@ -2,6 +2,7 @@ package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
 
+import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
 import com.java_s2.STRI.modele.SystemeExploitation;
@@ -26,8 +27,8 @@ public class createOSWindowEventListener implements ActionListener
 		Object source = e.getSource();
 		if(source == fenetre.getAnnulerBouton())
 		{
-			//@todo add a popup where user have to confirm
-			fenetre.dispose();
+			if(JOptionPane.showConfirmDialog(fenetre, "Voulez vous vraiment annuler","Annuler ?",JOptionPane.YES_NO_OPTION) == 0)
+				fenetre.dispose();
 		}
 		else 
 			if(source == fenetre.getCreerBouton())
