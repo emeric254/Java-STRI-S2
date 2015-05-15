@@ -5,19 +5,19 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.modele.InterfaceReseau;
-import com.java_s2.STRI.vue.createInterfaceWindow;
+import com.java_s2.STRI.modele.Firmware;
+import com.java_s2.STRI.vue.CreateFirmwareWindow;
 
 
-public class createInterfaceWindowEventListener implements ActionListener
+public class CreateFirmwareWindowEventListener implements ActionListener
 {
-	private createInterfaceWindow fenetre;
-	private InterfaceReseau interfaceReseau;
+	private CreateFirmwareWindow fenetre;
+	private Firmware firmware;
 	
-	public createInterfaceWindowEventListener(createInterfaceWindow pFenetre, InterfaceReseau pInterfaceReseau)
+	public CreateFirmwareWindowEventListener(CreateFirmwareWindow pFenetre, Firmware pFirmware)
 	{
 		fenetre = pFenetre;
-		
+		firmware = pFirmware;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -33,8 +33,8 @@ public class createInterfaceWindowEventListener implements ActionListener
 		else 
 			if(source == fenetre.getCreerBouton())
 			{
-				interfaceReseau.setNomInterface(fenetre.getNomField().getText());
-				//interfaceReseau.setAdresseMAC(new Integer(fenetre.getMACField().getText().replace(':',' ').trim()));
+				firmware.setNomFirmware(fenetre.getNomField().getText());
+				firmware.setVersionFirmware(fenetre.getVersionField().getText());
 				fenetre.dispose();
 			}
 	}

@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-public class createAppareilWindow extends createWindow {
+public class CreateAppareilWindow extends CreateWindow {
 
 	private JTextField nom;
 	private JTextField marque;
@@ -16,7 +16,7 @@ public class createAppareilWindow extends createWindow {
 	private JComboBox<String> firmware;
 	
 	
-	public createAppareilWindow()
+	public CreateAppareilWindow()
 	{
 		super("Création de «Appareil»");
 		buildContentPane();

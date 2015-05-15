@@ -5,15 +5,17 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-public class createOSWindow extends createWindow {
+public class CreateInterfaceWindow extends CreateWindow {
 
 	private JTextField nom;
-	private JTextField version;
+	/*
+	private JTextField addrMAC;
+	*/
 	
 	
-	public createOSWindow()
+	public CreateInterfaceWindow()
 	{
-		super("Création de «O/S»");
+		super("Création de «Interface Reseau»");
 		buildContentPane();
 		pack();
 	}
@@ -23,9 +25,11 @@ public class createOSWindow extends createWindow {
 	{	
 		//creation boutons
 		nom = new JTextField(20);
-		version = new JTextField(20);
+		/*
+		addrMAC = new JTextField(20);
+		*/
 		
-		// definition contraintes du layout
+		// definition contriantes du layout
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -35,22 +39,23 @@ public class createOSWindow extends createWindow {
 		getContenuPanel().add(new JLabel("nom"), c);
 		c.gridx = 1;
 		getContenuPanel().add(nom, c);
-		
+		/*
 		c.gridx = 0;
 		c.gridy = 1;
-		getContenuPanel().add(new JLabel("version"), c);
+		getContenuPanel().add(new JLabel("MAC"), c);
 		c.gridx = 1;
-		getContenuPanel().add(version, c);
+		getContenuPanel().add(addrMAC, c);
+		*/
 	}
 
 	public JTextField getNomField() {
 		return nom;
 	}
-
-	public JTextField getVersionField() {
-		return version;
+/*
+	public JTextField getAddrMACField() {
+		return addrMAC;
 	}
-
+*/
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

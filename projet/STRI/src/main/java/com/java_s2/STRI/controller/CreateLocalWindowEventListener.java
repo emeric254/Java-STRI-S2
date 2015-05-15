@@ -5,19 +5,19 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.modele.Firmware;
-import com.java_s2.STRI.vue.createFirmwareWindow;
+import com.java_s2.STRI.modele.Local;
+import com.java_s2.STRI.vue.CreateLocalWindow;
 
 
-public class createFirmwareWindowEventListener implements ActionListener
+public class CreateLocalWindowEventListener implements ActionListener
 {
-	private createFirmwareWindow fenetre;
-	private Firmware firmware;
+	private CreateLocalWindow fenetre;
+	private Local local;
 	
-	public createFirmwareWindowEventListener(createFirmwareWindow pFenetre, Firmware pFirmware)
+	public CreateLocalWindowEventListener(CreateLocalWindow pFenetre, Local pLocal)
 	{
 		fenetre = pFenetre;
-		firmware = pFirmware;
+		local = pLocal;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -33,8 +33,8 @@ public class createFirmwareWindowEventListener implements ActionListener
 		else 
 			if(source == fenetre.getCreerBouton())
 			{
-				firmware.setNomFirmware(fenetre.getNomField().getText());
-				firmware.setVersionFirmware(fenetre.getVersionField().getText());
+				local.setLieuLocal(fenetre.getLieuField().getText());
+				local.setNomLocal(fenetre.getNomField().getText());
 				fenetre.dispose();
 			}
 	}

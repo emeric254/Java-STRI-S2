@@ -7,15 +7,15 @@ import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
 import com.java_s2.STRI.modele.Appareil;
-import com.java_s2.STRI.vue.createAppareilWindow;
+import com.java_s2.STRI.vue.CreateAppareilWindow;
 
 
-public class createAppareilWindowEventListener implements ActionListener
+public class CreateAppareilWindowEventListener implements ActionListener
 {
-	private createAppareilWindow fenetre;
+	private CreateAppareilWindow fenetre;
 	private Appareil appareil;
 	
-	public createAppareilWindowEventListener(createAppareilWindow pFenetre, Appareil pAppareil)
+	public CreateAppareilWindowEventListener(CreateAppareilWindow pFenetre, Appareil pAppareil)
 	{
 		fenetre = pFenetre;
 		appareil = pAppareil;

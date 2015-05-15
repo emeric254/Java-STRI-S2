@@ -6,9 +6,9 @@ import java.sql.*;
  */
 
 
-public class postgreSQL {
+public class PostgreSQL {
 	
-	public postgreSQL() {
+	public PostgreSQL() {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {

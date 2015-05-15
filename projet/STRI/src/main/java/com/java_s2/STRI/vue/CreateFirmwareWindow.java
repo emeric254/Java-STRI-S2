@@ -5,15 +5,15 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-public class createLocalWindow extends createWindow {
+public class CreateFirmwareWindow extends CreateWindow {
 
 	private JTextField nom;
-	private JTextField lieu;
+	private JTextField version;
 	
 	
-	public createLocalWindow()
+	public CreateFirmwareWindow()
 	{
-		super("Création de «Local»");
+		super("Création de «Firmware»");
 		buildContentPane();
 		pack();
 	}
@@ -23,9 +23,9 @@ public class createLocalWindow extends createWindow {
 	{	
 		//creation boutons
 		nom = new JTextField(20);
-		lieu = new JTextField(20);
+		version = new JTextField(20);
 		
-		// definition contriantes du layout
+		// definition contraintes du layout
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -38,17 +38,17 @@ public class createLocalWindow extends createWindow {
 		
 		c.gridx = 0;
 		c.gridy = 1;
-		getContenuPanel().add(new JLabel("lieu"), c);
+		getContenuPanel().add(new JLabel("version"), c);
 		c.gridx = 1;
-		getContenuPanel().add(lieu, c);
+		getContenuPanel().add(version, c);
 	}
 
 	public JTextField getNomField() {
 		return nom;
 	}
 
-	public JTextField getLieuField() {
-		return lieu;
+	public JTextField getVersionField() {
+		return version;
 	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------

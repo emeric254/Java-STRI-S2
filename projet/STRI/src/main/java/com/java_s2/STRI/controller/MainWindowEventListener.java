@@ -3,14 +3,14 @@ package com.java_s2.STRI.controller;
 import java.awt.event.*;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.vue.mainWindow;
+import com.java_s2.STRI.vue.MainWindow;
 
 
-public class mainWindowEventListener implements ActionListener
+public class MainWindowEventListener implements ActionListener
 {
-	private mainWindow fenetre;
+	private MainWindow fenetre;
 	
-	public mainWindowEventListener(mainWindow pFenetre)
+	public MainWindowEventListener(MainWindow pFenetre)
 	{
 		fenetre = pFenetre;
 		fenetre.getBouton1().addActionListener(this);

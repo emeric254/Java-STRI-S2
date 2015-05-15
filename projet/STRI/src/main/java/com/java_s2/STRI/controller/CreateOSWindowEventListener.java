@@ -5,19 +5,19 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.vue.createLocalWindow;
+import com.java_s2.STRI.modele.SystemeExploitation;
+import com.java_s2.STRI.vue.CreateOSWindow;
 
 
-public class createLocalWindowEventListener implements ActionListener
+public class CreateOSWindowEventListener implements ActionListener
 {
-	private createLocalWindow fenetre;
-	private Local local;
+	private CreateOSWindow fenetre;
+	private SystemeExploitation os;
 	
-	public createLocalWindowEventListener(createLocalWindow pFenetre, Local pLocal)
+	public CreateOSWindowEventListener(CreateOSWindow pFenetre, SystemeExploitation pOS)
 	{
 		fenetre = pFenetre;
-		local = pLocal;
+		os = pOS;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -32,11 +32,11 @@ public class createLocalWindowEventListener implements ActionListener
 		}
 		else 
 			if(source == fenetre.getCreerBouton())
-			{
-				local.setLieuLocal(fenetre.getLieuField().getText());
-				local.setNomLocal(fenetre.getNomField().getText());
-				fenetre.dispose();
-			}
+				{
+					os.setNomOS(fenetre.getNomField().getText());
+					os.setVersionOS(fenetre.getVersionField().getText());
+					fenetre.dispose();
+				}
 	}
 
 }

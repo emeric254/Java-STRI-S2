@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-public class mainWindow extends JFrame {
+public class MainWindow extends JFrame {
 
 	// boutons
 	private JButton bouton1;
@@ -20,7 +20,7 @@ public class mainWindow extends JFrame {
 	private JTree arborescense;
 	
 	
-	public mainWindow()
+	public MainWindow()
 	{
 		super("STRI - Managing Tool");
 	

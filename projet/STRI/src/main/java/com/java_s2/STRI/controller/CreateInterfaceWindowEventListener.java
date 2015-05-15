@@ -5,19 +5,19 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.modele.Salle;
-import com.java_s2.STRI.vue.createSalleWindow;
+import com.java_s2.STRI.modele.InterfaceReseau;
+import com.java_s2.STRI.vue.CreateInterfaceWindow;
 
 
-public class createSalleWindowEventListener implements ActionListener
+public class CreateInterfaceWindowEventListener implements ActionListener
 {
-	private createSalleWindow fenetre;
-	private Salle salle;
+	private CreateInterfaceWindow fenetre;
+	private InterfaceReseau interfaceReseau;
 	
-	public createSalleWindowEventListener(createSalleWindow pFenetre, Salle pSalle)
+	public CreateInterfaceWindowEventListener(CreateInterfaceWindow pFenetre, InterfaceReseau pInterfaceReseau)
 	{
 		fenetre = pFenetre;
-		salle = pSalle;
+		
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -33,7 +33,8 @@ public class createSalleWindowEventListener implements ActionListener
 		else 
 			if(source == fenetre.getCreerBouton())
 			{
-				salle.setNomSalle(fenetre.getNomField().getText());
+				interfaceReseau.setNomInterface(fenetre.getNomField().getText());
+				//interfaceReseau.setAdresseMAC(new Integer(fenetre.getMACField().getText().replace(':',' ').trim()));
 				fenetre.dispose();
 			}
 	}

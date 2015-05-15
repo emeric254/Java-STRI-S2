@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public abstract class createWindow extends JFrame {
+public abstract class CreateWindow extends JFrame {
 
 	// boutons
 	private JButton annuler;
@@ -21,7 +21,7 @@ public abstract class createWindow extends JFrame {
 	private JPanel contenu;
 	
 	
-	public createWindow(String title)
+	public CreateWindow(String title)
 	{
 		super(title);
 	

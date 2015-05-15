@@ -32,10 +32,10 @@ public class App
     	createInterfaceWindow fenetre = new createInterfaceWindow();
     	createInterfaceWindowEventListener listener = new createInterfaceWindowEventListener(fenetre, new InterfaceReseau(0, "", null));
     	//*/
-    	/**/
+    	/*
     	//
-    	createAppareilWindow fenetre = new createAppareilWindow();
-    	createAppareilWindowEventListener listener = new createAppareilWindowEventListener(fenetre, new Appareil(0, "", "", "", false, null, null));
+    	CreateAppareilWindow fenetre = new CreateAppareilWindow();
+    	CreateAppareilWindowEventListener listener = new CreateAppareilWindowEventListener(fenetre, new Appareil(0, "", "", "", false, null, null));
     	//*/
     	/*
     	//
@@ -47,10 +47,10 @@ public class App
     	createLocalWindow fenetre = new createLocalWindow();
     	createLocalWindowEventListener listener = new createLocalWindowEventListener(fenetre, new Local(0, "", ""));
     	//*/
-    	/*
+    	/**/
         //
-        mainWindow fenetre = new mainWindow();
-        mainWindowEventListener controller = new mainWindowEventListener(fenetre);
+        MainWindow fenetre = new MainWindow();
+        MainWindowEventListener controller = new MainWindowEventListener(fenetre);
         //*/
     }
 }

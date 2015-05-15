@@ -5,19 +5,19 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.modele.SystemeExploitation;
-import com.java_s2.STRI.vue.createOSWindow;
+import com.java_s2.STRI.modele.Salle;
+import com.java_s2.STRI.vue.CreateSalleWindow;
 
 
-public class createOSWindowEventListener implements ActionListener
+public class CreateSalleWindowEventListener implements ActionListener
 {
-	private createOSWindow fenetre;
-	private SystemeExploitation os;
+	private CreateSalleWindow fenetre;
+	private Salle salle;
 	
-	public createOSWindowEventListener(createOSWindow pFenetre, SystemeExploitation pOS)
+	public CreateSalleWindowEventListener(CreateSalleWindow pFenetre, Salle pSalle)
 	{
 		fenetre = pFenetre;
-		os = pOS;
+		salle = pSalle;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -32,11 +32,10 @@ public class createOSWindowEventListener implements ActionListener
 		}
 		else 
 			if(source == fenetre.getCreerBouton())
-				{
-					os.setNomOS(fenetre.getNomField().getText());
-					os.setVersionOS(fenetre.getVersionField().getText());
-					fenetre.dispose();
-				}
+			{
+				salle.setNomSalle(fenetre.getNomField().getText());
+				fenetre.dispose();
+			}
 	}
 
 }

@@ -5,12 +5,12 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-public class createSalleWindow extends createWindow {
+public class CreateSalleWindow extends CreateWindow {
 
 	private JTextField nom;
 	
 	
-	public createSalleWindow()
+	public CreateSalleWindow()
 	{
 		super("Création de «Salle»");
 		buildContentPane();
