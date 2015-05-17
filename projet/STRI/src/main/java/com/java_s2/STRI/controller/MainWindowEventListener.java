@@ -16,7 +16,9 @@ import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
 import com.java_s2.STRI.utils.GestionSerial;
+import com.java_s2.STRI.vue.CreateAppareilWindow;
 import com.java_s2.STRI.vue.CreateLocalWindow;
+import com.java_s2.STRI.vue.CreateSalleWindow;
 import com.java_s2.STRI.vue.MainWindow;
 
 
@@ -69,6 +71,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	
 	public void refreshTree(HashMap<Integer, Local> locaux)
 	{
+		//@TODO ajouter nom classe avant ce quil y a deja ?
+		
 		System.out.println(locaux);
 		fenetre.clearAllComponent();
 		for (Integer id : locaux.keySet())
@@ -109,40 +113,31 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	public void valueChanged(TreeSelectionEvent arg0)
 	{
 		noeudSelect = (DefaultMutableTreeNode) fenetre.getTree().getLastSelectedPathComponent();
-		
-		/* rien de selectionner */ 
-		if (noeudSelect == null)
-			return;
-		
-		Object nodeInfo = noeudSelect.getUserObject();
-		
-		System.out.println(nodeInfo.toString());
-		//@TODO a finir ...
 	}
 	
 	public void createChild()
 	{
+		//@FIXME passer les hashmap en param si besoin pour les maj
 		//@TODO a faire
 		if(noeudSelect != null)
 			switch (noeudSelect.getLevel()) {
 			case 1:
-				System.out.println(1);
+				//@TODO salles
+				Salle newSalle = new Salle(GestionSerial.prochainSerial(salles.keySet()), "");
+				new CreateSalleWindowEventListener(new CreateSalleWindow(), newSalle);
 				break;
 				
 			case 2:
-				System.out.println(2);
+				//@TODO appareils
+				Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(salles.keySet()), "", null, null, null, null, null);
+				new CreateAppareilWindowEventListener(new CreateAppareilWindow(), newAppareil);
 				break;
 				
 			case 3:
-				System.out.println(3);
-				break;
-				
-			case 4:
-				System.out.println(4);
+				//@TODO attributs appareils
 				break;
 	
 			default:
-				System.out.println(1);
 				Local newLocal = new Local(GestionSerial.prochainSerial(locaux.keySet()), "", "");
 				new CreateLocalWindowEventListener(new CreateLocalWindow(), newLocal);
 				break;
