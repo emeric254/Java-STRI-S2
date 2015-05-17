@@ -20,11 +20,15 @@ import com.java_s2.STRI.vue.MainWindow;
 public class MainWindowEventListener implements ActionListener, TreeSelectionListener
 {
 	private MainWindow fenetre;
+	
 	/* ensembles d'objets (comme en bd) */
 	private HashMap<Integer, Local> locaux;
 	private HashMap<Integer, Salle> salles;
 	private HashMap<Integer, Appareil> appareils;
 	private HashMap<Integer, InterfaceReseau> cartesReseaux;
+	
+	private DefaultMutableTreeNode noeudSelect;
+	
 	
 	public MainWindowEventListener(MainWindow pFenetre, HashMap<Integer,
 			Local> pLocaux, HashMap<Integer, Salle> pSalles,
@@ -48,10 +52,11 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	{
 		Object source = e.getSource();
 		if(source == fenetre.getBouton1())
-			fenetre.addComponent(fenetre.rootTree,new DefaultMutableTreeNode("node - "+fenetre.rootTree.getChildCount()));
+			createChild();
 		else 
 			if(source == fenetre.getBouton2())
-				fenetre.clearAllComponent();
+				if(noeudSelect != null)
+					fenetre.removeComponent(noeudSelect);
 	}
 	
 	public void refreshTree(HashMap<Integer, Local> locaux)
@@ -92,17 +97,23 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 		}
 	}
 
-	public void valueChanged(TreeSelectionEvent arg0) {
-		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-                fenetre.getTree().getLastSelectedPathComponent();
+	public void valueChanged(TreeSelectionEvent arg0)
+	{
+		noeudSelect = (DefaultMutableTreeNode) fenetre.getTree().getLastSelectedPathComponent();
 		
 		/* rien de selectionner */ 
-		if (node == null) return;
+		if (noeudSelect == null)
+			return;
 		
+		Object nodeInfo = noeudSelect.getUserObject();
 		
-		Object nodeInfo = node.getUserObject();
 		System.out.println(nodeInfo.toString());
 		//@TODO a finir ...
+	}
+	
+	public void createChild()
+	{
+		//@TODO a faire
 	}
 
 }
