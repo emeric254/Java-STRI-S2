@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.event.*;
 import javax.swing.tree.*;
 
 import com.java_s2.STRI.App;
@@ -16,7 +17,7 @@ import com.java_s2.STRI.modele.SystemeExploitation;
 import com.java_s2.STRI.vue.MainWindow;
 
 
-public class MainWindowEventListener implements ActionListener
+public class MainWindowEventListener implements ActionListener, TreeSelectionListener
 {
 	private MainWindow fenetre;
 	/* ensembles d'objets (comme en bd) */
@@ -38,6 +39,9 @@ public class MainWindowEventListener implements ActionListener
 		
 		fenetre.getBouton1().addActionListener(this);
 		fenetre.getBouton2().addActionListener(this);
+		fenetre.getTree().addTreeSelectionListener(this);
+		
+		refreshTree(locaux);
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -86,6 +90,19 @@ public class MainWindowEventListener implements ActionListener
 				}
 			}
 		}
+	}
+
+	public void valueChanged(TreeSelectionEvent arg0) {
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+                fenetre.getTree().getLastSelectedPathComponent();
+		
+		/* rien de selectionner */ 
+		if (node == null) return;
+		
+		
+		Object nodeInfo = node.getUserObject();
+		System.out.println(nodeInfo.toString());
+		//@TODO a finir ...
 	}
 
 }
