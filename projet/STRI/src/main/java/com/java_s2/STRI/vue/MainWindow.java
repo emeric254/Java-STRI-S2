@@ -98,6 +98,15 @@ public class MainWindow extends JFrame {
 		// suppression d'un noeud
 		modelTree.removeNodeFromParent(child);
 	}
+	
+	public void clearAllComponent()
+	{
+		// suppression d'un noeud
+		while(rootTree.getChildCount() > 0)
+		{
+			removeComponent(rootTree.getFirstLeaf());
+		}
+	}
 
 	public JButton getBouton1() {
 		return bouton1;

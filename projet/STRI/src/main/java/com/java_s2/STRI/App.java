@@ -1,5 +1,7 @@
 package com.java_s2.STRI;
 
+import java.util.HashMap;
+
 import com.java_s2.STRI.controller.*;
 import com.java_s2.STRI.modele.Appareil;
 import com.java_s2.STRI.modele.Firmware;
@@ -15,8 +17,15 @@ import com.java_s2.STRI.vue.*;
  */
 public class App 
 {
+	
     public static void main( String[] args )
     {
+    	/* ensembles d'objets (comme en bd) */
+    	HashMap<Integer, Local> locaux = new HashMap<Integer, Local> ();
+    	HashMap<Integer, Salle> salles = new HashMap<Integer, Salle> ();
+    	HashMap<Integer, Appareil> appareils = new HashMap<Integer, Appareil> ();
+    	HashMap<Integer, InterfaceReseau> cartesReseaux = new HashMap<Integer, InterfaceReseau> ();
+    	
     	/*
     	//
     	createFirmwareWindow fenetre = new createFirmwareWindow();
@@ -50,7 +59,7 @@ public class App
     	/**/
         //
         MainWindow fenetre = new MainWindow();
-        MainWindowEventListener controller = new MainWindowEventListener(fenetre);
+        MainWindowEventListener controller = new MainWindowEventListener(fenetre, locaux, salles, appareils, cartesReseaux);
         //*/
     }
 }
