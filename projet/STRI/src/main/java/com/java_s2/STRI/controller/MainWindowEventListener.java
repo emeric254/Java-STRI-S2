@@ -3,6 +3,7 @@ package com.java_s2.STRI.controller;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.event.*;
 import javax.swing.tree.*;
@@ -14,6 +15,8 @@ import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
+import com.java_s2.STRI.utils.GestionSerial;
+import com.java_s2.STRI.vue.CreateLocalWindow;
 import com.java_s2.STRI.vue.MainWindow;
 
 
@@ -56,11 +59,13 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 		else 
 			if(source == fenetre.getBouton2())
 				if(noeudSelect != null)
-					fenetre.removeComponent(noeudSelect);
+					if(noeudSelect.getLevel() > 0)
+						fenetre.removeComponent(noeudSelect);
 	}
 	
 	public void refreshTree(HashMap<Integer, Local> locaux)
 	{
+		System.out.println(locaux);
 		fenetre.clearAllComponent();
 		for (Integer id : locaux.keySet())
 		{
@@ -114,6 +119,41 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	public void createChild()
 	{
 		//@TODO a faire
+		if(noeudSelect != null)
+			switch (noeudSelect.getLevel()) {
+			case 1:
+				System.out.println(1);
+				break;
+				
+			case 2:
+				System.out.println(2);
+				break;
+				
+			case 3:
+				System.out.println(3);
+				break;
+				
+			case 4:
+				System.out.println(4);
+				break;
+	
+			default:
+				System.out.println(1);
+				Local newLocal = new Local(GestionSerial.prochainSerial(locaux.keySet()), "", "");
+				
+				CreateLocalWindow creaFenetre = new CreateLocalWindow();
+				CreateLocalWindowEventListener creaListener = new CreateLocalWindowEventListener(creaFenetre, newLocal);
+
+				//@FIXME rendre bloqubnte les sous fenetres
+				
+				//@TODO verif creation
+				if(newLocal.getNomLocal().length() > 0)
+					locaux.put(newLocal.getIdLocal(), newLocal);
+				
+				break;
+			}
+		
+		refreshTree(locaux);
 	}
 
 }
