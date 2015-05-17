@@ -46,6 +46,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 		
 		fenetre.getBouton1().addActionListener(this);
 		fenetre.getBouton2().addActionListener(this);
+		fenetre.getBouton3().addActionListener(this);
 		fenetre.getTree().addTreeSelectionListener(this);
 		
 		refreshTree(locaux);
@@ -57,10 +58,13 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 		if(source == fenetre.getBouton1())
 			createChild();
 		else 
-			if(source == fenetre.getBouton2())
-				if(noeudSelect != null)
-					if(noeudSelect.getLevel() > 0)
-						fenetre.removeComponent(noeudSelect);
+			if(source == fenetre.getBouton3())
+				refreshTree(locaux);
+			else
+				if(source == fenetre.getBouton2())
+					if(noeudSelect != null)
+						if(noeudSelect.getLevel() > 0)
+							fenetre.removeComponent(noeudSelect);
 	}
 	
 	public void refreshTree(HashMap<Integer, Local> locaux)
@@ -140,16 +144,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 			default:
 				System.out.println(1);
 				Local newLocal = new Local(GestionSerial.prochainSerial(locaux.keySet()), "", "");
-				
-				CreateLocalWindow creaFenetre = new CreateLocalWindow();
-				CreateLocalWindowEventListener creaListener = new CreateLocalWindowEventListener(creaFenetre, newLocal);
-
-				//@FIXME rendre bloqubnte les sous fenetres
-				
-				//@TODO verif creation
-				if(newLocal.getNomLocal().length() > 0)
-					locaux.put(newLocal.getIdLocal(), newLocal);
-				
+				new CreateLocalWindowEventListener(new CreateLocalWindow(), newLocal);
 				break;
 			}
 		

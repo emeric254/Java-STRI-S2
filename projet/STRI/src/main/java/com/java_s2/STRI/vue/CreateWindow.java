@@ -4,13 +4,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public abstract class CreateWindow extends JFrame {
 
@@ -23,7 +17,11 @@ public abstract class CreateWindow extends JFrame {
 	
 	public CreateWindow(String title)
 	{
-		super(title);
+		super();
+		
+		setTitle(title);
+		
+		//setModalityType(DEFAULT_MODALITY_TYPE);
 	
 		// position sur bureau
 		setLocationRelativeTo(null);
@@ -31,7 +29,7 @@ public abstract class CreateWindow extends JFrame {
 		setResizable(false);
 		
 		// quand appui sur la "croix" fermer >>> quitter l'applis
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// ajout composants
 		setContentPane(buildContentPane());

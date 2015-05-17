@@ -35,6 +35,13 @@ public class CreateLocalWindowEventListener implements ActionListener
 			{
 				local.setLieuLocal(fenetre.getLieuField().getText());
 				local.setNomLocal(fenetre.getNomField().getText());
+
+				//@FIXME verif creation + ajout dans la HASHMAP
+				/*
+				if(local.getNomLocal().length() > 0)
+					locaux.put(local.getIdLocal(), local);
+				*/
+				
 				fenetre.dispose();
 			}
 	}

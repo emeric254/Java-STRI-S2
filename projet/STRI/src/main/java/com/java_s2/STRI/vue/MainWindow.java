@@ -11,6 +11,7 @@ public class MainWindow extends JFrame {
 	// boutons
 	private JButton bouton1;
 	private JButton bouton2;
+	private JButton bouton3;
 	
 	// model arborescence
 	public DefaultMutableTreeNode rootTree; //@todo public pour le moment
@@ -49,6 +50,7 @@ public class MainWindow extends JFrame {
 		//creation boutons
 		bouton1 = new JButton(" creer ");
 		bouton2 = new JButton(" supprimer ");
+		bouton3 = new JButton(" actualiser ");
 		
 		// creation modele de l'arborescense
 		rootTree = new DefaultMutableTreeNode("/");
@@ -69,13 +71,16 @@ public class MainWindow extends JFrame {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.insets = new Insets(10,5,5,5);
-		monPanneau.add(getBouton1(), c); // ajout bouton1 au layout
-		
+		monPanneau.add(bouton1, c); // ajout bouton1 au layout
+
 		c.gridx = 1;
-		monPanneau.add(getBouton2(), c); // ajout bouton2 au layout
+		monPanneau.add(bouton2, c); // ajout bouton2 au layout
+		
+		c.gridx = 2;
+		monPanneau.add(bouton3, c); // ajout bouton3 au layout
 		
 		c.fill = GridBagConstraints.BOTH;
-		c.gridheight = 2;
+		c.gridheight = 3;
 		c.gridwidth = 4;
 		c.gridx = 0;
 		c.gridy = 1;
@@ -114,6 +119,10 @@ public class MainWindow extends JFrame {
 
 	public JButton getBouton2() {
 		return bouton2;
+	}
+
+	public JButton getBouton3() {
+		return bouton3;
 	}
 
 	public JTree getTree() {
