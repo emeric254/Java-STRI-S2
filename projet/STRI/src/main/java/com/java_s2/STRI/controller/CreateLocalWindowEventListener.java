@@ -41,14 +41,13 @@ public class CreateLocalWindowEventListener implements ActionListener
 			{
 				local.setLieuLocal(fenetre.getLieuField().getText());
 				local.setNomLocal(fenetre.getNomField().getText());
-
-				// FIXME verif creation
 				
-				if(local.getNomLocal().length() > 0)
+				if(local.getNomLocal().length() > 0 && local.getLieuLocal().length() > 0)
+				{
 					locaux.put(local.getIdLocal(), local);
-				
-				parent.refreshTree();
-				fenetre.dispose();
+					parent.refreshTree();
+					fenetre.dispose();
+				}
 			}
 	}
 

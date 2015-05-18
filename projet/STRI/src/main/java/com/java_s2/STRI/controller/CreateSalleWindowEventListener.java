@@ -1,14 +1,10 @@
 package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
-import java.util.HashMap;
-
-import javax.swing.JOptionPane;
-
-import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.modele.Salle;
-import com.java_s2.STRI.vue.CreateSalleWindow;
-import com.java_s2.STRI.vue.MainWindow;
+import java.util.*;
+import javax.swing.*;
+import com.java_s2.STRI.modele.*;
+import com.java_s2.STRI.vue.*;
 
 
 public class CreateSalleWindowEventListener implements ActionListener
@@ -48,7 +44,6 @@ public class CreateSalleWindowEventListener implements ActionListener
 				if(nom.length() > 0)
 				{
 					salle.setNomSalle(nom);
-					
 					salles.put(salle.getIdSalle(), salle);
 					local.ajouterSalle(salle);
 					

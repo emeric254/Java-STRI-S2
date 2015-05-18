@@ -3,6 +3,7 @@ package com.java_s2.STRI.controller;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
@@ -12,6 +13,7 @@ import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
+import com.java_s2.STRI.utils.GestionMAC;
 import com.java_s2.STRI.utils.GestionSerial;
 import com.java_s2.STRI.vue.CreateAppareilWindow;
 import com.java_s2.STRI.vue.CreateLocalWindow;
@@ -28,6 +30,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     private HashMap<Integer, Salle> salles;
     private HashMap<Integer, Appareil> appareils;
     private HashMap<Integer, InterfaceReseau> cartesReseaux;
+	HashMap<Integer, Firmware> firmwares;
+	HashMap <Integer, SystemeExploitation> OS;
 
     private DefaultMutableTreeNode noeudSelect;
 
@@ -35,13 +39,17 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     public MainWindowEventListener(MainWindow pFenetre, HashMap<Integer,
             Local> pLocaux, HashMap<Integer, Salle> pSalles,
             HashMap<Integer, Appareil> pAppareils,
-            HashMap<Integer, InterfaceReseau> pCartesReseaux)
+            HashMap<Integer, InterfaceReseau> pCartesReseaux,
+            HashMap<Integer, Firmware> pFirmwares,
+            HashMap<Integer,SystemeExploitation> pOS)
     {
         fenetre = pFenetre;
         locaux = pLocaux;
         salles = pSalles;
         appareils = pAppareils;
         cartesReseaux = pCartesReseaux;
+        firmwares = pFirmwares;
+        OS = pOS;
 
         fenetre.getBouton1().addActionListener(this);
         fenetre.getBouton2().addActionListener(this);
@@ -51,6 +59,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         refreshTree(locaux);
     }
 
+    // action listener boutons
     public void actionPerformed(ActionEvent e)
     {
         Object source = e.getSource();
@@ -83,6 +92,13 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                         }
     }
 
+    // action listener JTree
+    public void valueChanged(TreeSelectionEvent arg0)
+    {
+        noeudSelect = (DefaultMutableTreeNode) fenetre.getTree().getLastSelectedPathComponent();
+    }
+
+    
     public void refreshTree(HashMap<Integer, Local> locaux)
     {
         // TODO ajouter nom classe avant ce quil y a deja ?
@@ -143,14 +159,9 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         fenetre.expandAll();
     }
 
-    public void valueChanged(TreeSelectionEvent arg0)
-    {
-        noeudSelect = (DefaultMutableTreeNode) fenetre.getTree().getLastSelectedPathComponent();
-    }
-
+    
     public void createChild()
     {
-        // TODO a finir
         if(noeudSelect != null)
         {
             int id = 0;
@@ -167,14 +178,14 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
             case 2:
                 Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(appareils.keySet()), "", "", "", false, null, null);
                 Salle salleParent = salles.get(id);
-                new CreateAppareilWindowEventListener(new CreateAppareilWindow(), this, newAppareil, appareils, salleParent);
+                new CreateAppareilWindowEventListener(new CreateAppareilWindow(), this, newAppareil, appareils, salleParent, firmwares, OS);
                 break;
 
             case 3:
                 // interco switch - equipement
             case 4:
-                // TODO interco
-                // FIXME donner l'appareil switch parent en param !
+                // FIXME interco
+                // TODO donner l'appareil switch parent en param !
                 break;
 
             default:
@@ -190,9 +201,6 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
             new CreateLocalWindowEventListener(new CreateLocalWindow(), this, newLocal, locaux);
         }
 
-        // inutile sans fenetres modales
-        // refreshTree(locaux);
-        // TODO filer «fenetre» en param de chaque creation pour refresh en fin de creation
         // TODO bloquer «fenetre» lors de creation
     }
 

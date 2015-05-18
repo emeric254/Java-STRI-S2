@@ -55,6 +55,7 @@ public class MainWindow extends JFrame {
 		bouton1 = new JButton(" creer ");
 		bouton2 = new JButton(" supprimer ");
 		bouton3 = new JButton(" actualiser ");
+		// FIXME bouton «details»
 		
 		// creation modele de l'arborescense
 		rootTree = new DefaultMutableTreeNode("Locaux");
@@ -82,6 +83,8 @@ public class MainWindow extends JFrame {
 		
 		c.gridx = 2;
 		monPanneau.add(bouton3, c); // ajout bouton3 au layout
+		
+		// TODO bouton «details»
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.gridheight = 3;
@@ -128,30 +131,32 @@ public class MainWindow extends JFrame {
 	public JButton getBouton3() {
 		return bouton3;
 	}
+	
+	// TODO bouton «details»
 
 	public JTree getTree() {
 		return arborescense;
 	}
+
 	
-
-  public void expandAll() {
-    TreeNode root = (TreeNode) arborescense.getModel().getRoot();
-    expandAll(arborescense, new TreePath(root));
-  }
-
-  private void expandAll(JTree tree, TreePath parent) {
-    TreeNode node = (TreeNode) parent.getLastPathComponent();
-    if (node.getChildCount() >= 0) {
-      for (Enumeration e = node.children(); e.hasMoreElements();) {
-        TreeNode n = (TreeNode) e.nextElement();
-        TreePath path = parent.pathByAddingChild(n);
-        expandAll(tree, path);
-      }
-    }
-    tree.expandPath(parent);
-    // tree.collapsePath(parent);
-  }
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+	
+	  public void expandAll() {
+	    TreeNode root = (TreeNode) arborescense.getModel().getRoot();
+	    expandAll(arborescense, new TreePath(root));
+	  }
+
+	  private void expandAll(JTree tree, TreePath parent) {
+	    TreeNode node = (TreeNode) parent.getLastPathComponent();
+	    if (node.getChildCount() >= 0) {
+	      for (Enumeration e = node.children(); e.hasMoreElements();) {
+	        TreeNode n = (TreeNode) e.nextElement();
+	        TreePath path = parent.pathByAddingChild(n);
+	        expandAll(tree, path);
+	      }
+	    }
+	    tree.expandPath(parent);
+	    // tree.collapsePath(parent);
+	  }
 }
