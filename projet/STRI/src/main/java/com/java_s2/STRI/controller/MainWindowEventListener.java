@@ -171,6 +171,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 		
 		// inutile sans fenetres modales
 		//refreshTree(locaux);
+		//@TODO filer «fenetre» en param de chaque creation pour refresh en fin de creation
+		//@TODO bloquer «fenetre» lors de creation
 	}
 
 }
