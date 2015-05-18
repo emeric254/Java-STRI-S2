@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.event.*;
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 import javax.swing.tree.*;
 
 import com.java_s2.STRI.modele.Appareil;
@@ -12,6 +13,7 @@ import com.java_s2.STRI.modele.Firmware;
 import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
+import com.java_s2.STRI.modele.Switch;
 import com.java_s2.STRI.modele.SystemeExploitation;
 import com.java_s2.STRI.utils.GestionMAC;
 import com.java_s2.STRI.utils.GestionSerial;
@@ -184,8 +186,12 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
             case 3:
                 // interco switch - equipement
             case 4:
-                // FIXME interco
-                // TODO donner l'appareil switch parent en param !
+            	Appareil appareil = appareils.get(id);
+            	if (appareil instanceof Switch)
+            	{
+                    // FIXME interco
+                    // TODO donner l'appareil switch parent en param !
+            	}
                 break;
 
             default:

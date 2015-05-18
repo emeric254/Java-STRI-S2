@@ -63,12 +63,21 @@ public class CreateAppareilWindowEventListener implements ActionListener
 				if(appareil.getNomAppareil().length() > 0 && appareil.getMarqueAppareil().length() > 0
 						&& appareil.getModeleAppareil().length() > 0)
 				{
-					appareils.put(appareil.getIdAppareil(), appareil);
-				
-					try {
-						salle.ajouterAppareil(appareil);
-					} catch (Exception e1) {
-						e1.printStackTrace();
+					// FIXME differencié le switch du terminal
+					if(fenetre.getTypeAppareil().getSelectedItem() == "Switch")
+					{
+						// FIXME gerer le switch !!!
+						appareil = new Switch(appareil.getIdAppareil(), appareil.getNomAppareil(), appareil.getMarqueAppareil(), appareil.getModeleAppareil(), appareil.getEtatAppareil(), appareil.getOs(), appareil.getInterfaceReseau());
+					}
+					else
+					{
+						appareil = new Terminal(appareil.getIdAppareil(), appareil.getNomAppareil(), appareil.getMarqueAppareil(), appareil.getModeleAppareil(), appareil.getEtatAppareil(), appareil.getOs(), appareil.getInterfaceReseau(), fenetre.getTypeAppareil().getSelectedItem())
+						appareils.put(appareil.getIdAppareil(), appareil);
+						try {
+							salle.ajouterAppareil(appareil);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
 					}
 					
 					parent.refreshTree();
