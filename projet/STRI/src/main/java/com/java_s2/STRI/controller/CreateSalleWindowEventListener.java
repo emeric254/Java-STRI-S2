@@ -1,6 +1,7 @@
 package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
@@ -13,11 +14,13 @@ public class CreateSalleWindowEventListener implements ActionListener
 {
 	private CreateSalleWindow fenetre;
 	private Salle salle;
+	private HashMap<Integer, Salle> salles;
 	
-	public CreateSalleWindowEventListener(CreateSalleWindow pFenetre, Salle pSalle)
+	public CreateSalleWindowEventListener(CreateSalleWindow pFenetre, Salle pSalle, HashMap<Integer, Salle> pSalles)
 	{
 		fenetre = pFenetre;
 		salle = pSalle;
+		salles = pSalles;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -34,6 +37,14 @@ public class CreateSalleWindowEventListener implements ActionListener
 			if(source == fenetre.getCreerBouton())
 			{
 				salle.setNomSalle(fenetre.getNomField().getText());
+
+				//@FIXME verif creation
+				
+				if(salle.getNomSalle().length() > 0)
+					salles.put(salle.getIdSalle(), salle);
+				
+				//@FIXME ajout dans le parent !
+				
 				fenetre.dispose();
 			}
 	}

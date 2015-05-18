@@ -124,7 +124,9 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 			case 1:
 				//@TODO salles
 				Salle newSalle = new Salle(GestionSerial.prochainSerial(salles.keySet()), "");
-				new CreateSalleWindowEventListener(new CreateSalleWindow(), newSalle);
+				newSalle.setAppareils(new ArrayList<Appareil>());
+				//@FIXME donner le local parent en param !
+				new CreateSalleWindowEventListener(new CreateSalleWindow(), newSalle, salles);
 				break;
 				
 			case 2:
@@ -139,7 +141,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	
 			default:
 				Local newLocal = new Local(GestionSerial.prochainSerial(locaux.keySet()), "", "");
-				new CreateLocalWindowEventListener(new CreateLocalWindow(), newLocal);
+				newLocal.setSallesLocal(new ArrayList<Salle>());
+				new CreateLocalWindowEventListener(new CreateLocalWindow(), newLocal, locaux);
 				break;
 			}
 		

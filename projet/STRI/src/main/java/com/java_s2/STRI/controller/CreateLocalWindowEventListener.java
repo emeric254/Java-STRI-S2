@@ -1,6 +1,7 @@
 package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 import javax.swing.tree.*;
@@ -13,11 +14,13 @@ public class CreateLocalWindowEventListener implements ActionListener
 {
 	private CreateLocalWindow fenetre;
 	private Local local;
+	private HashMap<Integer, Local> locaux;
 	
-	public CreateLocalWindowEventListener(CreateLocalWindow pFenetre, Local pLocal)
+	public CreateLocalWindowEventListener(CreateLocalWindow pFenetre, Local pLocal, HashMap<Integer, Local> pLocaux)
 	{
 		fenetre = pFenetre;
 		local = pLocal;
+		locaux = pLocaux;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -36,11 +39,10 @@ public class CreateLocalWindowEventListener implements ActionListener
 				local.setLieuLocal(fenetre.getLieuField().getText());
 				local.setNomLocal(fenetre.getNomField().getText());
 
-				//@FIXME verif creation + ajout dans la HASHMAP
-				/*
+				//@FIXME verif creation
+				
 				if(local.getNomLocal().length() > 0)
 					locaux.put(local.getIdLocal(), local);
-				*/
 				
 				fenetre.dispose();
 			}
