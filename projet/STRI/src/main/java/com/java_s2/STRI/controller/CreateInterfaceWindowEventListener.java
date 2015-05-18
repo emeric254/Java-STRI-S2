@@ -3,8 +3,6 @@ package com.java_s2.STRI.controller;
 import java.awt.event.*;
 
 import javax.swing.JOptionPane;
-import javax.swing.tree.*;
-
 import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.vue.CreateInterfaceWindow;
 

@@ -3,12 +3,9 @@ package com.java_s2.STRI.controller;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.App;
 import com.java_s2.STRI.modele.Appareil;
 import com.java_s2.STRI.modele.Firmware;
 import com.java_s2.STRI.modele.InterfaceReseau;

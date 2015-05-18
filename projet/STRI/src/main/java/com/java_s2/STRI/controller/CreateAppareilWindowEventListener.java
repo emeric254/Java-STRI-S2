@@ -2,10 +2,7 @@ package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.tree.*;
-
 import com.java_s2.STRI.modele.Appareil;
 import com.java_s2.STRI.vue.CreateAppareilWindow;
 

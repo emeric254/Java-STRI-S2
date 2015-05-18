@@ -1,13 +1,16 @@
 package com.java_s2.STRI.vue;
 
 import java.awt.*;
-import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.tree.*;
 
 public class MainWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// boutons
 	private JButton bouton1;
 	private JButton bouton2;

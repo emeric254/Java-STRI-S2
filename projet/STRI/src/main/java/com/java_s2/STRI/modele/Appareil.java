@@ -1,10 +1,7 @@
 
 package com.java_s2.STRI.modele;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 
 /**

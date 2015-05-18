@@ -8,6 +8,10 @@ import javax.swing.*;
 
 public abstract class CreateWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// boutons
 	private JButton annuler;
 	private JButton creer;

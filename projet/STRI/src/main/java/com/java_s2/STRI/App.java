@@ -4,11 +4,9 @@ import java.util.HashMap;
 
 import com.java_s2.STRI.controller.*;
 import com.java_s2.STRI.modele.Appareil;
-import com.java_s2.STRI.modele.Firmware;
 import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
-import com.java_s2.STRI.modele.SystemeExploitation;
 import com.java_s2.STRI.vue.*;
 
 /**

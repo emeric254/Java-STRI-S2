@@ -4,8 +4,6 @@ import java.awt.event.*;
 import java.util.HashMap;
 
 import javax.swing.JOptionPane;
-import javax.swing.tree.*;
-
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.vue.CreateLocalWindow;
 

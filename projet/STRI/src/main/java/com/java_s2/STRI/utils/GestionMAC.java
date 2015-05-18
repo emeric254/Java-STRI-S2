@@ -4,12 +4,12 @@ import java.util.*;
 
 public class GestionMAC {
 
-	public static boolean verifExistenceMAC(Set ensemble, int addrMAC)
+	public static boolean verifExistenceMAC(Set<Integer> ensemble, int addrMAC)
 	{
 		return GestionSerial.verifExistenceSerial(ensemble,addrMAC);
 	}
 	
-	public static int prochainMAC(Set ensemble)
+	public static int prochainMAC(Set<Integer> ensemble)
 	{
 		return GestionSerial.prochainSerial(ensemble);
 	}

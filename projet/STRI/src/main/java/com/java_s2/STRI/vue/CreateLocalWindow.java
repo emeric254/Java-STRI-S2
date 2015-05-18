@@ -3,10 +3,13 @@ package com.java_s2.STRI.vue;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.tree.*;
 
 public class CreateLocalWindow extends CreateWindow {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField nom;
 	private JTextField lieu;
 	

@@ -1,9 +1,5 @@
 package com.java_s2.STRI.modele;
 
-import java.util.ArrayList;
-
-import com.java_s2.STRI.AppTest;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

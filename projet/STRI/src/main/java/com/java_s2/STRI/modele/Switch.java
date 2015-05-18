@@ -82,7 +82,8 @@ public class Switch extends Appareil {
      */
     public ArrayList<Appareil> dependences()
     {
-    	ArrayList<Appareil> dependances= (ArrayList<Appareil>) this.equipements.clone();
+		@SuppressWarnings("unchecked")
+		ArrayList<Appareil> dependances= (ArrayList<Appareil>) (this.equipements.clone());
     	return dependances;
     }
 }
