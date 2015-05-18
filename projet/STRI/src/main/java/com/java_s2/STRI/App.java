@@ -25,8 +25,7 @@ public class App
     	HashMap<Integer, InterfaceReseau> cartesReseaux = new HashMap<Integer, InterfaceReseau> ();
     	/**/
         //
-        MainWindow fenetre = new MainWindow();
-        MainWindowEventListener controller = new MainWindowEventListener(fenetre, locaux, salles, appareils, cartesReseaux);
+        new MainWindowEventListener(new MainWindow(), locaux, salles, appareils, cartesReseaux);
         //*/
     }
 }

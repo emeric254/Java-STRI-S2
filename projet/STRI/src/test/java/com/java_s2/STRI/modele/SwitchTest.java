@@ -76,7 +76,7 @@ public class SwitchTest extends TestCase {
     {
     	Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
         Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.ORDINATEUR);
-    	Boolean retour=false;
+    	/*Boolean retour=false;*/
     	try
     	{
     		switch0.connecter(terminal);

@@ -53,7 +53,7 @@ public class SalleTest extends TestCase {
     
     public void testAjoutAppareil()
     {
-    	Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
+    	/*Switch switch0 = */new Switch (0, "nom", "marque", "modele", true, os, carteR);
         Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.TABLETTE);
         Salle salle= new Salle(0, "nom");
         
@@ -72,7 +72,7 @@ public class SalleTest extends TestCase {
     
     public void testAjoutAppareilNb()
     {
-    	Switch switch0 = new Switch (0, "nom", "marque", "modele", true, os, carteR);
+    	/*Switch switch0 = */new Switch (0, "nom", "marque", "modele", true, os, carteR);
         Terminal terminal = new Terminal (0, "nom", "marque", "modele", true, os, carteR, Type.TABLETTE);
         Salle salle= new Salle(0, "nom");
         
