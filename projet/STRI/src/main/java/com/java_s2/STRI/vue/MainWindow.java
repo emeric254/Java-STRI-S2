@@ -1,7 +1,7 @@
 package com.java_s2.STRI.vue;
 
 import java.awt.*;
-
+import java.util.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
@@ -131,6 +131,25 @@ public class MainWindow extends JFrame {
 	public JTree getTree() {
 		return arborescense;
 	}
+	
+
+  public void expandAll() {
+    TreeNode root = (TreeNode) arborescense.getModel().getRoot();
+    expandAll(arborescense, new TreePath(root));
+  }
+
+  private void expandAll(JTree tree, TreePath parent) {
+    TreeNode node = (TreeNode) parent.getLastPathComponent();
+    if (node.getChildCount() >= 0) {
+      for (Enumeration e = node.children(); e.hasMoreElements();) {
+        TreeNode n = (TreeNode) e.nextElement();
+        TreePath path = parent.pathByAddingChild(n);
+        expandAll(tree, path);
+      }
+    }
+    tree.expandPath(parent);
+    // tree.collapsePath(parent);
+  }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

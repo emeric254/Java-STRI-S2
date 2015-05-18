@@ -91,21 +91,21 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         fenetre.clearAllComponent();
         for (Integer id : locaux.keySet())
         {
-            DefaultMutableTreeNode noeudLocal = new DefaultMutableTreeNode(id + " - " + locaux.get(id).getNomLocal());
+            DefaultMutableTreeNode noeudLocal = new DefaultMutableTreeNode(id + " - Local - " + locaux.get(id).getNomLocal());
             fenetre.addComponent(fenetre.rootTree, noeudLocal);
 
             ArrayList<Salle> salles = locaux.get(id).getSallesLocal();
 
             for (Salle salle : salles)
             {
-                DefaultMutableTreeNode noeudSalle = new DefaultMutableTreeNode(salle.getIdSalle() + " - " + salle.getNomSalle());
+                DefaultMutableTreeNode noeudSalle = new DefaultMutableTreeNode(salle.getIdSalle() + " - Salle - " + salle.getNomSalle());
                 fenetre.addComponent(noeudLocal, noeudSalle);
 
                 ArrayList<Appareil> appareils = salle.getAppareils();
 
                 for (Appareil appareil : appareils)
                 {
-                    DefaultMutableTreeNode noeudAppareil = new DefaultMutableTreeNode(appareil.getIdAppareil() + " - " + appareil.getNomAppareil());
+                    DefaultMutableTreeNode noeudAppareil = new DefaultMutableTreeNode(appareil.getIdAppareil() + " - Appareil - " + appareil.getNomAppareil());
                     fenetre.addComponent(noeudSalle, noeudAppareil);
 
                     // TODO a revoir pour en faire des sous categories (os / firmware / interfaces)
@@ -141,6 +141,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                 }
             }
         }
+        fenetre.expandAll();
     }
 
     public void valueChanged(TreeSelectionEvent arg0)
