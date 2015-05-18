@@ -56,7 +56,7 @@ public class MainWindow extends JFrame {
 		bouton3 = new JButton(" actualiser ");
 		
 		// creation modele de l'arborescense
-		rootTree = new DefaultMutableTreeNode("/");
+		rootTree = new DefaultMutableTreeNode("Locaux");
 		modelTree = new DefaultTreeModel(rootTree);
 		
 		// creation vue de l'arborescense

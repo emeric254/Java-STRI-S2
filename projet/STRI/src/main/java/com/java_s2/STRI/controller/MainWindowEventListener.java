@@ -91,6 +91,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 					DefaultMutableTreeNode noeudAppareil = new DefaultMutableTreeNode(appareil.getIdAppareil() + " - " + appareil.getNomAppareil());
 					fenetre.addComponent(noeudSalle, noeudAppareil);
 					
+					//@TODO a revoir pour en faire des sous categories (os / firmware / interfaces)
+					/*
 					InterfaceReseau carte = appareil.getInterfaceReseau();
 					DefaultMutableTreeNode noeudCarte = new DefaultMutableTreeNode(carte.getAdresseMAC() + " - " + carte.getNomInterface());
 					fenetre.addComponent(noeudAppareil, noeudCarte);
@@ -102,6 +104,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 					SystemeExploitation os = appareil.getOs();
 					DefaultMutableTreeNode noeudOs = new DefaultMutableTreeNode(os.getIdOS() + " - " + os.getNomOS());
 					fenetre.addComponent(noeudAppareil, noeudOs);
+					*/
 				}
 			}
 		}
@@ -114,26 +117,30 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	
 	public void createChild()
 	{
-		//@FIXME passer les hashmap en param si besoin pour les maj
-		//@TODO a faire
+		int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
+		//@TODO a finir
 		if(noeudSelect != null)
+		{
 			switch (noeudSelect.getLevel()) {
 			case 1:
-				//@TODO salles
 				Salle newSalle = new Salle(GestionSerial.prochainSerial(salles.keySet()), "");
 				newSalle.setAppareils(new ArrayList<Appareil>());
-				//@FIXME donner le local parent en param !
-				new CreateSalleWindowEventListener(new CreateSalleWindow(), newSalle, salles);
+				Local localParent = locaux.get(id);
+				new CreateSalleWindowEventListener(new CreateSalleWindow(), newSalle, salles, localParent);
 				break;
 				
 			case 2:
 				//@TODO appareils
-				Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(salles.keySet()), "", null, null, null, null, null);
-				new CreateAppareilWindowEventListener(new CreateAppareilWindow(), newAppareil);
+				Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(appareils.keySet()), "", "", "", false, null, null);
+				Salle salleParent = salles.get(id);
+				new CreateAppareilWindowEventListener(new CreateAppareilWindow(), newAppareil, appareils, salleParent);
 				break;
-				
+
 			case 3:
+				//classe d'attributs appareils
+			case 4:
 				//@TODO attributs appareils
+				//@FIXME donner l'appareil parent en param !
 				break;
 	
 			default:
@@ -142,8 +149,10 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 				new CreateLocalWindowEventListener(new CreateLocalWindow(), newLocal, locaux);
 				break;
 			}
+		}
 		
-		refreshTree(locaux);
+		// inutile sans fenetres modales
+		//refreshTree(locaux);
 	}
 
 }

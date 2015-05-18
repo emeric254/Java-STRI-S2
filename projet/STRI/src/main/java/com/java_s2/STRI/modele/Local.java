@@ -131,22 +131,12 @@ public class Local {
     
     /**
      * 
-     * @param nom
+     * @param salle2
      * @return
-     * @throws Exception
      */
-    public Boolean ajouterSalle (String nom) throws Exception 
+    public Boolean ajouterSalle (Salle salle) 
     {
-    	Salle ajout = new Salle(this.newIdSalle(), nom);
-    	for (Salle salle : this.salles)
-    	{
-    		if (salle.getNomSalle().equalsIgnoreCase(nom))
-    		{
-    			throw new Exception ("La salle existe déjà dans ce batiment !");
-    		}
-    	}
-    	this.salles.add(ajout);
-    	return true;
+    	return this.salles.add(salle);
     }
 
 }

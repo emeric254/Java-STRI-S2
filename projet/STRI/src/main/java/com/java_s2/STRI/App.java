@@ -1,12 +1,9 @@
 package com.java_s2.STRI;
 
-import java.util.HashMap;
+import java.util.*;
 
 import com.java_s2.STRI.controller.*;
-import com.java_s2.STRI.modele.Appareil;
-import com.java_s2.STRI.modele.InterfaceReseau;
-import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.modele.Salle;
+import com.java_s2.STRI.modele.*;
 import com.java_s2.STRI.vue.*;
 
 /**
