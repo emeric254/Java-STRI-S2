@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.vue.CreateSalleWindow;
+import com.java_s2.STRI.vue.MainWindow;
 
 
 public class CreateSalleWindowEventListener implements ActionListener
@@ -15,14 +16,18 @@ public class CreateSalleWindowEventListener implements ActionListener
 	private CreateSalleWindow fenetre;
 	private Salle salle;
 	private HashMap<Integer, Salle> salles;
-	private Local parent;
+	private Local local;
+	private MainWindowEventListener parent;
 	
-	public CreateSalleWindowEventListener(CreateSalleWindow pFenetre, Salle pSalle, HashMap<Integer, Salle> pSalles, Local localParent)
+	public CreateSalleWindowEventListener(CreateSalleWindow pFenetre, MainWindowEventListener pParent, Salle pSalle, HashMap<Integer, Salle> pSalles, Local localParent)
 	{
 		fenetre = pFenetre;
 		salle = pSalle;
 		salles = pSalles;
-		parent=localParent;
+		local=localParent;
+		
+		parent = pParent;
+		
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -45,8 +50,9 @@ public class CreateSalleWindowEventListener implements ActionListener
 					salle.setNomSalle(nom);
 					
 					salles.put(salle.getIdSalle(), salle);
-					parent.ajouterSalle(salle);
+					local.ajouterSalle(salle);
 					
+					parent.refreshTree();
 					fenetre.dispose();
 				}
 				
