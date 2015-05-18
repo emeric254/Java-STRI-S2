@@ -87,7 +87,6 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     {
         // TODO ajouter nom classe avant ce quil y a deja ?
 
-        System.out.println(locaux);
         fenetre.clearAllComponent();
         for (Integer id : locaux.keySet())
         {
@@ -184,6 +183,11 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                 new CreateLocalWindowEventListener(new CreateLocalWindow(), this, newLocal, locaux);
                 break;
             }
+        }
+        else {
+            Local newLocal = new Local(GestionSerial.prochainSerial(locaux.keySet()), "", "");
+            newLocal.setSallesLocal(new ArrayList<Salle>());
+            new CreateLocalWindowEventListener(new CreateLocalWindow(), this, newLocal, locaux);
         }
 
         // inutile sans fenetres modales

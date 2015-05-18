@@ -22,6 +22,7 @@ public class MainWindow extends JFrame {
 	
 	// vue arborescence
 	private JTree arborescense;
+	// TODO a voir pour des icones perso par ex > http://commons.wikimedia.org/wiki/Crystal_Clear
 	
 	
 	public MainWindow()
