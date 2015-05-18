@@ -2,6 +2,7 @@ package com.java_s2.STRI.vue;
 
 import java.awt.*;
 import java.util.*;
+
 import javax.swing.*;
 import javax.swing.tree.*;
 
@@ -17,7 +18,7 @@ public class MainWindow extends JFrame {
 	private JButton bouton3;
 	
 	// model arborescence
-	public DefaultMutableTreeNode rootTree; //@todo public pour le moment
+	public DefaultMutableTreeNode rootTree; // TODO public pour le moment > le passer en privé avec get/set
 	private DefaultTreeModel modelTree;
 	
 	// vue arborescence
@@ -150,7 +151,7 @@ public class MainWindow extends JFrame {
 	  private void expandAll(JTree tree, TreePath parent) {
 	    TreeNode node = (TreeNode) parent.getLastPathComponent();
 	    if (node.getChildCount() >= 0) {
-	      for (Enumeration e = node.children(); e.hasMoreElements();) {
+	      for (@SuppressWarnings("rawtypes") Enumeration e = node.children(); e.hasMoreElements();) {
 	        TreeNode n = (TreeNode) e.nextElement();
 	        TreePath path = parent.pathByAddingChild(n);
 	        expandAll(tree, path);

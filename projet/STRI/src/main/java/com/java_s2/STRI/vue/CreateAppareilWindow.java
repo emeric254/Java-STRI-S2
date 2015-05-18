@@ -34,8 +34,11 @@ public class CreateAppareilWindow extends CreateWindow {
 		modele = new JTextField(20);
 		etat = new JCheckBox();
 		DefaultComboBoxModel<String> choix = new DefaultComboBoxModel<String>();
+		
+		// TODO externaliser ca
 		choix.addElement("Terminal");
 		choix.addElement("Switch");
+		
 		type = new JComboBox<String>(choix);
 
 		os = new JComboBox<String>();
@@ -105,6 +108,18 @@ public class CreateAppareilWindow extends CreateWindow {
 	
 	public JCheckBox getEtatCheck() {
 		return etat;
+	}
+	
+	public JComboBox<String> getFirmAppareil(){
+		return firmware;
+	}
+	
+	public JComboBox<String> getOSAppareil(){
+		return os;
+	}
+	
+	public JComboBox<String> getTypeAppareil(){
+		return type;
 	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
