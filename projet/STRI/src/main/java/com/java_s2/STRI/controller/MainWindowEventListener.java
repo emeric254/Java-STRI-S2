@@ -92,19 +92,35 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 					fenetre.addComponent(noeudSalle, noeudAppareil);
 					
 					//@TODO a revoir pour en faire des sous categories (os / firmware / interfaces)
-					/*
-					InterfaceReseau carte = appareil.getInterfaceReseau();
-					DefaultMutableTreeNode noeudCarte = new DefaultMutableTreeNode(carte.getAdresseMAC() + " - " + carte.getNomInterface());
-					fenetre.addComponent(noeudAppareil, noeudCarte);
 					
-					Firmware firm = carte.getFirmware();
-					DefaultMutableTreeNode noeudFirm = new DefaultMutableTreeNode(firm.getIdFirmware() + " - " + firm.getNomFirmware());
-					fenetre.addComponent(noeudCarte, noeudFirm);
+					InterfaceReseau carte = appareil.getInterfaceReseau();
+					if(carte != null)
+					{
+						DefaultMutableTreeNode interfacesNode = new DefaultMutableTreeNode("Interfaces Réseaux");
+						fenetre.addComponent(noeudAppareil, interfacesNode);
+						
+						DefaultMutableTreeNode noeudCarte = new DefaultMutableTreeNode(carte.getAdresseMAC() + " - " + carte.getNomInterface());
+						fenetre.addComponent(interfacesNode, noeudCarte);
+						
+						DefaultMutableTreeNode firmsNode = new DefaultMutableTreeNode("Firmware");
+						fenetre.addComponent(noeudCarte, firmsNode);
+						
+						Firmware firm = carte.getFirmware();
+						DefaultMutableTreeNode noeudFirm = new DefaultMutableTreeNode(firm.getIdFirmware() + " - " + firm.getNomFirmware());
+						fenetre.addComponent(firmsNode, noeudFirm);
+					}
+					
 					
 					SystemeExploitation os = appareil.getOs();
-					DefaultMutableTreeNode noeudOs = new DefaultMutableTreeNode(os.getIdOS() + " - " + os.getNomOS());
-					fenetre.addComponent(noeudAppareil, noeudOs);
-					*/
+					if(os != null)
+					{
+						DefaultMutableTreeNode osNode = new DefaultMutableTreeNode("Système d'exploitation");
+						fenetre.addComponent(noeudAppareil, osNode);
+						
+						DefaultMutableTreeNode noeudOs = new DefaultMutableTreeNode(os.getIdOS() + " - " + os.getNomOS());
+						fenetre.addComponent(osNode, noeudOs);
+					}
+					
 				}
 			}
 		}
@@ -117,10 +133,12 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	
 	public void createChild()
 	{
-		int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
 		//@TODO a finir
 		if(noeudSelect != null)
 		{
+			int id = 0;
+			if(noeudSelect.getLevel()>0 && noeudSelect.toString().contains(" - "))
+				id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
 			switch (noeudSelect.getLevel()) {
 			case 1:
 				Salle newSalle = new Salle(GestionSerial.prochainSerial(salles.keySet()), "");
