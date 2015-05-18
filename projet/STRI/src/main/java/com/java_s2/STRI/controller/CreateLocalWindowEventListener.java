@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.HashMap;
 
 import javax.swing.JOptionPane;
+
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.vue.CreateLocalWindow;
 
@@ -13,12 +14,16 @@ public class CreateLocalWindowEventListener implements ActionListener
 	private CreateLocalWindow fenetre;
 	private Local local;
 	private HashMap<Integer, Local> locaux;
+	private MainWindowEventListener parent;
 	
-	public CreateLocalWindowEventListener(CreateLocalWindow pFenetre, Local pLocal, HashMap<Integer, Local> pLocaux)
+	public CreateLocalWindowEventListener(CreateLocalWindow pFenetre, MainWindowEventListener pParent, Local pLocal, HashMap<Integer, Local> pLocaux)
 	{
 		fenetre = pFenetre;
 		local = pLocal;
 		locaux = pLocaux;
+		
+		parent = pParent;
+		
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
 	}
@@ -37,11 +42,12 @@ public class CreateLocalWindowEventListener implements ActionListener
 				local.setLieuLocal(fenetre.getLieuField().getText());
 				local.setNomLocal(fenetre.getNomField().getText());
 
-				//@FIXME verif creation
+				// FIXME verif creation
 				
 				if(local.getNomLocal().length() > 0)
 					locaux.put(local.getIdLocal(), local);
 				
+				parent.refreshTree();
 				fenetre.dispose();
 			}
 	}
