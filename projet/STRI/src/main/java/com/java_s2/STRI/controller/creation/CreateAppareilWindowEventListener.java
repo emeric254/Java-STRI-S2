@@ -14,7 +14,6 @@ public class CreateAppareilWindowEventListener implements ActionListener
 {
 	private CreateAppareilWindow fenetre;
 	private Appareil appareil;
-	private Appareil last;
 	private HashMap<Integer, Appareil> appareils;
 	private HashMap<Integer, Firmware> firmwares;
 	private HashMap<Integer, SystemeExploitation> OS;
@@ -56,6 +55,12 @@ public class CreateAppareilWindowEventListener implements ActionListener
 		else 
 			if(source == fenetre.getCreerBouton())
 			{
+				// TODO a verif
+				if(salle.getAppareils().contains(appareil))
+				{
+					salle.getAppareils().remove(appareil);
+				}
+				
 				// FIXME ajouter interface reseau par defaut
 				
 				appareil.setNomAppareil(fenetre.getNomField().getText());
@@ -65,7 +70,6 @@ public class CreateAppareilWindowEventListener implements ActionListener
 				if(appareil.getNomAppareil().length() > 0 && appareil.getMarqueAppareil().length() > 0
 						&& appareil.getModeleAppareil().length() > 0)
 				{
-					last = appareil;
 					if(fenetre.getTypeAppareil().getSelectedItem() == "Switch")
 					{
 						// FIXME gerer le switch !!!
@@ -73,19 +77,17 @@ public class CreateAppareilWindowEventListener implements ActionListener
 					}
 					else
 					{
-						appareil = new Terminal(appareil.getIdAppareil(), appareil.getNomAppareil(), appareil.getMarqueAppareil(), appareil.getModeleAppareil(), appareil.getEtatAppareil(), appareil.getOs(), appareil.getInterfaceReseau(),
+						appareil = new Terminal(appareil.getIdAppareil(), appareil.getNomAppareil(),
+								appareil.getMarqueAppareil(), appareil.getModeleAppareil(),
+								appareil.getEtatAppareil(), appareil.getOs(), appareil.getInterfaceReseau(),
 								("Tablette".compareTo(fenetre.getTypeAppareil().getSelectedItem().toString()) == 0)?com.java_s2.STRI.modele.Type.TABLETTE:com.java_s2.STRI.modele.Type.ORDINATEUR);
-						appareils.put(appareil.getIdAppareil(), appareil);
-						try {
-							if(salle.getAppareils().contains(appareil))
-							{
-								salle.getAppareils().remove(appareil);
-								
-							}
-							salle.ajouterAppareil(appareil);
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
+					}
+					
+					appareils.put(appareil.getIdAppareil(), appareil);
+					try {
+						salle.ajouterAppareil(appareil);
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
 					
 					parent.refreshTree();

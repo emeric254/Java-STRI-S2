@@ -78,9 +78,11 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 									locaux.remove(id);
 									break;
 								case 2:
+									locaux.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getSallesLocal().remove(salles.get(id));
 									salles.remove(id);
 									break;
 								case 3:
+									salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getAppareils().remove(appareils.get(id));
 									appareils.remove(id);
 									break;
 	
