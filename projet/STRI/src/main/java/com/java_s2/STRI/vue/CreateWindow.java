@@ -69,7 +69,7 @@ public abstract class CreateWindow extends JFrame {
 		
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = GridBagConstraints.REMAINDER;
+		c.gridwidth = 2;
 		monPanneau.add(contenu, c);
 
 		c.fill = GridBagConstraints.HORIZONTAL;

@@ -4,10 +4,7 @@ import java.util.HashMap;
 
 import com.java_s2.STRI.controller.MainWindowEventListener;
 import com.java_s2.STRI.controller.creation.CreateAppareilWindowEventListener;
-import com.java_s2.STRI.modele.Appareil;
-import com.java_s2.STRI.modele.Firmware;
-import com.java_s2.STRI.modele.Salle;
-import com.java_s2.STRI.modele.SystemeExploitation;
+import com.java_s2.STRI.modele.*;
 import com.java_s2.STRI.vue.CreateAppareilWindow;
 
 public class DetailsAppareilListener extends CreateAppareilWindowEventListener {
@@ -19,6 +16,7 @@ public class DetailsAppareilListener extends CreateAppareilWindowEventListener {
 		fenetre.getMarqueField().setText(appareil.getMarqueAppareil());
 		fenetre.getModeleField().setText(appareil.getModeleAppareil());
 		fenetre.getEtatCheck().setSelected(appareil.getEtatAppareil());
+		fenetre.getTypeAppareil().setSelectedItem((appareil instanceof Terminal)?((com.java_s2.STRI.modele.Type.TABLETTE == ((Terminal)appareil).getType())?"Tablette":"Ordinateur"):"Switch");
 		// TODO changer ce selected
 //		fenetre.getFirmAppareil().setSelectedItem(appareil.getInterfaceReseau().getFirmware());
 		// TODO changer ce selected

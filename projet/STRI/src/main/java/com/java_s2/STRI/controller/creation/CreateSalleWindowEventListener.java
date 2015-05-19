@@ -49,8 +49,8 @@ public class CreateSalleWindowEventListener implements ActionListener
 				{
 					salle.setNomSalle(nom);
 					salles.put(salle.getIdSalle(), salle);
-					local.ajouterSalle(salle);
-					
+					if(!local.getSallesLocal().contains(salle))
+						local.ajouterSalle(salle);
 					parent.refreshTree();
 					fenetre.dispose();
 				}

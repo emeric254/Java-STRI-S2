@@ -85,12 +85,16 @@ public class CreateAppareilWindow extends CreateWindow {
 		getContenuPanel().add(new JLabel("O/S"), c);
 		c.gridx = 1;
 		getContenuPanel().add(os, c);
-
+		
+		// FIXME  a mettre que dans interface reseau
+/*
 		c.gridx = 0;
 		c.gridy = 6;
 		getContenuPanel().add(new JLabel("firmware"), c);
 		c.gridx = 1;
 		getContenuPanel().add(firmware, c);
+*/
+		
 
 	}
 
