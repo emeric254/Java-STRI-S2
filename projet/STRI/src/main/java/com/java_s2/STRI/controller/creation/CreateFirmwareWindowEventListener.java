@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 
 import com.java_s2.STRI.modele.Firmware;
-import com.java_s2.STRI.vue.creation.CreateFirmwareWindow;
+import com.java_s2.STRI.vue.CreateFirmwareWindow;
 
 
 public class CreateFirmwareWindowEventListener implements ActionListener

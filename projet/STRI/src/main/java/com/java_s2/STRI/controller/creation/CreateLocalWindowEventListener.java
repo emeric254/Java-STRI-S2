@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import com.java_s2.STRI.controller.MainWindowEventListener;
 import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.vue.creation.CreateLocalWindow;
+import com.java_s2.STRI.vue.CreateLocalWindow;
 
 
 public class CreateLocalWindowEventListener implements ActionListener

@@ -9,12 +9,11 @@ import javax.swing.tree.*;
 import com.java_s2.STRI.controller.creation.CreateAppareilWindowEventListener;
 import com.java_s2.STRI.controller.creation.CreateLocalWindowEventListener;
 import com.java_s2.STRI.controller.creation.CreateSalleWindowEventListener;
+import com.java_s2.STRI.controller.details.DetailsAppareilListener;
 import com.java_s2.STRI.modele.*;
 import com.java_s2.STRI.utils.*;
 import com.java_s2.STRI.vue.*;
-import com.java_s2.STRI.vue.creation.CreateAppareilWindow;
-import com.java_s2.STRI.vue.creation.CreateLocalWindow;
-import com.java_s2.STRI.vue.creation.CreateSalleWindow;
+import com.java_s2.STRI.controller.details.*;
 
 
 public class MainWindowEventListener implements ActionListener, TreeSelectionListener
@@ -210,25 +209,25 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 
     public void details()
     {
-        if(noeudSelect.getLevel() > 0)
-        {
-        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
-        	switch (noeudSelect.getLevel()) {
-			case 1:
-				locaux.get(id);
-				break;
-			case 2:
-				salles.get(id);
-				break;
-			case 3:
-				appareils.get(id);
-				break;
-
-			default:
-				break;
-        	}
-        }
-    	
+    	if(noeudSelect!= null)
+	        if(noeudSelect.getLevel() > 0)
+	        {
+	        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
+	        	switch (noeudSelect.getLevel()) {
+				case 1:
+					new DetailsLocalListener(new CreateLocalWindow(), this, locaux.get(id), locaux);
+					break;
+				case 2:
+					new DetailsSalleListener(new CreateSalleWindow(), this, salles.get(id), salles, locaux.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])));
+					break;
+				case 3:
+					new DetailsAppareilListener(new CreateAppareilWindow(), this, appareils.get(id), appareils, salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])), firmwares, OS);
+					break;
+	
+				default:
+					break;
+	        	}
+	        }    	
     }
     
 	public void refreshTree() {

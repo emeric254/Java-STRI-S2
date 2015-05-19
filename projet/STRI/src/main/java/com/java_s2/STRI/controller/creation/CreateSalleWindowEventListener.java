@@ -8,7 +8,6 @@ import javax.swing.*;
 import com.java_s2.STRI.controller.MainWindowEventListener;
 import com.java_s2.STRI.modele.*;
 import com.java_s2.STRI.vue.*;
-import com.java_s2.STRI.vue.creation.CreateSalleWindow;
 
 
 public class CreateSalleWindowEventListener implements ActionListener
