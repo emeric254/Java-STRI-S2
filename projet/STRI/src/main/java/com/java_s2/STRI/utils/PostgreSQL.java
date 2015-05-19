@@ -6,15 +6,7 @@ import java.sql.*;
  */
 
 
-public class PostgreSQL {
-	
-	public PostgreSQL() {
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+public abstract class PostgreSQL {
 	/*
 		int foovalue = 500; // var
 		
@@ -38,28 +30,47 @@ public class PostgreSQL {
 		st.close(); // fermer la requete
 	 */
 
-	public boolean importBase(){
-		
-		try {
-			Connection db = DriverManager.getConnection("url", "username", "password");
-
-			db.close();
-		} catch (SQLException e) {
+	public static Connection connexion ()
+	{
+		String url="jdbc:postgresql://boulic.fr:5432/java";
+		String username="java";
+		String password="java486stri";
+		Connection db=null;
+		try 
+		{
+			db = DriverManager.getConnection(url, username, password);
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		
+		return db;
+		
+	}
+	
+	public static boolean importBase()
+	{
+//		try 
+//		{
+//			Connection db= connexion();
+//		} 
+//		catch (SQLException e) 
+//		{
+//			e.printStackTrace();
+//		}
+//		
 		return false;
 	}
 
-	public boolean exportBase(){
+	public static boolean exportBase()
+	{
 		
-		try {
-			Connection db = DriverManager.getConnection("url", "username", "password");
-
-			db.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try 
+//		{
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		
 		return false;
 	}
