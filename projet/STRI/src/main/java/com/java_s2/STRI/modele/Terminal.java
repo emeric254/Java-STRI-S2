@@ -23,12 +23,12 @@ public class Terminal extends Appareil {
      * @param etatAppareil
      * @param os
      * @param interfaceReseau
-     * @param type
+     * @param object
      */
-	public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau, Type type)
+	public Terminal (int idAppareil, String nomAppareil ,String marqueAppareil, String modeleAppareil, Boolean etatAppareil, SystemeExploitation os, InterfaceReseau interfaceReseau, Type object)
     {
     	super(idAppareil,nomAppareil ,marqueAppareil,modeleAppareil,etatAppareil,os, interfaceReseau);
-    	this.setType(type);
+    	this.setType(object);
     }
 
   

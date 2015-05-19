@@ -1,26 +1,12 @@
 package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import java.util.*;
 import javax.swing.event.*;
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 import javax.swing.tree.*;
-
-import com.java_s2.STRI.modele.Appareil;
-import com.java_s2.STRI.modele.Firmware;
-import com.java_s2.STRI.modele.InterfaceReseau;
-import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.modele.Salle;
-import com.java_s2.STRI.modele.Switch;
-import com.java_s2.STRI.modele.SystemeExploitation;
-import com.java_s2.STRI.utils.GestionMAC;
-import com.java_s2.STRI.utils.GestionSerial;
-import com.java_s2.STRI.vue.CreateAppareilWindow;
-import com.java_s2.STRI.vue.CreateLocalWindow;
-import com.java_s2.STRI.vue.CreateSalleWindow;
-import com.java_s2.STRI.vue.MainWindow;
+import com.java_s2.STRI.modele.*;
+import com.java_s2.STRI.utils.*;
+import com.java_s2.STRI.vue.*;
 
 
 public class MainWindowEventListener implements ActionListener, TreeSelectionListener
@@ -56,6 +42,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         fenetre.getBouton1().addActionListener(this);
         fenetre.getBouton2().addActionListener(this);
         fenetre.getBouton3().addActionListener(this);
+        fenetre.getBouton4().addActionListener(this);
         fenetre.getTree().addTreeSelectionListener(this);
 
         refreshTree(locaux);
