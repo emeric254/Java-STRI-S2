@@ -6,6 +6,9 @@ import java.util.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
+import com.java_s2.STRI.controller.creation.CreateAppareilWindowEventListener;
+import com.java_s2.STRI.controller.creation.CreateLocalWindowEventListener;
+import com.java_s2.STRI.controller.creation.CreateSalleWindowEventListener;
 import com.java_s2.STRI.modele.*;
 import com.java_s2.STRI.utils.*;
 import com.java_s2.STRI.vue.*;
@@ -207,6 +210,24 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 
     public void details()
     {
+        if(noeudSelect.getLevel() > 0)
+        {
+        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
+        	switch (noeudSelect.getLevel()) {
+			case 1:
+				locaux.get(id);
+				break;
+			case 2:
+				salles.get(id);
+				break;
+			case 3:
+				appareils.get(id);
+				break;
+
+			default:
+				break;
+        	}
+        }
     	
     }
     

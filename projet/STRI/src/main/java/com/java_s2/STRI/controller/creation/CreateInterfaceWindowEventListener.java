@@ -1,4 +1,4 @@
-package com.java_s2.STRI.controller;
+package com.java_s2.STRI.controller.creation;
 
 import java.awt.event.*;
 

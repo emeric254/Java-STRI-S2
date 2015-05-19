@@ -1,10 +1,11 @@
-package com.java_s2.STRI.controller;
+package com.java_s2.STRI.controller.creation;
 
 import java.awt.event.*;
 import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
+import com.java_s2.STRI.controller.MainWindowEventListener;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.vue.creation.CreateLocalWindow;
 

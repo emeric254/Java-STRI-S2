@@ -53,19 +53,20 @@ public abstract class CreateWindow extends JFrame {
 		annuler = new JButton(" annuler ");
 		creer = new JButton(" creer ");
 		contenu = new JPanel(new GridBagLayout());
-		id = new JLabel("      ");
+		id = new JLabel();
 		
 		// definition contriantes du layout
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.insets = new Insets(10,15,10,15);
-		
-		c.fill = GridBagConstraints.BOTH;
+
+		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
-		monPanneau.add(id, c);
+		monPanneau.add(new JLabel(" id "), c);
 		c.gridx = 1;
 		monPanneau.add(id, c);
+		
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = GridBagConstraints.REMAINDER;
