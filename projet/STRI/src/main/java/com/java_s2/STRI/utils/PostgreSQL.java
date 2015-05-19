@@ -49,29 +49,79 @@ public abstract class PostgreSQL {
 		
 	}
 	
+	public static boolean creerBase()
+	{
+		try
+		{
+//			Connection db = connexion();
+//			Statement statement = db.createStatement();
+//			PreparedStatement preparedStatement = db.prepareStatement( "CREATE TABLE local (	serialized_id serial PRIMARY KEY, object_name varchar(1024) default NULL,serialized_object bytea);");
+//			preparedStatement.executeQuery();
+			
+			Connection db = connexion();
+			db.createStatement().execute("CREATE TABLE local (	serialized_id serial PRIMARY KEY, object_name varchar(1024) default NULL,serialized_object bytea);");
+	
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+		return true;
+	}
+	
+	public static boolean detruireBase()
+	{
+		try
+		{
+			Connection db = connexion();
+			Statement statement = db.createStatement();
+			PreparedStatement preparedStatement = db.prepareStatement("DROP TABLE local");
+			preparedStatement.executeQuery();
+			
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+		return true;
+	}
+	
+	
+	
 	public static boolean importBase()
 	{
-//		try 
-//		{
-//			Connection db= connexion();
-//		} 
-//		catch (SQLException e) 
-//		{
-//			e.printStackTrace();
-//		}
-//		
-		return false;
+		try 
+		{
+			Connection db= connexion();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
 	}
 
 	public static boolean exportBase()
 	{
 		
-//		try 
-//		{
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
+		try 
+		{
+			Connection e;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return false;
+		}
 		
-		return false;
+		return true;
 	}
 }

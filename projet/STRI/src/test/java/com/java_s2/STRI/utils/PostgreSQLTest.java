@@ -1,6 +1,8 @@
 package com.java_s2.STRI.utils;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,8 +32,23 @@ public class PostgreSQLTest extends TestCase {
     
     public void testConnexion ()
     {
-    	Connection db = PostgreSQL.connexion();
-    	assertTrue((db != null));
+    	try
+    	{
+    		Connection db = PostgreSQL.connexion();
+        	assertTrue((db!=null));
+        	db.close();
+    	}
+    	catch (SQLException e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}
+    	
     }
-
+    
+    public void testCreateBase()
+    {
+    	PostgreSQL.creerBase();
+    }
+    
 }
