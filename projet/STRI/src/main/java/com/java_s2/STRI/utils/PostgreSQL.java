@@ -30,7 +30,7 @@ public abstract class PostgreSQL {
 		st.close(); // fermer la requete
 	 */
 
-	private static Connection connexion ()
+	public static Connection connexion ()
 	{
 		String url="jdbc:postgresql://boulic.fr:5432/java";
 		String username="java";
