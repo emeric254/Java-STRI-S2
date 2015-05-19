@@ -92,11 +92,9 @@ public class CreateAppareilWindowEventListener implements ActionListener
 					}
 					
 					appareils.put(appareil.getIdAppareil(), appareil);
-					try {
-						salle.ajouterAppareil(appareil);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					salle.getAppareils().add(appareil);
+					
+					
 					
 					parent.refreshTree();
 					fenetre.dispose();

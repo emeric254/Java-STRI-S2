@@ -6,6 +6,7 @@ import java.util.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
+import com.java_s2.STRI.App;
 import com.java_s2.STRI.controller.creation.CreateAppareilWindowEventListener;
 import com.java_s2.STRI.controller.creation.CreateLocalWindowEventListener;
 import com.java_s2.STRI.controller.creation.CreateSalleWindowEventListener;
@@ -82,9 +83,18 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 									salles.remove(id);
 									break;
 								case 3:
-									salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getAppareils().remove(appareils.get(id));
-									// FIXME interco a verif a chaque fois
-									appareils.remove(id);
+									if(appareils.get(id) instanceof Terminal || (appareils.get(id) instanceof Switch && ((Switch)appareils.get(id)).getEquipementsAppareil().size() == 0))
+									{
+										for (Appareil a : salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getAppareils())
+											if(a instanceof Switch)
+												if(((Switch)a).getEquipementsAppareil().contains(appareils.get(id)))
+													((Switch)a).getEquipementsAppareil().remove(appareils.get(id));
+										salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getAppareils().remove(appareils.get(id));
+										appareils.remove(id);
+									}
+									break;
+								case 4:
+									if(noeudSelect.toString().split(" - ")[1].compareTo("Connexions") == 0)
 									break;
 	
 								default:
@@ -120,10 +130,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 
                 for (Appareil appareil : appareils)
                 {
-                    DefaultMutableTreeNode noeudAppareil = new DefaultMutableTreeNode(appareil.getIdAppareil() + " - Appareil - " + appareil.getNomAppareil());
+                    DefaultMutableTreeNode noeudAppareil = new DefaultMutableTreeNode(appareil.getIdAppareil() + " - " + ((appareil instanceof Terminal)?"Terminal":"Switch") + " - " + appareil.getNomAppareil());
                     fenetre.addComponent(noeudSalle, noeudAppareil);
-
-                    // TODO a revoir pour en faire des sous categories (os / firmware / interfaces)
 
                     InterfaceReseau carte = appareil.getInterfaceReseau();
                     if(carte != null)
@@ -207,15 +215,17 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
 	        	switch (noeudSelect.getLevel()) {
 				case 1:
-					new DetailsLocalListener(new CreateLocalWindow(), this, locaux.get(id), locaux);
+					if(noeudSelect.toString().split(" - ")[1].compareTo("Local") == 0)
+						new DetailsLocalListener(new CreateLocalWindow(), this, locaux.get(id), locaux);
 					break;
 				case 2:
-					new DetailsSalleListener(new CreateSalleWindow(), this, salles.get(id), salles, locaux.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])));
+					if(noeudSelect.toString().split(" - ")[1].compareTo("Salle") == 0)
+						new DetailsSalleListener(new CreateSalleWindow(), this, salles.get(id), salles, locaux.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])));
 					break;
 				case 3:
-					new DetailsAppareilListener(new CreateAppareilWindow(), this, appareils.get(id), appareils, salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])), firmwares, OS);
+					if(noeudSelect.toString().split(" - ")[1].compareTo("Appareil") == 0)
+						new DetailsAppareilListener(new CreateAppareilWindow(), this, appareils.get(id), appareils, salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])), firmwares, OS);
 					break;
-	
 				default:
 					break;
 	        	}
