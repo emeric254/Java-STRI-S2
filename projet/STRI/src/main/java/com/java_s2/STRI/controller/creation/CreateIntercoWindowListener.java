@@ -47,14 +47,15 @@ public class CreateIntercoWindowListener  implements ActionListener
 		else 
 			if(source == fenetre.getCreerBouton())
 			{
-				// TODO a verif
-				Appareil app = appareils.get(fenetre.getAppareil().getSelectedItem().toString().split(" - ")[0]);
+				Appareil app = appareils.get(new Integer(fenetre.getAppareil().getSelectedItem().toString().split(" - ")[0]));
+				
 				if(salle.getAppareils().contains(app));
 				{
+					System.out.println(app);
 					sw.getEquipementsAppareil().add(app);
 				}	
-					parent.refreshTree();
-					fenetre.dispose();
+				parent.refreshTree();
+				fenetre.dispose();
 			}
 	}
 

@@ -8,6 +8,7 @@ import javax.swing.tree.*;
 
 import com.java_s2.STRI.App;
 import com.java_s2.STRI.controller.creation.CreateAppareilWindowEventListener;
+import com.java_s2.STRI.controller.creation.CreateIntercoWindowListener;
 import com.java_s2.STRI.controller.creation.CreateLocalWindowEventListener;
 import com.java_s2.STRI.controller.creation.CreateSalleWindowEventListener;
 import com.java_s2.STRI.controller.details.DetailsAppareilListener;
@@ -151,6 +152,18 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                         DefaultMutableTreeNode noeudOs = new DefaultMutableTreeNode(os.getIdOS() + " - O/S - " + os.getNomOS());
                         fenetre.addComponent(noeudAppareil, noeudOs);
                     }
+                    
+                    if(appareil instanceof Switch)
+                    {
+                        DefaultMutableTreeNode intercoNode = new DefaultMutableTreeNode("Connexions");
+                        fenetre.addComponent(noeudAppareil, intercoNode);	
+                        if(((Switch)appareil).getEquipementsAppareil().size()>0)
+                        	for(Appareil a : ((Switch)appareil).getEquipementsAppareil() )
+                        	{
+                                DefaultMutableTreeNode temp = new DefaultMutableTreeNode (  a.getIdAppareil() + " - " + ((a instanceof Terminal)?"Terminal":"Switch") + " - " + a.getNomAppareil());
+                                fenetre.addComponent(intercoNode, temp);	
+                        	}
+                    }
 
                 }
             }
@@ -181,13 +194,16 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                 break;
 
             case 3:
-                // interco switch - equipement
+                // appareil select
+            	break;
+            	
             case 4:
-            	Appareil appareil = appareils.get(id);
-            	if (appareil instanceof Switch)
+            	if(noeudSelect.toString().compareTo("Connexions") == 0)
             	{
-                    // FIXME interco
-                    // TODO donner l'appareil switch parent en param !
+            		Switch sw = (Switch) appareils.get(new Integer(noeudSelect.getParent().toString().split(" - ")[0]));
+            		Salle salle = salles.get(new Integer(noeudSelect.getParent().getParent().toString().split(" - ")[0]));
+            		if(salle.getAppareils().size()>1)
+            			new CreateIntercoWindowListener(new CreateIntercoWindow(), this, sw, salle, appareils);
             	}
                 break;
 
