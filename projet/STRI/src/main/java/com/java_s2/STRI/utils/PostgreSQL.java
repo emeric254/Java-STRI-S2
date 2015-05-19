@@ -32,13 +32,13 @@ public abstract class PostgreSQL {
 
 	private static Connection connexion ()
 	{
-		String url="";
+		String url="jdbc:postgresql://boulic.fr:5432/java";
 		String username="java";
 		String password="java486stri";
 		Connection db=null;
 		try 
 		{
-			db = DriverManager.getConnection("url", "username", "password");
+			db = DriverManager.getConnection(url, username, password);
 		} 
 		catch (SQLException e) 
 		{
@@ -51,26 +51,26 @@ public abstract class PostgreSQL {
 	
 	public static boolean importBase()
 	{
-		try 
-		{
-			Connection db= connexion();
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		
+//		try 
+//		{
+//			Connection db= connexion();
+//		} 
+//		catch (SQLException e) 
+//		{
+//			e.printStackTrace();
+//		}
+//		
 		return false;
 	}
 
 	public static boolean exportBase()
 	{
 		
-		try 
-		{
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try 
+//		{
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		
 		return false;
 	}
