@@ -99,32 +99,13 @@ public abstract class PostgreSQL {
 	
 	public static boolean importBase()
 	{
-		try 
-		{
-			Connection db= connexion();
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-			return false;
-		}
-		
+		Connection db= connexion();
 		return true;
 	}
 
 	public static boolean exportBase()
 	{
-		
-		try 
-		{
-			Connection e;
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-			return false;
-		}
-		
+		Connection db= connexion();
 		return true;
 	}
 }
