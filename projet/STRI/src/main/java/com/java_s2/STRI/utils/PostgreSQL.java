@@ -38,8 +38,8 @@ public class PostgreSQL {
 		st.close(); // fermer la requete
 	 */
 
-	public boolean importBase(){
-		
+	public static boolean importBase()
+	{
 		try {
 			Connection db = DriverManager.getConnection("url", "username", "password");
 
@@ -51,7 +51,8 @@ public class PostgreSQL {
 		return false;
 	}
 
-	public boolean exportBase(){
+	public static boolean exportBase()
+	{
 		
 		try {
 			Connection db = DriverManager.getConnection("url", "username", "password");
