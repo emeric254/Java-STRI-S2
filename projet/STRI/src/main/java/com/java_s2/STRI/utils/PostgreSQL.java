@@ -76,11 +76,14 @@ public abstract class PostgreSQL {
 	{
 		try
 		{
+//			Connection db = connexion();
+//			Statement statement = db.createStatement();
+//			PreparedStatement preparedStatement = db.prepareStatement("DROP TABLE local");
+//			preparedStatement.executeQuery();
+//	
 			Connection db = connexion();
-			Statement statement = db.createStatement();
-			PreparedStatement preparedStatement = db.prepareStatement("DROP TABLE local");
-			preparedStatement.executeQuery();
-			
+			db.createStatement().execute("DROP TABLE local;");
+	
 		}
 		catch(SQLException e)
 		{

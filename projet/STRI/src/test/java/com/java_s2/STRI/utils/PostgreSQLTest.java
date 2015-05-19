@@ -46,9 +46,14 @@ public class PostgreSQLTest extends TestCase {
     	
     }
     
-    public void testCreateBase()
+    public void testCreerBase()
     {
-    	PostgreSQL.creerBase();
+    	assertTrue(PostgreSQL.creerBase());
+    }
+    
+    public void testDetruireBase()
+    {
+    	assertTrue(PostgreSQL.detruireBase());
     }
     
 }
