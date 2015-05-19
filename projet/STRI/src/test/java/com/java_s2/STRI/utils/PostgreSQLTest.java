@@ -56,4 +56,8 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(PostgreSQL.detruireBase());
     }
     
+    public void testSaveBD()
+    {
+    	//CreerJeu de donnees ici
+    }
 }
