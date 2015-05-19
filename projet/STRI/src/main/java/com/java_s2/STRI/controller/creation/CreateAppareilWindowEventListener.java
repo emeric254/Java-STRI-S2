@@ -42,6 +42,8 @@ public class CreateAppareilWindowEventListener implements ActionListener
 		
 		for(SystemeExploitation o : OS.values())
 			fenetre.getOSAppareil().addItem(o.getIdOS() + " - " + o.getNomOS());
+		
+		fenetre.pack();
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -66,6 +68,12 @@ public class CreateAppareilWindowEventListener implements ActionListener
 				appareil.setNomAppareil(fenetre.getNomField().getText());
 				appareil.setMarqueAppareil(fenetre.getMarqueField().getText());
 				appareil.setModeleAppareil(fenetre.getModeleField().getText());
+
+				// TODO firmwares 
+				appareil.getInterfaceReseau().setFirmware(firmwares.get(new Integer(fenetre.getFirmAppareil().getSelectedItem().toString().split(" - ")[0]) ) );
+				
+				// TODO OS
+				appareil.setOs(OS.get(new Integer(fenetre.getOSAppareil().getSelectedItem().toString().split(" - ")[0])) );
 				
 				if(appareil.getNomAppareil().length() > 0 && appareil.getMarqueAppareil().length() > 0
 						&& appareil.getModeleAppareil().length() > 0)

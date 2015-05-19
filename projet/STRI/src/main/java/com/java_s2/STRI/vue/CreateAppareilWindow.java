@@ -86,7 +86,8 @@ public class CreateAppareilWindow extends CreateWindow {
 		c.gridx = 1;
 		getContenuPanel().add(os, c);
 		
-		// FIXME  a mettre que dans interface reseau
+
+		// TODO firmwares
 /*
 		c.gridx = 0;
 		c.gridy = 6;
@@ -94,7 +95,6 @@ public class CreateAppareilWindow extends CreateWindow {
 		c.gridx = 1;
 		getContenuPanel().add(firmware, c);
 */
-		
 
 	}
 

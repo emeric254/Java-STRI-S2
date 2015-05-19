@@ -83,6 +83,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 									break;
 								case 3:
 									salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getAppareils().remove(appareils.get(id));
+									// FIXME interco a verif a chaque fois
 									appareils.remove(id);
 									break;
 	
@@ -102,8 +103,6 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     
     public void refreshTree(HashMap<Integer, Local> locaux)
     {
-        // TODO ajouter nom classe avant ce quil y a deja ?
-
         fenetre.clearAllComponent();
         for (Integer id : locaux.keySet())
         {
@@ -129,29 +128,20 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                     InterfaceReseau carte = appareil.getInterfaceReseau();
                     if(carte != null)
                     {
-                        DefaultMutableTreeNode interfacesNode = new DefaultMutableTreeNode("Interfaces Réseaux");
-                        fenetre.addComponent(noeudAppareil, interfacesNode);
-
-                        DefaultMutableTreeNode noeudCarte = new DefaultMutableTreeNode(carte.getAdresseMAC() + " - " + carte.getNomInterface());
-                        fenetre.addComponent(interfacesNode, noeudCarte);
-
-                        DefaultMutableTreeNode firmsNode = new DefaultMutableTreeNode("Firmware");
-                        fenetre.addComponent(noeudCarte, firmsNode);
+                        DefaultMutableTreeNode noeudCarte = new DefaultMutableTreeNode(carte.getAdresseMAC() + " - Carte Réseau - " + carte.getNomInterface());
+                        fenetre.addComponent(noeudAppareil, noeudCarte);
 
                         Firmware firm = carte.getFirmware();
-                        DefaultMutableTreeNode noeudFirm = new DefaultMutableTreeNode(firm.getIdFirmware() + " - " + firm.getNomFirmware());
-                        fenetre.addComponent(firmsNode, noeudFirm);
-                    }
+                        DefaultMutableTreeNode noeudFirm = new DefaultMutableTreeNode(firm.getIdFirmware() + " - Firmware - " + firm.getNomFirmware());
+                        fenetre.addComponent(noeudCarte, noeudFirm);
 
+                    }
 
                     SystemeExploitation os = appareil.getOs();
                     if(os != null)
                     {
-                        DefaultMutableTreeNode osNode = new DefaultMutableTreeNode("Système d'exploitation");
-                        fenetre.addComponent(noeudAppareil, osNode);
-
-                        DefaultMutableTreeNode noeudOs = new DefaultMutableTreeNode(os.getIdOS() + " - " + os.getNomOS());
-                        fenetre.addComponent(osNode, noeudOs);
+                        DefaultMutableTreeNode noeudOs = new DefaultMutableTreeNode(os.getIdOS() + " - O/S - " + os.getNomOS());
+                        fenetre.addComponent(noeudAppareil, noeudOs);
                     }
 
                 }
@@ -177,7 +167,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                 break;
 
             case 2:
-                Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(appareils.keySet()), "", "", "", false, null, null);
+                Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(appareils.keySet()), "", "", "", false, null, new InterfaceReseau(GestionMAC.prochainMAC(cartesReseaux.keySet()), "defaut", firmwares.get(0)));
                 Salle salleParent = salles.get(id);
                 new CreateAppareilWindowEventListener(new CreateAppareilWindow(), this, newAppareil, appareils, salleParent, firmwares, OS);
                 break;
