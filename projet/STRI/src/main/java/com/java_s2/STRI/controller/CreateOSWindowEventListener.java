@@ -3,8 +3,9 @@ package com.java_s2.STRI.controller;
 import java.awt.event.*;
 
 import javax.swing.JOptionPane;
+
 import com.java_s2.STRI.modele.SystemeExploitation;
-import com.java_s2.STRI.vue.CreateOSWindow;
+import com.java_s2.STRI.vue.creation.CreateOSWindow;
 
 
 public class CreateOSWindowEventListener implements ActionListener
