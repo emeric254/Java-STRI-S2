@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 
 import com.java_s2.STRI.modele.InterfaceReseau;
+import com.java_s2.STRI.utils.GestionMAC;
 import com.java_s2.STRI.vue.CreateInterfaceWindow;
 
 
@@ -19,6 +20,7 @@ public class CreateInterfaceWindowEventListener implements ActionListener
 		
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
+		fenetre.getIdLabel().setText(GestionMAC.addrMACString(interfaceReseau.getAdresseMAC()));
 	}
 
 	public void actionPerformed(ActionEvent e)

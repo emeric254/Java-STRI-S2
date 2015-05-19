@@ -19,6 +19,7 @@ public class CreateOSWindowEventListener implements ActionListener
 		os = pOS;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
+		fenetre.getIdLabel().setText(new Integer(os.getIdOS()).toString());
 	}
 
 	public void actionPerformed(ActionEvent e)

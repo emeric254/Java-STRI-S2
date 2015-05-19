@@ -19,6 +19,7 @@ public class CreateFirmwareWindowEventListener implements ActionListener
 		firmware = pFirmware;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
+		fenetre.getIdLabel().setText(new Integer(firmware.getIdFirmware()).toString());
 	}
 
 	public void actionPerformed(ActionEvent e)

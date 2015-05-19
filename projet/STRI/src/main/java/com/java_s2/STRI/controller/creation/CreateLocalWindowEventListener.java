@@ -27,6 +27,7 @@ public class CreateLocalWindowEventListener implements ActionListener
 		
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
+		fenetre.getIdLabel().setText(new Integer(local.getIdLocal()).toString());
 	}
 
 	public void actionPerformed(ActionEvent e)

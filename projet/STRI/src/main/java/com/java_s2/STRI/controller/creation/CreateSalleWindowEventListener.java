@@ -29,6 +29,7 @@ public class CreateSalleWindowEventListener implements ActionListener
 		
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
+		fenetre.getIdLabel().setText(new Integer(salle.getIdSalle()).toString());
 	}
 
 	public void actionPerformed(ActionEvent e)

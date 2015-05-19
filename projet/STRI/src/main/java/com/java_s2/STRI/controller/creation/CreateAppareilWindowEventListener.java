@@ -35,6 +35,7 @@ public class CreateAppareilWindowEventListener implements ActionListener
 		fenetre.getEtatCheck().addActionListener(this);;
 		fenetre.getAnnulerBouton().addActionListener(this);
 		fenetre.getCreerBouton().addActionListener(this);
+		fenetre.getIdLabel().setText(new Integer(appareil.getIdAppareil()).toString());
 
 		for(Firmware f : firmwares.values())
 			fenetre.getFirmAppareil().addItem(f.getIdFirmware() + " - " + f.getNomFirmware());
