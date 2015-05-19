@@ -1,22 +1,22 @@
-package com.java_s2.STRI.vue;
+package com.java_s2.STRI.vue.creation;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-public class CreateLocalWindow extends CreateWindow {
+public class CreateFirmwareWindow extends CreateWindow {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField nom;
-	private JTextField lieu;
+	private JTextField version;
 	
 	
-	public CreateLocalWindow()
+	public CreateFirmwareWindow()
 	{
-		super("Création de «Local»");
+		super("Création de «Firmware»");
 		buildContentPane();
 		pack();
 	}
@@ -26,9 +26,9 @@ public class CreateLocalWindow extends CreateWindow {
 	{	
 		//creation boutons
 		nom = new JTextField(20);
-		lieu = new JTextField(20);
+		version = new JTextField(20);
 		
-		// definition contriantes du layout
+		// definition contraintes du layout
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -41,17 +41,17 @@ public class CreateLocalWindow extends CreateWindow {
 		
 		c.gridx = 0;
 		c.gridy = 1;
-		getContenuPanel().add(new JLabel("lieu"), c);
+		getContenuPanel().add(new JLabel("version"), c);
 		c.gridx = 1;
-		getContenuPanel().add(lieu, c);
+		getContenuPanel().add(version, c);
 	}
 
 	public JTextField getNomField() {
 		return nom;
 	}
 
-	public JTextField getLieuField() {
-		return lieu;
+	public JTextField getVersionField() {
+		return version;
 	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------

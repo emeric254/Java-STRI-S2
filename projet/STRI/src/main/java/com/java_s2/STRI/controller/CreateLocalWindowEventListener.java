@@ -6,7 +6,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.vue.CreateLocalWindow;
+import com.java_s2.STRI.vue.creation.CreateLocalWindow;
 
 
 public class CreateLocalWindowEventListener implements ActionListener

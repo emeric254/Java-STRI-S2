@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import com.java_s2.STRI.modele.*;
 import com.java_s2.STRI.vue.*;
+import com.java_s2.STRI.vue.creation.CreateAppareilWindow;
 
 
 public class CreateAppareilWindowEventListener implements ActionListener
@@ -71,7 +72,8 @@ public class CreateAppareilWindowEventListener implements ActionListener
 					}
 					else
 					{
-						appareil = new Terminal(appareil.getIdAppareil(), appareil.getNomAppareil(), appareil.getMarqueAppareil(), appareil.getModeleAppareil(), appareil.getEtatAppareil(), appareil.getOs(), appareil.getInterfaceReseau(), fenetre.getTypeAppareil().getSelectedItem())
+						appareil = new Terminal(appareil.getIdAppareil(), appareil.getNomAppareil(), appareil.getMarqueAppareil(), appareil.getModeleAppareil(), appareil.getEtatAppareil(), appareil.getOs(), appareil.getInterfaceReseau(),
+								("Tablette".compareTo(fenetre.getTypeAppareil().getSelectedItem().toString()) == 0)?com.java_s2.STRI.modele.Type.TABLETTE:com.java_s2.STRI.modele.Type.ORDINATEUR);
 						appareils.put(appareil.getIdAppareil(), appareil);
 						try {
 							salle.ajouterAppareil(appareil);

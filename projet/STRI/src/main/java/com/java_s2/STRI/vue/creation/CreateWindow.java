@@ -1,4 +1,4 @@
-package com.java_s2.STRI.vue;
+package com.java_s2.STRI.vue.creation;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,6 +13,7 @@ public abstract class CreateWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	// boutons
+	private JLabel id;								
 	private JButton annuler;
 	private JButton creer;
 
@@ -52,6 +53,7 @@ public abstract class CreateWindow extends JFrame {
 		annuler = new JButton(" annuler ");
 		creer = new JButton(" creer ");
 		contenu = new JPanel(new GridBagLayout());
+		id = new JLabel("      ");
 		
 		// definition contriantes du layout
 		GridBagConstraints c = new GridBagConstraints();
@@ -61,6 +63,11 @@ public abstract class CreateWindow extends JFrame {
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx = 0;
 		c.gridy = 0;
+		monPanneau.add(id, c);
+		c.gridx = 1;
+		monPanneau.add(id, c);
+		c.gridx = 0;
+		c.gridy = 1;
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		monPanneau.add(contenu, c);
 

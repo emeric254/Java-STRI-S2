@@ -1,4 +1,4 @@
-package com.java_s2.STRI.vue;
+package com.java_s2.STRI.vue.creation;
 
 import java.awt.*;
 
@@ -36,7 +36,8 @@ public class CreateAppareilWindow extends CreateWindow {
 		DefaultComboBoxModel<String> choix = new DefaultComboBoxModel<String>();
 		
 		// TODO externaliser ca
-		choix.addElement("Terminal"); // FIXME  a remplacer par «ordinateur» et «tablette»
+		choix.addElement("Ordinateur");
+		choix.addElement("Tablette");
 		choix.addElement("Switch");
 		
 		type = new JComboBox<String>(choix);

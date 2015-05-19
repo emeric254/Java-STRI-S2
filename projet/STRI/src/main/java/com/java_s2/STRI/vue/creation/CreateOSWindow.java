@@ -1,24 +1,22 @@
-package com.java_s2.STRI.vue;
+package com.java_s2.STRI.vue.creation;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-public class CreateInterfaceWindow extends CreateWindow {
+public class CreateOSWindow extends CreateWindow {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField nom;
-	/*
-	private JTextField addrMAC;
-	*/
+	private JTextField version;
 	
 	
-	public CreateInterfaceWindow()
+	public CreateOSWindow()
 	{
-		super("Création de «Interface Reseau»");
+		super("Création de «O/S»");
 		buildContentPane();
 		pack();
 	}
@@ -28,11 +26,9 @@ public class CreateInterfaceWindow extends CreateWindow {
 	{	
 		//creation boutons
 		nom = new JTextField(20);
-		/*
-		addrMAC = new JTextField(20);
-		*/
+		version = new JTextField(20);
 		
-		// definition contriantes du layout
+		// definition contraintes du layout
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -42,23 +38,22 @@ public class CreateInterfaceWindow extends CreateWindow {
 		getContenuPanel().add(new JLabel("nom"), c);
 		c.gridx = 1;
 		getContenuPanel().add(nom, c);
-		/*
+		
 		c.gridx = 0;
 		c.gridy = 1;
-		getContenuPanel().add(new JLabel("MAC"), c);
+		getContenuPanel().add(new JLabel("version"), c);
 		c.gridx = 1;
-		getContenuPanel().add(addrMAC, c);
-		*/
+		getContenuPanel().add(version, c);
 	}
 
 	public JTextField getNomField() {
 		return nom;
 	}
-/*
-	public JTextField getAddrMACField() {
-		return addrMAC;
+
+	public JTextField getVersionField() {
+		return version;
 	}
-*/
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

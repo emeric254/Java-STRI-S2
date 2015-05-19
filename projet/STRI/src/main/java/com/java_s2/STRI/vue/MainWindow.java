@@ -16,6 +16,7 @@ public class MainWindow extends JFrame {
 	private JButton bouton1;
 	private JButton bouton2;
 	private JButton bouton3;
+	private JButton bouton4;
 	
 	// model arborescence
 	public DefaultMutableTreeNode rootTree; // TODO public pour le moment > le passer en privé avec get/set
@@ -56,7 +57,7 @@ public class MainWindow extends JFrame {
 		bouton1 = new JButton(" creer ");
 		bouton2 = new JButton(" supprimer ");
 		bouton3 = new JButton(" actualiser ");
-		// FIXME bouton «details»
+		bouton4 = new JButton(" details ");
 		
 		// creation modele de l'arborescense
 		rootTree = new DefaultMutableTreeNode("Locaux");
@@ -81,15 +82,17 @@ public class MainWindow extends JFrame {
 
 		c.gridx = 1;
 		monPanneau.add(bouton2, c); // ajout bouton2 au layout
-		
+
 		c.gridx = 2;
 		monPanneau.add(bouton3, c); // ajout bouton3 au layout
+
+		c.gridx = 3;
+		monPanneau.add(bouton4, c); // ajout bouton4 au layout
 		
-		// TODO bouton «details»
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.gridheight = 3;
-		c.gridwidth = 4;
+		c.gridwidth = 5;
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weighty = 1.0;
@@ -132,8 +135,10 @@ public class MainWindow extends JFrame {
 	public JButton getBouton3() {
 		return bouton3;
 	}
-	
-	// TODO bouton «details»
+
+	public JButton getBouton4() {
+		return bouton4;
+	}
 
 	public JTree getTree() {
 		return arborescense;

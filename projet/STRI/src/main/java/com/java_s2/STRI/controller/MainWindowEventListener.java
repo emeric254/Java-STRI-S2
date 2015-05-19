@@ -1,26 +1,17 @@
 package com.java_s2.STRI.controller;
 
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 import javax.swing.event.*;
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 import javax.swing.tree.*;
 
-import com.java_s2.STRI.modele.Appareil;
-import com.java_s2.STRI.modele.Firmware;
-import com.java_s2.STRI.modele.InterfaceReseau;
-import com.java_s2.STRI.modele.Local;
-import com.java_s2.STRI.modele.Salle;
-import com.java_s2.STRI.modele.Switch;
-import com.java_s2.STRI.modele.SystemeExploitation;
-import com.java_s2.STRI.utils.GestionMAC;
-import com.java_s2.STRI.utils.GestionSerial;
-import com.java_s2.STRI.vue.CreateAppareilWindow;
-import com.java_s2.STRI.vue.CreateLocalWindow;
-import com.java_s2.STRI.vue.CreateSalleWindow;
-import com.java_s2.STRI.vue.MainWindow;
+import com.java_s2.STRI.modele.*;
+import com.java_s2.STRI.utils.*;
+import com.java_s2.STRI.vue.*;
+import com.java_s2.STRI.vue.creation.CreateAppareilWindow;
+import com.java_s2.STRI.vue.creation.CreateLocalWindow;
+import com.java_s2.STRI.vue.creation.CreateSalleWindow;
 
 
 public class MainWindowEventListener implements ActionListener, TreeSelectionListener
@@ -56,6 +47,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         fenetre.getBouton1().addActionListener(this);
         fenetre.getBouton2().addActionListener(this);
         fenetre.getBouton3().addActionListener(this);
+        fenetre.getBouton4().addActionListener(this);
         fenetre.getTree().addTreeSelectionListener(this);
 
         refreshTree(locaux);
@@ -71,27 +63,30 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
             if(source == fenetre.getBouton3())
                 refreshTree(locaux);
             else
-                if(source == fenetre.getBouton2())
-                    if(noeudSelect != null)
-                        if(noeudSelect.getLevel() > 0)
-                        {
-                        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
-                        	switch (noeudSelect.getLevel()) {
-							case 1:
-								locaux.remove(id);
-								break;
-							case 2:
-								salles.remove(id);
-								break;
-							case 3:
-								appareils.remove(id);
-								break;
-
-							default:
-								break;
-							}
-                            fenetre.removeComponent(noeudSelect);
-                        }
+            	if(source == fenetre.getBouton4())
+            		details();
+            	else
+	                if(source == fenetre.getBouton2())
+	                    if(noeudSelect != null)
+	                        if(noeudSelect.getLevel() > 0)
+	                        {
+	                        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
+	                        	switch (noeudSelect.getLevel()) {
+								case 1:
+									locaux.remove(id);
+									break;
+								case 2:
+									salles.remove(id);
+									break;
+								case 3:
+									appareils.remove(id);
+									break;
+	
+								default:
+									break;
+								}
+	                            fenetre.removeComponent(noeudSelect);
+	                        }
     }
 
     // action listener JTree
@@ -210,6 +205,11 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         // TODO bloquer «fenetre» lors de creation
     }
 
+    public void details()
+    {
+    	
+    }
+    
 	public void refreshTree() {
 		refreshTree(locaux);
 	}

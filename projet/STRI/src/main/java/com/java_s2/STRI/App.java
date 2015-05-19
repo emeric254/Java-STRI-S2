@@ -26,10 +26,11 @@ public class App
     	// FIXME a externaliser dans une base de données
     	firmwares.put(0, new Firmware(0, "1.0.0", "origin"));
     	firmwares.put(1, new Firmware(1, "1.9.9", "beta 2"));
-    	firmwares.put(2, new Firmware(2, "3.0.0", "v3 car 2 gros echec"));
-    	firmwares.put(3, new Firmware(3, "4.0.0", "full la fete, ca tue"));
+    	firmwares.put(2, new Firmware(2, "3.0.0", "v3 car v2 gros echec"));
+    	firmwares.put(3, new Firmware(3, "4.0.0", "full la fete du slip, ca tue quand ca pue du q"));
     	
     	// FIXME a externaliser dans une base de données
+    	OS.put(0, new SystemeExploitation(0, "Microsoft Windows", "95"));
     	OS.put(0, new SystemeExploitation(0, "Microsoft Windows", "XP"));
     	OS.put(1, new SystemeExploitation(1, "Microsoft Windows", "7"));
     	OS.put(2, new SystemeExploitation(2, "Microsoft Windows", "8"));
