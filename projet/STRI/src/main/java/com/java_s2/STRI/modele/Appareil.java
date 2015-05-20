@@ -1,5 +1,5 @@
 /**
- * Procure les classes du modèle
+ * Procure les classes du modele
  */
 package com.java_s2.STRI.modele;
 
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  * Classe de gestion d'un appareil
  * 
+ * @author R. Barbaste, G. Boulic, R. Degironde, E. Tosi
  * @version 1.0
  */
 public class Appareil implements Serializable{
@@ -22,6 +23,7 @@ public class Appareil implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5552327271482487504L;
+	
 	/**
 	 * Entier correspondant à dentifiant d'un appareil
 	 */
@@ -102,6 +104,10 @@ public class Appareil implements Serializable{
     	return idAppareil;
     }
     
+    /**
+     * Set the value of idAppareil
+     * @param id the new value of idAppareil
+     */
     public void setIdAppareil(int id) {
     	idAppareil = id;
     }
@@ -130,6 +136,10 @@ public class Appareil implements Serializable{
     	return marqueAppareil;
     }
 
+    /**
+     * Set the value of marqueAppareil
+     * @param marque the new value of marqueAppareil
+     */
     public void setMarqueAppareil (String marque) {
     	marqueAppareil = marque;
     }
@@ -142,6 +152,10 @@ public class Appareil implements Serializable{
     	return modeleAppareil;
     }
 
+    /**
+     * Set the value of modeleAppareil
+     * @param modele the new value of modeleAppareil 
+     */
     public void setModeleAppareil (String modele) {
     	modeleAppareil = modele;
     }
@@ -155,8 +169,8 @@ public class Appareil implements Serializable{
     }
 	
 	/**
-	 * 
-	 * @return
+	 * Methode permettant d'activer un appareil
+	 * @return true quand appareil active et false quand desactive 
 	 */
 	public Boolean activer()
 	{
@@ -171,8 +185,8 @@ public class Appareil implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Methode permettant de desactiver un appareil
+	 * @return false quand desactive et true quand appareil active
 	 */
 	public Boolean desactiver()
 	{
@@ -193,6 +207,11 @@ public class Appareil implements Serializable{
 	public SystemeExploitation getOs() {
 		return os;
 	}
+	
+	/**
+	 * Set the value of os
+	 * @param pOs the new value of os
+	 */
     public void setOs (SystemeExploitation pOs) {
     	os = pOs;
     }
@@ -219,8 +238,8 @@ public class Appareil implements Serializable{
     //
 
 	/**
-	 * 
-	 * @return
+	 * Methode permettant de recuperer les appareils connectes à un switch
+	 * @return les appareils connectés à un switch
 	 * @throws Exception
 	 */
 	public ArrayList<Appareil> dependances() throws Exception
