@@ -63,6 +63,7 @@ public abstract class PostgreSQL {
 
 			Connection db = connexion();
 			db.createStatement().execute("CREATE TABLE java (	id serial PRIMARY KEY, nom varchar(1024) default NULL,object bytea);");
+			db.close();
 
 		}
 		catch(SQLException e)
@@ -86,6 +87,7 @@ public abstract class PostgreSQL {
 			//	
 			Connection db = connexion();
 			db.createStatement().execute("DROP TABLE java;");
+			db.close();
 
 		}
 		catch(SQLException e)

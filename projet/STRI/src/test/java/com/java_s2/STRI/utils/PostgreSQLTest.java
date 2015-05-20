@@ -97,6 +97,25 @@ public class PostgreSQLTest extends TestCase {
     	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(3, "apareil2-1", "blbl", "blbl", true, blblOS, new InterfaceReseau(3, "blbl", blblFW)));
     	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(4, "apareil2-2", "blbl", "blbl", true, blblOS, new InterfaceReseau(4, "blbl", blblFW)));
     	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(5, "apareil2-3", "blbl", "blbl", true, blblOS, new InterfaceReseau(5, "blbl", blblFW)));
+    	
+    	
+    	try
+    	{
+    		PostgreSQL.creerBase();
+        	Connection db= PostgreSQL.connexion();
+        	Integer lol= new Integer(3);
+        	long idObjet= PostgreSQL.writeJavaObject(db,  lol);
+        	
+        	db.close();
+        	PostgreSQL.detruireBase();
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	
+    	
+    	
        	assertTrue( true);
     }
 }
