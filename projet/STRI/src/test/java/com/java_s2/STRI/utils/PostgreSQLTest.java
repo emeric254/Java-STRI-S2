@@ -127,6 +127,24 @@ public class PostgreSQLTest extends TestCase {
     	}
     }
     
+    public void testInsertFirmware()
+    {
+    	Firmware blblFW = new Firmware(3, "4.0.0", "V4 OP version");
+    	try
+    	{
+    		PostgreSQL.creerBase();
+    		Connection db= PostgreSQL.connexion();
+    		PostgreSQL.ecrireFirmware(db, blblFW);
+    		db.close();
+    		assertTrue(true);
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}
+    }
+    
 //    public void testInsertSalle()
 //    {
 //    	try

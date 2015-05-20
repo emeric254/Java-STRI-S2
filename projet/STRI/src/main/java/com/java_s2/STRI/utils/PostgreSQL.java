@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.java_s2.STRI.modele.Appareil;
+import com.java_s2.STRI.modele.Firmware;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
@@ -169,7 +170,22 @@ public abstract class PostgreSQL {
 	}
 	
 	
-	
+	public static void ecrireFirmware(Connection db , Firmware f)
+	{
+		try
+		{
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO firmware (id, nom, version) VALUES (?,?,?);");
+			// Parametres
+			pstmt.setInt(1,f.getIdFirmware());
+			pstmt.setString(2, f.getNomFirmware());
+			pstmt.setString(3, f.getVersionFirmware());;
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
 	
 //	public static void ecrireAppareil(Connection db, Appareil a, Salle salle)
 //	{
