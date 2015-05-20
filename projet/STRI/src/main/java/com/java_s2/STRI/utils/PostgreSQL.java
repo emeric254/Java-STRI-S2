@@ -62,7 +62,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 
 			Connection db = connexion();
-			db.createStatement().execute("CREATE TABLE java (	id serial PRIMARY KEY, nom varchar(1024) default NULL,object hstore);");
+			db.createStatement().execute("CREATE TABLE java (id serial PRIMARY KEY, nom varchar(1024) default NULL,object hstore);");
 			db.close();
 
 		}

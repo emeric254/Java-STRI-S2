@@ -1,6 +1,7 @@
 package com.java_s2.STRI.utils;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.util.*;
 
@@ -45,6 +46,7 @@ public class PostgreSQLTest extends TestCase {
     		Connection db = PostgreSQL.connexion();
         	assertTrue((db!=null));
         	db.close();
+        	db=null;
     	}
     	catch (SQLException e)
     	{
@@ -63,6 +65,7 @@ public class PostgreSQLTest extends TestCase {
     {
     	assertTrue(PostgreSQL.detruireBase());
     }
+    
     
     public void testSaveBD()
     {
@@ -105,7 +108,8 @@ public class PostgreSQLTest extends TestCase {
         	Connection db= PostgreSQL.connexion();
         	Integer lol= new Integer(3);
         	long idObjet= PostgreSQL.writeJavaObject(db,  locaux);
-        	PostgreSQL.detruireBase();
+        	System.out.println(idObjet);
+        	db.close();
     	}
     	catch (Exception e)
     	{
@@ -114,4 +118,29 @@ public class PostgreSQLTest extends TestCase {
     	
        	assertTrue( true);
     }
+    
+    public void testLireBase()
+    {
+    	try
+    	{
+    		Connection db= PostgreSQL.connexion();
+        	HashMap<Integer, Local> locaux= (HashMap<Integer, Local>) PostgreSQL.readJavaObject(db, 1);
+        	System.out.println("HASH MAP DUMP: " + locaux.toString());
+        	
+        	db.close();
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}  	
+    	
+       	assertTrue( true);
+    }
+ 
+//    public void testNettoyerBase() 
+//    {
+//    	assertTrue(PostgreSQL.detruireBase());
+//	}
+//   
 }
