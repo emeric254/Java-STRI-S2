@@ -62,7 +62,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 
 			Connection db = connexion();
-			db.createStatement().execute("CREATE TABLE local (	serialized_id serial PRIMARY KEY, object_name varchar(1024) default NULL,serialized_object bytea);");
+			db.createStatement().execute("CREATE TABLE local (	serialized_id serial PRIMARY KEY, nom varchar(1024) default NULL,object bytea);");
 
 		}
 		catch(SQLException e)
@@ -115,16 +115,6 @@ public abstract class PostgreSQL {
 	static final String WRITE_OBJECT_SQL = "INSERT INTO java_objects(name, object_value) VALUES (?, ?)";
 
 	static final String READ_OBJECT_SQL = "SELECT object_value FROM java_objects WHERE id = ?";
-
-	public static Connection getConnection() throws Exception {
-		String driver = "org.gjt.mm.mysql.Driver";
-		String url = "jdbc:mysql://localhost/databaseName";
-		String username = "root";
-		String password = "root";
-		Class.forName(driver);
-		Connection conn = DriverManager.getConnection(url, username, password);
-		return conn;
-	}
 
 	public static long writeJavaObject(Connection conn, Object object) throws Exception {
 		String className = object.getClass().getName();
