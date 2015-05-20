@@ -2,7 +2,10 @@ package com.java_s2.STRI.utils;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+
+import com.java_s2.STRI.modele.Local;
 
 /*
  * doc > http://www.postgresql.org/docs/7.2/static/jdbc.html
@@ -62,7 +65,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 
 			Connection db = connexion();
-			db.createStatement().execute("CREATE TABLE java (id serial PRIMARY KEY, nom varchar(1024) default NULL,object hstore);");
+			db.createStatement().execute("DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local; CREATE table local (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, lieuLocal varchar(1024) NOT NULL ); CREATE TABLE salle (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, idLocal integer NOT NULL, CONSTRAINT FK_SA_LO FOREIGN KEY (idLocal) REFERENCES local(id) ); CREATE TABLE os (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE appareil (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, marque varchar(1024) NOT NULL, etat boolean NOT NULL, type varchar(1024) DEFAULT NULL, idSalle integer NOT NULL, idOs integer NOT NULL, idSwitch integer DEFAULT NULL, CONSTRAINT FK_TER_SA FOREIGN KEY (idSalle) REFERENCES salle(id), CONSTRAINT FK_TER_OS FOREIGN KEY (idOs) REFERENCES os(id), CONSTRAINT FK_TER_SW FOREIGN KEY (idSwitch) REFERENCES appareil(id) ); CREATE TABLE firmware (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE interface (id integer NOT NULL PRIMARY KEY, adresseMAC integer NOT NULL, nom varchar(1024) NOT NULL, idFirmware integer NOT NULL, CONSTRAINT FK_INT_FIR FOREIGN KEY (idFirmware) REFERENCES firmware(id) );");
 			db.close();
 
 		}
@@ -86,7 +89,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 			//	
 			Connection db = connexion();
-			db.createStatement().execute("DROP TABLE java;");
+			db.createStatement().execute("DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local;");
 			db.close();
 
 		}
@@ -98,6 +101,33 @@ public abstract class PostgreSQL {
 
 
 		return true;
+	}
+	
+	public static void ecrireLocal(Connection db, Local local)
+	{
+		try
+		{
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO local (id, nom, lieulocal) VALUES (?,?,?);");
+
+			// Parametres
+			pstmt.setInt(1,local.getIdLocal());
+			pstmt.setString(2, local.getNomLocal());
+			pstmt.setString(3, local.getLieuLocal());
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ecrireHashLocal (Connection db, HashMap<Integer, Local> locaux)
+	{
+		for (Integer i : locaux.keySet())
+		{
+			ecrireLocal(db, locaux.get(i));
+		}
 	}
 
 

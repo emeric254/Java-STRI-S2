@@ -66,6 +66,45 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(PostgreSQL.detruireBase());
     }
     
+    public void testInsertLocal()
+    {
+    	HashMap<Integer, Local> locaux = new HashMap<Integer, Local> ();
+    	locaux.put(0, new Local(0, "local1", "BREST"));
+
+    	try
+    	{
+    		PostgreSQL.creerBase();
+    		Connection db= PostgreSQL.connexion();
+    		PostgreSQL.ecrireLocal(db, locaux.get(0));
+    		db.close();
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void testInsertHashLocaux()
+    {
+    	HashMap<Integer, Local> locaux = new HashMap<Integer, Local> ();
+    	locaux.put(0, new Local(0, "local1", "BREST"));
+    	locaux.put(1, new Local(1, "local2", "toulouse"));
+    	locaux.put(2, new Local(2, "local3", "paris"));
+    	locaux.put(3, new Local(3, "local4", "bordeaux"));
+    	
+    	try
+    	{
+    		PostgreSQL.creerBase();
+    		Connection db= PostgreSQL.connexion();
+    		PostgreSQL.ecrireHashLocal(db, locaux);
+    		db.close();
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    }
+    
     
 //    public void testSaveBD()
 //    {
