@@ -1,11 +1,13 @@
-
+/**
+ * Procure les classes du modèle
+ */
 package com.java_s2.STRI.modele;
 
 import java.util.ArrayList;
 
 
 /**
- * Class Appareil
+ * Classe de gestion d'un appareil
  * 
  * @version 1.0
  */
@@ -15,6 +17,9 @@ public class Appareil {
     // Fields
     //
 	
+	/**
+	 * Entier correspondant à dentifiant d'un appareil
+	 */
 	private int idAppareil;
 	private String nomAppareil;
 	private String marqueAppareil;
