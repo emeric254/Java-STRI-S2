@@ -88,17 +88,14 @@ public class PostgreSQLTest extends TestCase {
     	locaux.get(3).getSallesLocal().add(new Salle(13, "salle4-2"));
     	locaux.get(3).getSallesLocal().add(new Salle(14, "salle4-3"));
     	locaux.get(3).getSallesLocal().add(new Salle(15, "salle4-4"));
-
-    	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Appareil(0, "apareil1-1", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
-    	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Appareil(1, "apareil1-2", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
-    	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Appareil(2, "apareil1-3", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
-    	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(3, "apareil2-1", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
-    	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(4, "apareil2-2", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
-    	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(5, "apareil2-3", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
     	
-    	
-    	
-    	
-    	
+    	SystemeExploitation blblOS = new SystemeExploitation(3, "Cisco IOS", "1.0.0");
+    	Firmware blblFW = new Firmware(3, "4.0.0", "V4 OP version");
+    	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Appareil(0, "apareil1-1", "blbl", "blbl", true, blblOS , new InterfaceReseau(0, "blbl", blblFW)));
+    	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Appareil(1, "apareil1-2", "blbl", "blbl", true, blblOS, new InterfaceReseau(1, "blbl", blblFW)));
+    	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Appareil(2, "apareil1-3", "blbl", "blbl", true, blblOS, new InterfaceReseau(2, "blbl", blblFW)));
+    	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(3, "apareil2-1", "blbl", "blbl", true, blblOS, new InterfaceReseau(3, "blbl", blblFW)));
+    	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(4, "apareil2-2", "blbl", "blbl", true, blblOS, new InterfaceReseau(4, "blbl", blblFW)));
+    	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(5, "apareil2-3", "blbl", "blbl", true, blblOS, new InterfaceReseau(5, "blbl", blblFW)));
     }
 }
