@@ -90,4 +90,6 @@ public class SwitchTest extends TestCase {
     	ArrayList<Appareil> dependances= switch0.dependences();
     	assertEquals(1, dependances.size());
     }
+
+    // FIXME VOIR POURQUOI LE JUNIT AFFICHE DES TRUC EN ERR !!!
 }

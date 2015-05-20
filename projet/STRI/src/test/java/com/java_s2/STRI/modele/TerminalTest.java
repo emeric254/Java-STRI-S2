@@ -52,4 +52,6 @@ public class TerminalTest extends TestCase {
     	
     	assertTrue(retour);
     }
+    
+    // FIXME VOIR POURQUOI LE JUNIT AFFICHE DES TRUC EN ERR !!!
 }
