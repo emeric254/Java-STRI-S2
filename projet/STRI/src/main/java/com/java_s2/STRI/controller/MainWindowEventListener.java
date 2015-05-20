@@ -54,6 +54,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         fenetre.getBouton4().addActionListener(this);
         fenetre.getTree().addTreeSelectionListener(this);
 
+    	// TODO faire les icones stylées selon le noeud
+    	fenetre.getTree().setCellRenderer(null);
         refreshTree(locaux);
     }
 
@@ -113,8 +115,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 
     
     public void refreshTree(HashMap<Integer, Local> locaux)
-    {
-        fenetre.clearAllComponent();
+    {   
+    	fenetre.clearAllComponent();
         for (Integer id : locaux.keySet())
         {
             DefaultMutableTreeNode noeudLocal = new DefaultMutableTreeNode(id + " - Local - " + locaux.get(id).getNomLocal());
