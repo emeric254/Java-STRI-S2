@@ -1,5 +1,6 @@
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -7,9 +8,13 @@ import java.util.ArrayList;
 /**
  * Class Switch
  */
-public class Switch extends Appareil {
+public class Switch extends Appareil implements Serializable{
 
-    //
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4070392465341409181L;
+	//
     // Fields
     //
 	private ArrayList<Appareil> equipements;

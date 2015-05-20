@@ -3,6 +3,7 @@
  */
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -11,12 +12,16 @@ import java.util.ArrayList;
  * 
  * @version 1.0
  */
-public class Appareil {
+public class Appareil implements Serializable{
 
     //
     // Fields
     //
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5552327271482487504L;
 	/**
 	 * Entier correspondant à dentifiant d'un appareil
 	 */

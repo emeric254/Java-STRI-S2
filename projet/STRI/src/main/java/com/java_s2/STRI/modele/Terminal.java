@@ -1,12 +1,18 @@
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
+
 
 /**
  * Class Terminal
  */
-public class Terminal extends Appareil {
+public class Terminal extends Appareil implements  Serializable {
 
-    //
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4823624335073421119L;
+	//
     // Fields
     //
 	private Type type;
