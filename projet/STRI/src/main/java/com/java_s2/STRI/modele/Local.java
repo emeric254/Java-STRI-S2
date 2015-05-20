@@ -38,6 +38,7 @@ public class Local implements Serializable{
     	this.idLocal= idLocal;
     	this.nomLocal= new String (nomLocal);
     	this.lieuLocal= new String (lieuLocal);
+    	this.salles = new ArrayList<Salle>();
     };
   
     //
