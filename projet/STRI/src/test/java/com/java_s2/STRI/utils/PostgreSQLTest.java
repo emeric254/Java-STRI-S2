@@ -104,9 +104,7 @@ public class PostgreSQLTest extends TestCase {
     		PostgreSQL.creerBase();
         	Connection db= PostgreSQL.connexion();
         	Integer lol= new Integer(3);
-        	long idObjet= PostgreSQL.writeJavaObject(db,  lol);
-        	
-        	db.close();
+        	long idObjet= PostgreSQL.writeJavaObject(db,  locaux);
         	PostgreSQL.detruireBase();
     	}
     	catch (Exception e)
