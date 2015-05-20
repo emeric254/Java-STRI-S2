@@ -75,6 +75,11 @@ public class CreateAppareilWindowEventListener implements ActionListener
 				// TODO OS
 				appareil.setOs(OS.get(new Integer(fenetre.getOSAppareil().getSelectedItem().toString().split(" - ")[0])) );
 				
+				if(fenetre.getEtatCheck().isSelected())
+					appareil.activer();
+				else
+					appareil.desactiver();
+				
 				if(appareil.getNomAppareil().length() > 0 && appareil.getMarqueAppareil().length() > 0
 						&& appareil.getModeleAppareil().length() > 0)
 				{

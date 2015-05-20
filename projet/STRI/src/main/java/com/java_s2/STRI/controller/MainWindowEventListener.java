@@ -247,7 +247,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 						new DetailsSalleListener(new CreateSalleWindow(), this, salles.get(id), salles, locaux.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])));
 					break;
 				case 3:
-					if(noeudSelect.toString().split(" - ")[1].compareTo("Appareil") == 0)
+					if(noeudSelect.toString().split(" - ")[1].compareTo("Terminal") == 0 || 
+					noeudSelect.toString().split(" - ")[1].compareTo("Switch") == 0 )
 						new DetailsAppareilListener(new CreateAppareilWindow(), this, appareils.get(id), appareils, salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])), firmwares, OS);
 					break;
 				default:

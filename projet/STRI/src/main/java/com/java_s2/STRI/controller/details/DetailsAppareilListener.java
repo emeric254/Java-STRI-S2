@@ -1,5 +1,7 @@
 package com.java_s2.STRI.controller.details;
 
+import java.awt.event.ActionEvent;
+import java.awt.print.Paper;
 import java.util.HashMap;
 
 import com.java_s2.STRI.controller.MainWindowEventListener;
@@ -9,8 +11,12 @@ import com.java_s2.STRI.vue.CreateAppareilWindow;
 
 public class DetailsAppareilListener extends CreateAppareilWindowEventListener {
 
-	public DetailsAppareilListener(CreateAppareilWindow fenetre, MainWindowEventListener parent, Appareil appareil, HashMap<Integer, Appareil> appareils, Salle salle, HashMap<Integer, Firmware> firmwares, HashMap<Integer, SystemeExploitation> os) {
-		super(fenetre, parent, appareil, appareils, salle, firmwares, os);
+	private CreateAppareilWindow fenetre;
+	private Appareil appareil;
+	public DetailsAppareilListener(CreateAppareilWindow pFenetre, MainWindowEventListener parent, Appareil appareil, HashMap<Integer, Appareil> appareils, Salle salle, HashMap<Integer, Firmware> firmwares, HashMap<Integer, SystemeExploitation> os) {
+		super(pFenetre, parent, appareil, appareils, salle, firmwares, os);
+		fenetre = pFenetre;
+		this.appareil = appareil;
 		fenetre.getCreerBouton().setText("valider");
 		fenetre.setTitle("Modification de «Appareil»");
 		fenetre.getNomField().setText(appareil.getNomAppareil());
@@ -22,6 +28,33 @@ public class DetailsAppareilListener extends CreateAppareilWindowEventListener {
 //		fenetre.getFirmAppareil().setSelectedItem(appareil.getInterfaceReseau().getFirmware());
 		// TODO changer ce selected
 //		fenetre.getOSAppareil().setSelectedItem(appareil.getOs().getNomOS());
+
 	}
 
+
+	public void actionPerformed(ActionEvent e)
+	{
+		super.actionPerformed(e);
+		
+		Object source = e.getSource();
+		 
+		if(source == fenetre.getCreerBouton())
+		{
+			if(!fenetre.getEtatCheck().isSelected() && appareil instanceof Switch)
+				desactivation((Switch)appareil);
+		}
+	}
+	
+	private void desactivation(Switch maitre) {
+		if(maitre.getEtatAppareil())
+		{
+			for(Appareil a : maitre.getEquipementsAppareil())
+			{
+				if(a instanceof Switch)
+					desactivation((Switch)a);
+				else
+					a.desactiver();
+			}
+		}	
+	}
 }
