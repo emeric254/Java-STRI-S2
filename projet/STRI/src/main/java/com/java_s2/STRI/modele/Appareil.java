@@ -26,11 +26,35 @@ public class Appareil implements Serializable{
 	 * Entier correspondant à dentifiant d'un appareil
 	 */
 	private int idAppareil;
+	
+	/**
+	 * Chaine de caractère correspondant au nom de l'appareil
+	 */
 	private String nomAppareil;
+	
+	/**
+	 * Chaine de caractère correspondant au nom de l'appareil
+	 */
 	private String marqueAppareil;
+	
+	/**
+	 * Chaine de caractère correspondant au modèle de l'appareil
+	 */
 	private String modeleAppareil;
+	
+	/**
+	 * Booléen indiquant si l'appareil est actif ou inactif
+	 */
 	private boolean etatAppareil;
+	
+	/**
+	 * Type de système d'exploitation sur l'appareil
+	 */
 	private SystemeExploitation os;
+	
+	/**
+	 * Type d'interface réseau utilisé
+	 */
 	private InterfaceReseau interfaceReseau;
   
     //
@@ -38,7 +62,7 @@ public class Appareil implements Serializable{
     //
 	
 	/**
-	 * Constructor Appareil
+	 * Constructeur d'un appareil
 	 * 
 	 *  
 	 * @param idAppareil 
