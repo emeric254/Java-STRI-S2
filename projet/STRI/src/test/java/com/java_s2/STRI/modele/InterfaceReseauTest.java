@@ -1,5 +1,7 @@
 package com.java_s2.STRI.modele;
 
+import com.java_s2.STRI.utils.GestionMAC;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -33,7 +35,7 @@ public class InterfaceReseauTest extends TestCase
     
     public void testAddMAC ()
     {
-    	assertEquals("00:00:00:00:00:00", carteR.getAdresseMAC());
+    	assertEquals("00:00:00:00:00:00", GestionMAC.addrMACString(carteR.getAdresseMAC()));
     }
     
     public void testNom ()

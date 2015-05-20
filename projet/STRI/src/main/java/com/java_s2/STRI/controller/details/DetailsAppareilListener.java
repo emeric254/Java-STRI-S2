@@ -34,15 +34,13 @@ public class DetailsAppareilListener extends CreateAppareilWindowEventListener {
 
 	public void actionPerformed(ActionEvent e)
 	{
-		super.actionPerformed(e);
-		
 		Object source = e.getSource();
-		 
 		if(source == fenetre.getCreerBouton())
 		{
 			if(!fenetre.getEtatCheck().isSelected() && appareil instanceof Switch)
 				desactivation((Switch)appareil);
 		}
+		super.actionPerformed(e);
 	}
 	
 	private void desactivation(Switch maitre) {

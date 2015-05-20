@@ -7,8 +7,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>STRI</name>
-  <url>http://maven.apache.org</url>
+  <name>STRI - Managing Tool</name>
+  <url>https://github.com/emeric254/Java-STRI-S2/tree/master/projet</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,4 +27,8 @@
 		<version>9.4-1201-jdbc41</version>
 	</dependency>
   </dependencies>
+  <issueManagement>
+  	<url>https://github.com/emeric254/Java-STRI-S2/issues</url>
+  	<system>Issues</system>
+  </issueManagement>
 </project>
