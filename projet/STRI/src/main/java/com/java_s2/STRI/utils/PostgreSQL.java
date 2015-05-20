@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import com.java_s2.STRI.modele.Appareil;
 import com.java_s2.STRI.modele.Local;
+import com.java_s2.STRI.modele.Salle;
+import com.java_s2.STRI.modele.SystemeExploitation;
 
 /*
  * doc > http://www.postgresql.org/docs/7.2/static/jdbc.html
@@ -129,7 +132,63 @@ public abstract class PostgreSQL {
 			ecrireLocal(db, locaux.get(i));
 		}
 	}
-
+	
+	public static void ecrireSalle(Connection db, Salle salle, int idLocal )
+	{
+		try
+		{
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO salle (id, nom, idLocal) VALUES (?,?,?);");
+			// Parametres
+			pstmt.setInt(1,salle.getIdSalle());
+			pstmt.setString(2, salle.getNomSalle());
+			pstmt.setInt(3, idLocal);
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ecrireOs(Connection db, SystemeExploitation os)
+	{
+		try
+		{
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO os (id, nom, version) VALUES (?,?,?);");
+			// Parametres
+			pstmt.setInt(1,os.getIdOS());
+			pstmt.setString(2, os.getNomOS());
+			pstmt.setString(3, os.getVersionOS());;
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+//	public static void ecrireAppareil(Connection db, Appareil a, Salle salle)
+//	{
+//		try
+//		{
+//			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil ();");
+//			if (a instanceof Switch)
+//			{
+//				
+//			}
+//			else if (a instanceof Terminal)
+//			{
+//				
+//			}
+//		}
+//		catch (SQLException e)
+//		{
+//			e.printStackTrace();
+//		}
+//	}
 
 
 	public static boolean importBase()

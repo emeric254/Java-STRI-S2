@@ -77,10 +77,12 @@ public class PostgreSQLTest extends TestCase {
     		Connection db= PostgreSQL.connexion();
     		PostgreSQL.ecrireLocal(db, locaux.get(0));
     		db.close();
+    		assertTrue(true);
     	}
     	catch (Exception e)
     	{
     		e.printStackTrace();
+    		assertTrue(false);
     	}
     }
     
@@ -98,12 +100,51 @@ public class PostgreSQLTest extends TestCase {
     		Connection db= PostgreSQL.connexion();
     		PostgreSQL.ecrireHashLocal(db, locaux);
     		db.close();
+    		assertTrue(true);
     	}
     	catch (Exception e)
     	{
     		e.printStackTrace();
+    		assertTrue(false);
     	}
     }
+    
+    public void testInsertOs()
+    {
+    	SystemeExploitation blblOS = new SystemeExploitation(3, "Cisco IOS", "1.0.0");
+    	try
+    	{
+    		PostgreSQL.creerBase();
+    		Connection db= PostgreSQL.connexion();
+    		PostgreSQL.ecrireOs(db, blblOS);
+    		db.close();
+    		assertTrue(true);
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}
+    }
+    
+//    public void testInsertSalle()
+//    {
+//    	try
+//    	{
+//    		Connection db= PostgreSQL.connexion();
+//    		Salle salle= new Salle(0, "salle1-1");
+//    		PostgreSQL.ecrireSalle(db, salle, 0);
+//    		db.close();
+//    		assertTrue(true);
+//    	}
+//    	catch (Exception e)
+//    	{
+//    		e.printStackTrace();
+//    		assertTrue(false);
+//    	}
+//    }
+    
+    
     
     
 //    public void testSaveBD()
