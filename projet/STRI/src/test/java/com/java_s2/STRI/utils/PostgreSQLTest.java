@@ -167,7 +167,6 @@ public class PostgreSQLTest extends TestCase {
     	try
     	{
     		Connection db= PostgreSQL.connexion();
-    		
     		PostgreSQL.ecrireSalle(db, salle, 0);
     		db.close();
     		assertTrue(true);
