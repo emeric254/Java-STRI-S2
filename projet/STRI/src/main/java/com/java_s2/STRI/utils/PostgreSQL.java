@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.java_s2.STRI.modele.Appareil;
 import com.java_s2.STRI.modele.Firmware;
+import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
@@ -179,6 +180,24 @@ public abstract class PostgreSQL {
 			pstmt.setInt(1,f.getIdFirmware());
 			pstmt.setString(2, f.getNomFirmware());
 			pstmt.setString(3, f.getVersionFirmware());;
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public static void ecrireInterface(Connection db , InterfaceReseau i)
+	{
+		try
+		{
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO interface (id, adresseMac, nom, idFirmware) VALUES (?,?,?,?);");
+			// Parametres
+			pstmt.setInt(1, i.getAdresseMAC());
+			pstmt.setInt(2, i.getAdresseMAC());
+			pstmt.setString(3, i.getNomInterface());
+			pstmt.setInt(4, i.getFirmware().getIdFirmware());;
 			pstmt.executeUpdate();
 		}
 		catch (SQLException e)

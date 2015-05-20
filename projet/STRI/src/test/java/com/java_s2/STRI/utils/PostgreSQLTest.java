@@ -114,7 +114,6 @@ public class PostgreSQLTest extends TestCase {
     	SystemeExploitation blblOS = new SystemeExploitation(3, "Cisco IOS", "1.0.0");
     	try
     	{
-    		PostgreSQL.creerBase();
     		Connection db= PostgreSQL.connexion();
     		PostgreSQL.ecrireOs(db, blblOS);
     		db.close();
@@ -132,7 +131,6 @@ public class PostgreSQLTest extends TestCase {
     	Firmware blblFW = new Firmware(3, "4.0.0", "V4 OP version");
     	try
     	{
-    		PostgreSQL.creerBase();
     		Connection db= PostgreSQL.connexion();
     		PostgreSQL.ecrireFirmware(db, blblFW);
     		db.close();
@@ -145,22 +143,41 @@ public class PostgreSQLTest extends TestCase {
     	}
     }
     
-//    public void testInsertSalle()
-//    {
-//    	try
-//    	{
-//    		Connection db= PostgreSQL.connexion();
-//    		Salle salle= new Salle(0, "salle1-1");
-//    		PostgreSQL.ecrireSalle(db, salle, 0);
-//    		db.close();
-//    		assertTrue(true);
-//    	}
-//    	catch (Exception e)
-//    	{
-//    		e.printStackTrace();
-//    		assertTrue(false);
-//    	}
-//    }
+    public void testInsertInterface()
+    {
+    	Firmware blblFW = new Firmware(3, "4.0.0", "V4 OP version");
+    	InterfaceReseau i = new InterfaceReseau(0, "blbl", blblFW);
+    	try
+    	{
+    		Connection db= PostgreSQL.connexion();
+    		PostgreSQL.ecrireInterface(db, i);
+    		db.close();
+    		assertTrue(true);
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}
+    }
+    
+    public void testInsertSalle()
+    {
+    	Salle salle= new Salle(0, "salle1-1");
+    	try
+    	{
+    		Connection db= PostgreSQL.connexion();
+    		
+    		PostgreSQL.ecrireSalle(db, salle, 0);
+    		db.close();
+    		assertTrue(true);
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}
+    }
     
     
     
