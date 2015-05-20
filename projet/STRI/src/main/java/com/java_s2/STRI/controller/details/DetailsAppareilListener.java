@@ -12,6 +12,7 @@ public class DetailsAppareilListener extends CreateAppareilWindowEventListener {
 	public DetailsAppareilListener(CreateAppareilWindow fenetre, MainWindowEventListener parent, Appareil appareil, HashMap<Integer, Appareil> appareils, Salle salle, HashMap<Integer, Firmware> firmwares, HashMap<Integer, SystemeExploitation> os) {
 		super(fenetre, parent, appareil, appareils, salle, firmwares, os);
 		fenetre.getCreerBouton().setText("valider");
+		fenetre.setTitle("Modification de «Appareil»");
 		fenetre.getNomField().setText(appareil.getNomAppareil());
 		fenetre.getMarqueField().setText(appareil.getMarqueAppareil());
 		fenetre.getModeleField().setText(appareil.getModeleAppareil());

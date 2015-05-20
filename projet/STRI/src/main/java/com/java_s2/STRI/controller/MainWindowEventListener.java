@@ -56,6 +56,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 
     	// TODO faire les icones stylées selon le noeud
     	fenetre.getTree().setCellRenderer(null);
+    	
         refreshTree(locaux);
     }
 
@@ -96,8 +97,13 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 										appareils.remove(id);
 									}
 									break;
-								case 4:
-									if(noeudSelect.toString().split(" - ")[1].compareTo("Connexions") == 0)
+								case 5:
+									if(noeudSelect.toString().split(" - ")[1].compareTo("Ordinateur") == 0 ||
+											noeudSelect.toString().split(" - ")[1].compareTo("Switch") == 0 ||
+											noeudSelect.toString().split(" - ")[1].compareTo("Terminal") == 0)
+									{
+										((Switch)appareils.get(new Integer(noeudSelect.getParent().getParent().toString().split(" - ")[0]))).getEquipementsAppareil().remove(appareils.get(id));
+									}
 									break;
 	
 								default:
@@ -228,7 +234,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     public void details()
     {
     	if(noeudSelect!= null)
-	        if(noeudSelect.getLevel() > 0)
+	        if(noeudSelect.getLevel() > 0 && noeudSelect.getLevel() <4)
 	        {
 	        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
 	        	switch (noeudSelect.getLevel()) {
