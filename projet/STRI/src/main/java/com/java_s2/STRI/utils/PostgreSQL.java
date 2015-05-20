@@ -170,6 +170,7 @@ public abstract class PostgreSQL {
 	
 	
 	
+	
 //	public static void ecrireAppareil(Connection db, Appareil a, Salle salle)
 //	{
 //		try
