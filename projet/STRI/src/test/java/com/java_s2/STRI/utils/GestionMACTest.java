@@ -9,11 +9,9 @@ import junit.framework.TestSuite;
 
 public class GestionMACTest extends TestCase
 {
-		private HashMap<Integer, Object> ensemble;
 		
 	    public GestionMACTest() {
 	        super();
-	        ensemble = new HashMap<Integer, Object>();
 	    }
 
 	    public static Test suite() {
@@ -23,19 +21,21 @@ public class GestionMACTest extends TestCase
 	    
 	    public void testVide()
 	    {
-	    	assert(GestionMAC.verifExistenceMAC(ensemble.keySet(), 0));
+	    	assertFalse(GestionMAC.verifExistenceMAC((new HashMap<Integer, Object>()).keySet(), 0));
 	    }
 	    
 	    public void testRemplitUnElement ()
 	    {
+	    	HashMap<Integer, Object> ensemble = new HashMap<Integer, Object>();
 	        ensemble.put(0, "test");
-	    	assert(GestionMAC.verifExistenceMAC(ensemble.keySet(), 0));
+	    	assertTrue(GestionMAC.verifExistenceMAC(ensemble.keySet(), 0));
 	    	assertEquals("00:00:00:00:00:00", GestionMAC.addrMACString(0));
 	    	assertEquals(1, GestionMAC.prochainMAC(ensemble.keySet()));
 	    }
 	    
 	    public void testRemplitElements ()
 	    {
+	    	HashMap<Integer, Object> ensemble = new HashMap<Integer, Object>();
 	        ensemble.put(0, "test");
 	        ensemble.put(2, "test");
 	        ensemble.put(3, "test");
@@ -44,7 +44,7 @@ public class GestionMACTest extends TestCase
 	        ensemble.put(10, "test");
 	        ensemble.put(0x2890, "test");
 	    	
-	        assert(GestionMAC.verifExistenceMAC(ensemble.keySet(), 0x2890));
+	        assertTrue(GestionMAC.verifExistenceMAC(ensemble.keySet(), 0x2890));
 	    	
 	    	assertEquals("00:00:00:00:28:90", GestionMAC.addrMACString(0x2890));
 	    	
