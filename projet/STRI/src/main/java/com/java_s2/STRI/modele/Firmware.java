@@ -1,11 +1,16 @@
+/**
+ * Procure les classes du modele
+ */
 package com.java_s2.STRI.modele;
 
 import java.io.Serializable;
 
 
-
 /**
- * Class Firmware
+ * Classe de gestion d'un firmware
+ * 
+ * @author R. Barbaste, G. Boulic, R. Degironde, E. Tosi
+ * @version 1.0
  */
 public class Firmware implements Serializable{
 
@@ -17,6 +22,7 @@ public class Firmware implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 6842705616405334188L;
+	
 	private int idFirmware;
 	private String versionFirmware;
 	private String nomFirmware;
