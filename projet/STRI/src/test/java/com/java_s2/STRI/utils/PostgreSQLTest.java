@@ -72,8 +72,8 @@ public class PostgreSQLTest extends TestCase {
     	locaux.put(2, new Local(2, "local3", "paris"));
     	locaux.put(3, new Local(3, "local4", "bordeaux"));
 
-    	Salle temp = new Salle(0, "azdazd");
-    	locaux.get(0).getSallesLocal().add(temp);
+    	
+    	locaux.get(0).getSallesLocal().add(new Salle(0, "azdazd");
 //    	locaux.get(0).getSallesLocal().add(new Salle(1, "salle1-2"));
 //    	locaux.get(0).getSallesLocal().add(new Salle(2, "salle1-3"));
 //    	locaux.get(0).getSallesLocal().add(new Salle(3, "salle1-4"));
