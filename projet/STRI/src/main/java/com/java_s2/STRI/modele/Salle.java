@@ -1,5 +1,6 @@
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -7,12 +8,16 @@ import java.util.ArrayList;
 /**
  * Class Salle
  */
-public class Salle {
+public class Salle implements Serializable{
 
     //
     // Fields
     //
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4330676516910901321L;
 	private int idSalle;
 	private String nomSalle;
 	private ArrayList<Appareil> appareils;

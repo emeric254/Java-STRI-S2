@@ -1,16 +1,22 @@
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
+
 
 
 /**
  * Class Interface_réseau
  */
-public class InterfaceReseau {
+public class InterfaceReseau implements Serializable{
 
     //
     // Fields
     //
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1388312528274436342L;
 	private int adresseMAC;
 	private String nomInterface;
 	private Firmware firmware;

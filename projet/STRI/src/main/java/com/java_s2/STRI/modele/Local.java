@@ -1,5 +1,6 @@
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -7,12 +8,16 @@ import java.util.ArrayList;
 /**
  * Class Local
  */
-public class Local {
+public class Local implements Serializable{
 
     //
     // Fields
     //
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6452094798893000358L;
 	private int idLocal;
 	private String nomLocal;
 	private String lieuLocal;

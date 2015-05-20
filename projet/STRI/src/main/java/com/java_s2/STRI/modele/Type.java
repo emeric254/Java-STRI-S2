@@ -1,5 +1,7 @@
 package com.java_s2.STRI.modele;
 
-public enum Type {ORDINATEUR, TABLETTE
+import java.io.Serializable;
+
+public enum Type implements Serializable {ORDINATEUR, TABLETTE
 
 }
