@@ -1,16 +1,22 @@
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
+
 
 
 /**
  * Class Firmware
  */
-public class Firmware {
+public class Firmware implements Serializable{
 
     //
     // Fields
     //
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6842705616405334188L;
 	private int idFirmware;
 	private String versionFirmware;
 	private String nomFirmware;

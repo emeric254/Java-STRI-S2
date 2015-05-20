@@ -1,26 +1,60 @@
-
+/**
+ * Procure les classes du modèle
+ */
 package com.java_s2.STRI.modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 /**
- * Class Appareil
+ * Classe de gestion d'un appareil
  * 
  * @version 1.0
  */
-public class Appareil {
+public class Appareil implements Serializable{
 
     //
     // Fields
     //
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5552327271482487504L;
+	/**
+	 * Entier correspondant à dentifiant d'un appareil
+	 */
 	private int idAppareil;
+	
+	/**
+	 * Chaine de caractère correspondant au nom de l'appareil
+	 */
 	private String nomAppareil;
+	
+	/**
+	 * Chaine de caractère correspondant au nom de l'appareil
+	 */
 	private String marqueAppareil;
+	
+	/**
+	 * Chaine de caractère correspondant au modèle de l'appareil
+	 */
 	private String modeleAppareil;
+	
+	/**
+	 * Booléen indiquant si l'appareil est actif ou inactif
+	 */
 	private boolean etatAppareil;
+	
+	/**
+	 * Type de système d'exploitation sur l'appareil
+	 */
 	private SystemeExploitation os;
+	
+	/**
+	 * Type d'interface réseau utilisé
+	 */
 	private InterfaceReseau interfaceReseau;
   
     //
@@ -28,7 +62,7 @@ public class Appareil {
     //
 	
 	/**
-	 * Constructor Appareil
+	 * Constructeur d'un appareil
 	 * 
 	 *  
 	 * @param idAppareil 
