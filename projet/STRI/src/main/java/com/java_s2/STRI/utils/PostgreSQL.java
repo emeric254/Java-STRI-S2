@@ -114,44 +114,44 @@ public abstract class PostgreSQL {
 		return true;
 	}
 
-	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
-
-	static final String READ_OBJECT_SQL = "SELECT object FROM java WHERE id = ?";
-
-	public static long writeJavaObject(Connection conn, Object object) throws Exception {
-		String className = object.getClass().getName();
-		PreparedStatement pstmt = conn.prepareStatement(WRITE_OBJECT_SQL);
-
-		// set input parameters
-		pstmt.setString(1, className);
-		pstmt.setObject(2, object);
-		pstmt.executeUpdate();
-
-		// get the generated key for the id
-		ResultSet rs = pstmt.getGeneratedKeys();
-		int id = -1;
-		if (rs.next()) {
-			id = rs.getInt(1);
-		}
-
-		rs.close();
-		pstmt.close();
-		System.out.println("writeJavaObject: done serializing: " + className);
-		return id;
-	}
-
-	public static Object readJavaObject(Connection conn, long id) throws Exception {
-		PreparedStatement pstmt = conn.prepareStatement(READ_OBJECT_SQL);
-		pstmt.setLong(1, id);
-		ResultSet rs = pstmt.executeQuery();
-		rs.next();
-		Object object = rs.getObject(1);
-		String className = object.getClass().getName();
-
-		rs.close();
-		pstmt.close();
-		System.out.println("readJavaObject: done de-serializing: " + className);
-		return object;
-	}
-	
+//	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
+//
+//	static final String READ_OBJECT_SQL = "SELECT object FROM java WHERE id = ?";
+//
+//	public static long writeJavaObject(Connection conn, Object object) throws Exception {
+//		String className = object.getClass().getName();
+//		PreparedStatement pstmt = conn.prepareStatement(WRITE_OBJECT_SQL);
+//
+//		// set input parameters
+//		pstmt.setString(1, className);
+//		pstmt.setObject(2, object);
+//		pstmt.executeUpdate();
+//
+//		// get the generated key for the id
+//		ResultSet rs = pstmt.getGeneratedKeys();
+//		int id = -1;
+//		if (rs.next()) {
+//			id = rs.getInt(1);
+//		}
+//
+//		rs.close();
+//		pstmt.close();
+//		System.out.println("writeJavaObject: done serializing: " + className);
+//		return id;
+//	}
+//
+//	public static Object readJavaObject(Connection conn, long id) throws Exception {
+//		PreparedStatement pstmt = conn.prepareStatement(READ_OBJECT_SQL);
+//		pstmt.setLong(1, id);
+//		ResultSet rs = pstmt.executeQuery();
+//		rs.next();
+//		Object object = rs.getObject(1);
+//		String className = object.getClass().getName();
+//
+//		rs.close();
+//		pstmt.close();
+//		System.out.println("readJavaObject: done de-serializing: " + className);
+//		return object;
+//	}
+//	
 }
