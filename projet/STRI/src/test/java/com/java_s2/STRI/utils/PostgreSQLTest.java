@@ -2,6 +2,9 @@ package com.java_s2.STRI.utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+
+import com.java_s2.STRI.modele.Local;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -58,6 +61,11 @@ public class PostgreSQLTest extends TestCase {
     
     public void testSaveBD()
     {
-    	//CreerJeu de donnees ici
+    	HashMap<Integer, Local> locaux = new HashMap<Integer, Local> ();
+    	locaux.put(0, new Local(0, "blblblb", "blblbl"));
+    	locaux.put(1, new Local(1, "local2", "toulouse"));
+    	locaux.put(2, new Local(2, "local3", "paris"));
+    	locaux.put(3, new Local(3, "local4", "bordeaux"));
+    	
     }
 }
