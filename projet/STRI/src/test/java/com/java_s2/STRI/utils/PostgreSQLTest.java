@@ -110,9 +110,7 @@ public class PostgreSQLTest extends TestCase {
     	catch (Exception e)
     	{
     		e.printStackTrace();
-    	}
-    	
-    	
+    	}  	
     	
        	assertTrue( true);
     }
