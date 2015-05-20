@@ -95,10 +95,5 @@ public class PostgreSQLTest extends TestCase {
     	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(3, "apareil2-1", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
     	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(4, "apareil2-2", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
     	locaux.get(0).getSallesLocal().get(1).getAppareils().add(new Appareil(5, "apareil2-3", "blbl", "blbl", true, new SystemeExploitation(3, "Cisco IOS", "1.0.0"), new InterfaceReseau(0, "blbl", new Firmware(3, "4.0.0", "V4 OP version"))));
-    	
-    	
-    	
-    	
-    	
     }
 }
