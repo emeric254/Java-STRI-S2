@@ -98,5 +98,10 @@ public class InterfaceReseau implements Serializable{
     //
     // Other methods
     //
+@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return (this.adresseMAC+" "+this.nomInterface+" "+" Firmware: "+this.firmware);
+	}
 
 }

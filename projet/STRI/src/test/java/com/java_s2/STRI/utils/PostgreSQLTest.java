@@ -267,9 +267,9 @@ public class PostgreSQLTest extends TestCase {
     
     public void testLireLocal()
     {
+		System.out.println("Test Locaux ---------------------------------------------------------------------");
     	for (Local local : PostgreSQL.lireLocaux().values())
     	{
-    		System.out.println("Test Locaux ---------------------------------------------------------------------");
     		System.out.println(local);
     	}
     	assertTrue(true);
@@ -277,9 +277,9 @@ public class PostgreSQLTest extends TestCase {
     
     public void testLireOs()
     {
+    	System.out.println("Test Os ---------------------------------------------------------------------");
     	for (SystemeExploitation os : PostgreSQL.lireOs().values())
     	{
-    		System.out.println("Test Os ---------------------------------------------------------------------");
     		System.out.println(os);
     	}
     	assertTrue(true);
@@ -287,10 +287,20 @@ public class PostgreSQLTest extends TestCase {
     
     public void testLireFirmwares()
     {
+		System.out.println("Test Firmware ---------------------------------------------------------------------");
     	for (Firmware f : PostgreSQL.lireFirmwares().values())
     	{
-    		System.out.println("Test Firmware ---------------------------------------------------------------------");
     		System.out.println(f);
+    	}
+    	assertTrue(true);
+    }
+    
+    public void testLireInterfaces()
+    {
+    	System.out.println("Test Interfaces ---------------------------------------------------------------------");
+    	for (InterfaceReseau i: PostgreSQL.lireInterfaces(PostgreSQL.lireFirmwares()).values())
+    	{
+    		System.out.println(i);
     	}
     	assertTrue(true);
     }
