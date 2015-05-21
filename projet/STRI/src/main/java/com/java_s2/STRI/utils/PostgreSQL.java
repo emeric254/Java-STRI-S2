@@ -430,6 +430,45 @@ public abstract class PostgreSQL {
 		}
 		return interfaces;
 	}
+	
+	
+	public static HashMap<Integer, Salle> lireSalles(HashMap<Integer, Local> locaux)
+	{
+		
+		HashMap<Integer, Salle> salles= new HashMap<Integer, Salle>();
+		try
+		{
+			Connection db= connexion();
+			Statement s = null;
+		    ResultSet r = null; 
+			/* Création de l'objet gérant les requêtes */
+	        s = db.createStatement();
+	        /* Exécution d'une requête de lecture */
+	        r = s.executeQuery( "SELECT * FROM salle;");
+	 
+	        /* Récupération des données du résultat de la requête de lecture */
+	        while ( r.next() ) 
+	        {
+	        	Salle salle = new Salle(r.getInt("id"), r.getString("nom"));
+	        	if (!locaux.containsKey(r.getInt("idLocal")))
+	        	{
+	        		throw new Exception("id local "+r.getInt("idLocal")+" n existepas dans la base");
+	        	}
+	        	locaux.get(r.getInt("idLocal")).getSallesLocal().add(salle);
+	        	salles.put(salle.getIdSalle(), salle);
+	        } 
+	        r.close();
+	        s.close();
+	        db.close();
+		}
+		catch (Exception eSQL)
+		{
+			eSQL.printStackTrace();
+		}
+		return salles;
+	}
+	
+	
 
 
 //	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";

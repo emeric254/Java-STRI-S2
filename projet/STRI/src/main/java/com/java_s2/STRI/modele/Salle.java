@@ -118,5 +118,12 @@ public class Salle implements Serializable{
 		this.appareils.add(appareil);
 		return this.appareils;
 	}
+	
+	@Override
+	public String toString() 
+	{
+		// TODO Auto-generated method stub
+		return (idSalle+" "+nomSalle);
+	}
 
 }

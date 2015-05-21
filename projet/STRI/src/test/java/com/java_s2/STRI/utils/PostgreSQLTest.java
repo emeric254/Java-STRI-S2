@@ -305,6 +305,27 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(true);
     }
     
+    public void testLireSalles()
+    {
+    	System.out.println("Test Salles ---------------------------------------------------------------------");
+    	HashMap<Integer, Local> locaux= PostgreSQL.lireLocaux();
+    	
+    	for (Salle s: PostgreSQL.lireSalles(locaux).values())
+    	{
+    		System.out.println(s);
+    	}
+    	
+    	for (Local l: locaux.values())
+    	{
+    		System.out.println(l.getNomLocal()+"-----------------");
+    		for (Salle s: l.getSallesLocal())
+    		{
+    			System.out.println(s+"--");
+    		}
+    	}
+    	assertTrue(true);
+    }
+    
     
     
 //    public void testSaveBD()
