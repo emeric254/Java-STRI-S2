@@ -1,0 +1,1 @@
+INSERT INTO local (id, nom, lieu) VALUES (0,"lala","lala");

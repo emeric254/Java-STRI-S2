@@ -263,9 +263,43 @@ public abstract class PostgreSQL {
 		return true;
 	}
 
-	public static boolean exportBase()
+	public static boolean exportBase(HashMap<Integer, Local> locaux, HashMap<Integer, Salle> salles, HashMap<Integer, Appareil> appareils, HashMap<Integer, InterfaceReseau> cartesReseaux, HashMap<Integer, Firmware> firmwares, HashMap <Integer, SystemeExploitation> OS)
 	{
 		Connection db= connexion();
+		//Firmware
+		for (Firmware f: firmwares.values())
+		{
+			ecrireFirmware(db, f);
+		}
+		
+		//OS
+		for(SystemeExploitation os : OS.values())
+		{
+			ecrireOs(db, os);
+		}
+		
+		//Interface Reseau
+		for (InterfaceReseau i : cartesReseaux.values())
+		{
+			ecrireInterface(db, i);
+		}
+		
+		//Locaux, Salles, Appareils
+		for (Integer i : locaux.keySet())
+		{
+			Local l= locaux.get(i);
+			ecrireLocal(db, l);
+			
+			for (Salle s: l.getSallesLocal())
+			{
+				ecrireSalle(db, s, l.getIdLocal());
+				
+				for (Appareil a: s.getAppareils())
+				{
+					ecrireAppareil(db, a, s);
+				}
+			}
+		}
 		return true;
 	}
 
