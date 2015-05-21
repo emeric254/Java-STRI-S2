@@ -62,6 +62,12 @@ public class Terminal extends Appareil implements  Serializable {
 	public void setType(Type type) {
 		this.type = type;
 	};
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ("Terminal-"+this.type.toString()+": "+super.toString());
+	}
 
     //
     // Other methods

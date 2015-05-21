@@ -250,4 +250,10 @@ public class Appareil implements Serializable{
 		}
 		return null;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return (this.idAppareil+" "+this.nomAppareil+" "+this.marqueAppareil+" "+this.modeleAppareil);
+	}
 }

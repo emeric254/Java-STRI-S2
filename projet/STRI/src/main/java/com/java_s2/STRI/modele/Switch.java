@@ -91,4 +91,10 @@ public class Switch extends Appareil implements Serializable{
 		ArrayList<Appareil> dependances= (ArrayList<Appareil>) (this.equipements.clone());
     	return dependances;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return ("Switch:"+super.toString());
+    }
 }

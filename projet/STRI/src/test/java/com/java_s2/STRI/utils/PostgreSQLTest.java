@@ -326,6 +326,22 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(true);
     }
     
+    public void testLireAppareils()
+    {
+    	System.out.println("Test Appareils ---------------------------------------------------------------------");
+    	HashMap<Integer, Local> locaux= PostgreSQL.lireLocaux();
+    	HashMap<Integer, Salle> salles= PostgreSQL.lireSalles(locaux);
+    	HashMap<Integer, SystemeExploitation> os= PostgreSQL.lireOs();
+    	HashMap<Integer, Firmware> firmwares= PostgreSQL.lireFirmwares();
+    	HashMap<Integer, InterfaceReseau> cr= PostgreSQL.lireInterfaces(firmwares);
+    	
+    	for (Appareil a: PostgreSQL.lireAppareils(salles, os, cr).values())
+    	{
+    		System.out.println(a);
+    	}
+
+    	assertTrue(true);
+    }
     
     
 //    public void testSaveBD()

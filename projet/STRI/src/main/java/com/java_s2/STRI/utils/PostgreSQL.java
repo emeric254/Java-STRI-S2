@@ -13,6 +13,7 @@ import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.Switch;
 import com.java_s2.STRI.modele.SystemeExploitation;
 import com.java_s2.STRI.modele.Terminal;
+import com.java_s2.STRI.modele.Type;
 
 /*
  * doc > http://www.postgresql.org/docs/7.2/static/jdbc.html
@@ -72,7 +73,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 
 			Connection db = connexion();
-			db.createStatement().execute("DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local; CREATE table local (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, lieuLocal varchar(1024) NOT NULL ); CREATE TABLE salle (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, idLocal integer NOT NULL, CONSTRAINT FK_SA_LO FOREIGN KEY (idLocal) REFERENCES local(id) ); CREATE TABLE os (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE firmware (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE interface (id integer NOT NULL PRIMARY KEY, adresseMAC integer NOT NULL, nom varchar(1024) NOT NULL, idFirmware integer NOT NULL, CONSTRAINT FK_INT_FIR FOREIGN KEY (idFirmware) REFERENCES firmware(id) ); CREATE TABLE appareil (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, marque varchar(1024) NOT NULL, etat boolean NOT NULL, type varchar(1024) DEFAULT NULL, idSalle integer NOT NULL, idOs integer NOT NULL, idInterface integer NOT NULL, idSwitch integer DEFAULT NULL, CONSTRAINT FK_TER_SA FOREIGN KEY (idSalle) REFERENCES salle(id), CONSTRAINT FK_TER_OS FOREIGN KEY (idOs) REFERENCES os(id), CONSTRAINT FK_TER_IN FOREIGN KEY (idInterface) REFERENCES interface(id), CONSTRAINT FK_TER_SW FOREIGN KEY (idSwitch) REFERENCES appareil(id) );");
+			db.createStatement().execute("DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local; CREATE table local (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, lieuLocal varchar(1024) NOT NULL ); CREATE TABLE salle (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, idLocal integer NOT NULL, CONSTRAINT FK_SA_LO FOREIGN KEY (idLocal) REFERENCES local(id) ); CREATE TABLE os (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE firmware (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE interface (id integer NOT NULL PRIMARY KEY, adresseMAC integer NOT NULL, nom varchar(1024) NOT NULL, idFirmware integer NOT NULL, CONSTRAINT FK_INT_FIR FOREIGN KEY (idFirmware) REFERENCES firmware(id) ); CREATE TABLE appareil (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, marque varchar(1024) NOT NULL, etat boolean NOT NULL, type varchar(1024) DEFAULT NULL, idSalle integer NOT NULL, idOs integer NOT NULL, idInterface integer NOT NULL, idSwitch integer DEFAULT NULL, modele varchar(1024) NOT NULL, CONSTRAINT FK_TER_SA FOREIGN KEY (idSalle) REFERENCES salle(id), CONSTRAINT FK_TER_OS FOREIGN KEY (idOs) REFERENCES os(id), CONSTRAINT FK_TER_IN FOREIGN KEY (idInterface) REFERENCES interface(id), CONSTRAINT FK_TER_SW FOREIGN KEY (idSwitch) REFERENCES appareil(id) );");
 			db.close();
 
 		}
@@ -469,35 +470,65 @@ public abstract class PostgreSQL {
 		return salles;
 	}
 	
-	public static HashMap<Integer, Salle> lireAppareils(HashMap<Integer, Salle> salles, HashMap<Integer, SystemeExploitation> os, HashMap<Integer, InterfaceReseau> cr)
+	public static HashMap<Integer, Appareil> lireAppareils(HashMap<Integer, Salle> salles, HashMap<Integer, SystemeExploitation> os, HashMap<Integer, InterfaceReseau> cr)
 	{
 		
-//		HashMap<Integer, Appareil> appareils= new HashMap<Integer, Appareil>();
-//		try
-//		{
-//			Connection db= connexion();
-//			Statement s = null;
-//		    ResultSet r = null; 
-//			/* Création de l'objet gérant les requêtes */
-//	        s = db.createStatement();
-//	        /* Exécution d'une requête de lecture */
-//	        r = s.executeQuery( "SELECT * FROM appareil;");
-//	 
-//	        /* Récupération des données du résultat de la requête de lecture */
-//	        while ( r.next() ) 
-//	        {
-//	        	if (!os.containsKey(r.getInt("")))
-//	        	
-//	        } 
-//	        r.close();
-//	        s.close();
-//	        db.close();
-//		}
-//		catch (Exception eSQL)
-//		{
-//			eSQL.printStackTrace();
-//		}
-		return salles;
+		HashMap<Integer, Appareil> appareils= new HashMap<Integer, Appareil>();
+		try
+		{
+			Connection db= connexion();
+			Statement s = null;
+		    ResultSet r = null; 
+			/* Création de l'objet gérant les requêtes */
+	        s = db.createStatement();
+	        /* Exécution d'une requête de lecture */
+	        r = s.executeQuery( "SELECT * FROM appareil;");
+	 
+	        /* Récupération des données du résultat de la requête de lecture */
+	        while ( r.next() ) 
+	        {
+	        	//Vérif cles etrangeres
+	        	if (!os.containsKey(r.getInt("idOs")))
+	        	{
+	        		throw new Exception("id os "+r.getInt("idOs")+" n existe pas dans la base");
+	        	}
+	        	
+	        	if (!cr.containsKey(r.getInt("idInterface")))
+	        	{
+	        		throw new Exception("id interface "+r.getInt("idInterface")+" n existe pas dans la base");
+	        	}
+	        	
+	        	if (!salles.containsKey(r.getInt("idSalle")))
+	        	{
+	        		throw new Exception("idSalle "+r.getInt("idSalle")+" n existe pas dans la base");
+	        	}
+	        	
+	        	Appareil a;
+	        	//Ajout appareil dans HashAppareil
+	        	if(r.getString("type")==null)
+	        	//Switch
+	        	{
+	        		a= new Switch(r.getInt("id"), r.getString("nom"), r.getString("marque"), r.getString("modele"), r.getBoolean("etat"), os.get(r.getInt("idOs")), cr.get(r.getInt("idInterface")));
+	        	}
+	        	else
+	        	//Terminal
+	        	{
+	        		a= new Terminal(r.getInt("id"), r.getString("nom"), r.getString("marque"), r.getString("modele"), r.getBoolean("etat"), os.get(r.getInt("idOs")), cr.get(r.getInt("idInterface")), (r.getString("type").equalsIgnoreCase(r.getString("type")))? Type.TABLETTE : Type.ORDINATEUR);
+	        	}
+
+	        	appareils.put(a.getIdAppareil(), a);
+	        	//Ajout appareil dans HashSalles
+	        	salles.get(r.getInt("idSalle")).getAppareils().add(a);        	
+	        } 
+	        r.close();
+	        s.close();
+	        db.close();
+		}
+		catch (Exception eSQL)
+		{
+			eSQL.printStackTrace();
+		}
+		return appareils;
 	}
 	
 	
