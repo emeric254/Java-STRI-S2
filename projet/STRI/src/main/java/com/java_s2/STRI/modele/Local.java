@@ -145,4 +145,9 @@ public class Local implements Serializable{
     	return this.salles.add(salle);
     }
 
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return (this.idLocal+" "+this.nomLocal+" "+this.lieuLocal);
+    }
 }

@@ -301,6 +301,37 @@ public abstract class PostgreSQL {
 		}
 		return true;
 	}
+	
+	public static HashMap<Integer, Local> lireLocaux()
+	{
+		HashMap<Integer, Local> locaux = new HashMap<Integer, Local>();
+		
+		try
+		{
+			Connection db= connexion();
+			Statement s = null;
+		    ResultSet r = null; 
+			/* Création de l'objet gérant les requêtes */
+	        s = db.createStatement();
+	        /* Exécution d'une requête de lecture */
+	        r = s.executeQuery( "SELECT * FROM local;");
+	 
+	        /* Récupération des données du résultat de la requête de lecture */
+	        while ( r.next() ) 
+	        {
+	        	Local local= new Local(r.getInt("id"), r.getString("nom"), r.getString("lieuLocal"));
+	        	locaux.put(local.getIdLocal(), local);
+	        } 
+	        r.close();
+	        s.close();
+	        db.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return locaux;
+	}
 
 //	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
 //

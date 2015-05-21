@@ -265,6 +265,15 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS));
     }
     
+    public void testLireLocal()
+    {
+    	for (Local local : PostgreSQL.lireLocaux().values())
+    	{
+    		System.out.println(local);
+    	}
+    	assertTrue(true);
+    }
+    
     
     
 //    public void testSaveBD()
