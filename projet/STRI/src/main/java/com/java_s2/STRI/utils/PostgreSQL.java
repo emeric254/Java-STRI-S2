@@ -235,7 +235,7 @@ public abstract class PostgreSQL {
 							if (aLL.getIdAppareil()==a.getIdAppareil())
 							{
 								pstmt.setInt(8, aL.getIdAppareil());
-								System.out.println("1--------------------------------------------");
+//								System.out.println("1--------------------------------------------");
 							}
 						}
 						break;
@@ -285,9 +285,8 @@ public abstract class PostgreSQL {
 		}
 		
 		//Locaux, Salles, Appareils
-		for (Integer i : locaux.keySet())
+		for (Local l: locaux.values())
 		{
-			Local l= locaux.get(i);
 			ecrireLocal(db, l);
 			
 			for (Salle s: l.getSallesLocal())
