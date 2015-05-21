@@ -285,9 +285,9 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(true);
     }
     
-    public void testLireFirmware()
+    public void testLireFirmwares()
     {
-    	for (Firmware f : PostgreSQL.lireFirmware().values())
+    	for (Firmware f : PostgreSQL.lireFirmwares().values())
     	{
     		System.out.println("Test Firmware ---------------------------------------------------------------------");
     		System.out.println(f);

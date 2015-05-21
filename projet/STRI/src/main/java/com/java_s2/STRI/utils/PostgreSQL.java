@@ -364,7 +364,7 @@ public abstract class PostgreSQL {
 		return os;
 	}
 	
-	public static HashMap<Integer, Firmware> lireFirmware()
+	public static HashMap<Integer, Firmware> lireFirmwares()
 	{
 		HashMap<Integer, Firmware> firm = new HashMap<Integer, Firmware>();
 		
@@ -393,6 +393,42 @@ public abstract class PostgreSQL {
 			e.printStackTrace();
 		}
 		return firm;
+	}
+	
+	public static HashMap<Integer, InterfaceReseau> lireInsterfaces(HashMap<Integer, Firmware> firmwares)
+	{
+		
+		HashMap<Integer, InterfaceReseau> interfaces= new HashMap<Integer, InterfaceReseau>();
+		try
+		{
+			Connection db= connexion();
+			Statement s = null;
+		    ResultSet r = null; 
+			/* Création de l'objet gérant les requêtes */
+	        s = db.createStatement();
+	        /* Exécution d'une requête de lecture */
+	        r = s.executeQuery( "SELECT * FROM interface;");
+	 
+	        /* Récupération des données du résultat de la requête de lecture */
+	        while ( r.next() ) 
+	        {
+	        	if (!firmwares.containsKey(r.getInt("id")))
+	        	{
+	        		throw new Exception("id firmware "+r.getInt("id")+" n existepas dans la base");
+	        	}
+	        	
+	        	InterfaceReseau interfaceL= new InterfaceReseau(r.getInt("id"), r.getString("nom"), firmwares.get(r.getInt("id")));
+	        	interfaces.put(interfaceL.getAdresseMAC(), interfaceL);
+	        } 
+	        r.close();
+	        s.close();
+	        db.close();
+		}
+		catch (Exception eSQL)
+		{
+			eSQL.printStackTrace();
+		}
+		return interfaces;
 	}
 
 
