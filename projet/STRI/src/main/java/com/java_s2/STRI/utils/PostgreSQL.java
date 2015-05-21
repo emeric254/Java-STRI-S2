@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import org.postgresql.jdbc2.ResultWrapper;
+
 import com.java_s2.STRI.modele.Appareil;
 import com.java_s2.STRI.modele.Firmware;
 import com.java_s2.STRI.modele.InterfaceReseau;
@@ -475,6 +477,7 @@ public abstract class PostgreSQL {
 	{
 		
 		HashMap<Integer, Appareil> appareils= new HashMap<Integer, Appareil>();
+		HashMap<Integer, Integer> relations= new HashMap<Integer, Integer>();
 		try
 		{
 			Connection db= connexion();
@@ -484,7 +487,6 @@ public abstract class PostgreSQL {
 	        s = db.createStatement();
 	        /* Exécution d'une requête de lecture */
 	        r = s.executeQuery( "SELECT * FROM appareil;");
-	 
 	        /* Récupération des données du résultat de la requête de lecture */
 	        while ( r.next() ) 
 	        {
@@ -519,11 +521,30 @@ public abstract class PostgreSQL {
 
 	        	appareils.put(a.getIdAppareil(), a);
 	        	//Ajout appareil dans HashSalles
-	        	salles.get(r.getInt("idSalle")).getAppareils().add(a);        	
-	        } 
+	        	salles.get(r.getInt("idSalle")).getAppareils().add(a);
+	        	relations.put(r.getInt("id"), r.getInt("idSwitch"));
+	        }
+	        
+	        //Integres les appareils dans les switch
+	        for (Integer idAppareil : relations.keySet())
+	        {
+	        	//Est un switch
+	        	Integer idSwitch=relations.get(idAppareil);
+	        	if (idSwitch!=null)
+	        	{
+	        		Appareil sw= appareils.get(idSwitch);
+	        		if (sw instanceof Switch)
+	        		{
+	        			((Switch) sw).getEquipementsAppareil().add(appareils.get(idAppareil));
+	        		}
+	        	}
+	        }
+	        	
 	        r.close();
 	        s.close();
 	        db.close();
+	        
+	        
 		}
 		catch (Exception eSQL)
 		{
@@ -531,8 +552,6 @@ public abstract class PostgreSQL {
 		}
 		return appareils;
 	}
-	
-	
 
 
 //	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
