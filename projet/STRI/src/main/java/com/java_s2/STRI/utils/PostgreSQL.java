@@ -216,7 +216,7 @@ public abstract class PostgreSQL {
 			int idSwitch;
 			String type;
 
-			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil (id, nom, marque, etat, type, idSalle, idOs, idSwitch, idInterface) VALUES (?,?,?,?,?,?,?,?,?);");
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil (id, nom, marque, etat, type, idSalle, idOs, idSwitch, idInterface, modele) VALUES (?,?,?,?,?,?,?,?,?,?);");
 			pstmt.setInt(1, a.getIdAppareil());
 			pstmt.setString(2, a.getNomAppareil());
 			pstmt.setString(3, a.getMarqueAppareil());
@@ -224,6 +224,7 @@ public abstract class PostgreSQL {
 			pstmt.setInt(6, salle.getIdSalle());
 			pstmt.setInt(7, a.getOs().getIdOS());
 			pstmt.setInt(9, a.getInterfaceReseau().getAdresseMAC());
+			pstmt.setString(10, a.getModeleAppareil());
 			
 			if (a instanceof Terminal)
 			{
