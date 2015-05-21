@@ -261,17 +261,6 @@ public class PostgreSQLTest extends TestCase {
 	   	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Terminal(0, "apareil1-1", "blbl", "blbl", true, OS.get(3), cartesReseaux.get(0), Type.TABLETTE));
 	   	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Terminal(1, "apareil1-2", "blbl", "blbl", true, OS.get(3), cartesReseaux.get(1), Type.TABLETTE));
 	   	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Terminal(2, "apareil1-3", "blbl", "blbl", true, OS.get(3), cartesReseaux.get(2), Type.TABLETTE));
-	   	for (Local l : locaux.values())
-		{	
-			for (Salle s: l.getSallesLocal())
-			{	
-				for (Appareil a: s.getAppareils())
-				{
-					System.out.print("a");
-					System.out.println(a.getNomAppareil());
-				}
-			}
-		}
 	   	
     	assertTrue(PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS));
     }
