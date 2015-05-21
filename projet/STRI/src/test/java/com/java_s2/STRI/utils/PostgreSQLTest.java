@@ -1,8 +1,8 @@
 package com.java_s2.STRI.utils;
 
 import java.sql.Connection;
-
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.*;
 
 import com.java_s2.STRI.modele.Appareil;
@@ -11,6 +11,8 @@ import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
 import com.java_s2.STRI.modele.SystemeExploitation;
+import com.java_s2.STRI.modele.Terminal;
+import com.java_s2.STRI.modele.Type;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -168,6 +170,30 @@ public class PostgreSQLTest extends TestCase {
     	{
     		Connection db= PostgreSQL.connexion();
     		PostgreSQL.ecrireSalle(db, salle, 0);
+    		db.close();
+    		assertTrue(true);
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    		assertTrue(false);
+    	}
+    }
+    
+    public void testInsertAppareil()
+    {
+    	Firmware blblFW = new Firmware(3, "4.0.0", "V4 OP version");
+    	SystemeExploitation blblOS = new SystemeExploitation(3, "Cisco IOS", "1.0.0");
+    	HashMap<Integer, Local> locaux = new HashMap<Integer, Local> ();
+    	locaux.put(0, new Local(0, "local1", "BREST"));
+    	locaux.get(0).getSallesLocal().add(new Salle(0, "salle1-1"));
+	   	locaux.get(0).getSallesLocal().get(0).getAppareils().add(new Terminal(0, "apareil1-1", "blbl", "blbl", true, blblOS, new InterfaceReseau(0, "blbl", blblFW), Type.TABLETTE));
+
+	    
+	   	try
+    	{
+    		Connection db= PostgreSQL.connexion();
+    		PostgreSQL.ecrireAppareil(db,locaux.get(0).getSallesLocal().get(0).getAppareils().get(0),locaux.get(0).getSallesLocal().get(0));
     		db.close();
     		assertTrue(true);
     	}

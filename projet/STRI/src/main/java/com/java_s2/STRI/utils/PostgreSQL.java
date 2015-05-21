@@ -10,7 +10,9 @@ import com.java_s2.STRI.modele.Firmware;
 import com.java_s2.STRI.modele.InterfaceReseau;
 import com.java_s2.STRI.modele.Local;
 import com.java_s2.STRI.modele.Salle;
+import com.java_s2.STRI.modele.Switch;
 import com.java_s2.STRI.modele.SystemeExploitation;
+import com.java_s2.STRI.modele.Terminal;
 
 /*
  * doc > http://www.postgresql.org/docs/7.2/static/jdbc.html
@@ -206,25 +208,53 @@ public abstract class PostgreSQL {
 		}
 	}
 	
-//	public static void ecrireAppareil(Connection db, Appareil a, Salle salle)
-//	{
-//		try
-//		{
-//			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil ();");
-//			if (a instanceof Switch)
-//			{
-//				
-//			}
-//			else if (a instanceof Terminal)
-//			{
-//				
-//			}
-//		}
-//		catch (SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
-//	}
+	public static void ecrireAppareil(Connection db, Appareil a, Salle salle)
+	{
+		try
+		{	
+			int idSwitch;
+			String type;
+
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil (id, nom, marque, etat, type, idSalle, idOs, idSwitch) VALUES (?,?,?,?,?,?,?,?);");
+			pstmt.setInt(1, a.getIdAppareil());
+			pstmt.setString(2, a.getNomAppareil());
+			pstmt.setString(3, a.getMarqueAppareil());
+			pstmt.setBoolean(4, a.getEtatAppareil());
+			pstmt.setInt(6, salle.getIdSalle());
+			pstmt.setInt(7, a.getOs().getIdOS());
+			
+			if (a instanceof Terminal)
+			{
+				pstmt.setString(5, ((Terminal) a).getType().toString());
+				for (Appareil aL : salle.getAppareils())
+				{
+					if (aL instanceof Switch)
+					{
+						for (Appareil aLL: ((Switch) aL).getEquipementsAppareil())
+						{
+							if (aLL.getIdAppareil()==a.getIdAppareil())
+							{
+								pstmt.setInt(8, aL.getIdAppareil());
+								System.out.println("1--------------------------------------------");
+							}
+						}
+						break;
+					}
+					pstmt.setNull(8, java.sql.Types.NULL);
+				}
+			}
+			else if (a instanceof Switch)
+			{
+				pstmt.setNull(5, java.sql.Types.NULL);
+				pstmt.setNull(8, java.sql.Types.NULL);
+			}
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
 
 
 	public static boolean importBase()
