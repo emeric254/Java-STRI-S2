@@ -72,7 +72,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 
 			Connection db = connexion();
-			db.createStatement().execute("DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local; CREATE table local (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, lieuLocal varchar(1024) NOT NULL ); CREATE TABLE salle (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, idLocal integer NOT NULL, CONSTRAINT FK_SA_LO FOREIGN KEY (idLocal) REFERENCES local(id) ); CREATE TABLE os (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE appareil (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, marque varchar(1024) NOT NULL, etat boolean NOT NULL, type varchar(1024) DEFAULT NULL, idSalle integer NOT NULL, idOs integer NOT NULL, idSwitch integer DEFAULT NULL, CONSTRAINT FK_TER_SA FOREIGN KEY (idSalle) REFERENCES salle(id), CONSTRAINT FK_TER_OS FOREIGN KEY (idOs) REFERENCES os(id), CONSTRAINT FK_TER_SW FOREIGN KEY (idSwitch) REFERENCES appareil(id) ); CREATE TABLE firmware (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE interface (id integer NOT NULL PRIMARY KEY, adresseMAC integer NOT NULL, nom varchar(1024) NOT NULL, idFirmware integer NOT NULL, CONSTRAINT FK_INT_FIR FOREIGN KEY (idFirmware) REFERENCES firmware(id) );");
+			db.createStatement().execute("DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local; CREATE table local (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, lieuLocal varchar(1024) NOT NULL ); CREATE TABLE salle (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, idLocal integer NOT NULL, CONSTRAINT FK_SA_LO FOREIGN KEY (idLocal) REFERENCES local(id) ); CREATE TABLE os (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE firmware (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, version varchar(1024) NOT NULL ); CREATE TABLE interface (id integer NOT NULL PRIMARY KEY, adresseMAC integer NOT NULL, nom varchar(1024) NOT NULL, idFirmware integer NOT NULL, CONSTRAINT FK_INT_FIR FOREIGN KEY (idFirmware) REFERENCES firmware(id) ); CREATE TABLE appareil (id integer NOT NULL PRIMARY KEY, nom varchar(1024) NOT NULL, marque varchar(1024) NOT NULL, etat boolean NOT NULL, type varchar(1024) DEFAULT NULL, idSalle integer NOT NULL, idOs integer NOT NULL, idInterface integer NOT NULL, idSwitch integer DEFAULT NULL, CONSTRAINT FK_TER_SA FOREIGN KEY (idSalle) REFERENCES salle(id), CONSTRAINT FK_TER_OS FOREIGN KEY (idOs) REFERENCES os(id), CONSTRAINT FK_TER_IN FOREIGN KEY (idInterface) REFERENCES interface(id), CONSTRAINT FK_TER_SW FOREIGN KEY (idSwitch) REFERENCES appareil(id) );");
 			db.close();
 
 		}
@@ -96,7 +96,7 @@ public abstract class PostgreSQL {
 			//			preparedStatement.executeQuery();
 			//	
 			Connection db = connexion();
-			db.createStatement().execute("DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local;");
+			db.createStatement().execute("DROP TABLE IF EXISTS appareil; DROP TABLE IF EXISTS interface; DROP TABLE IF EXISTS firmware; DROP TABLE IF EXISTS os; DROP TABLE IF EXISTS salle; DROP TABLE IF EXISTS local;");
 			db.close();
 
 		}
@@ -215,13 +215,14 @@ public abstract class PostgreSQL {
 			int idSwitch;
 			String type;
 
-			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil (id, nom, marque, etat, type, idSalle, idOs, idSwitch) VALUES (?,?,?,?,?,?,?,?);");
+			PreparedStatement pstmt = db.prepareStatement("INSERT INTO appareil (id, nom, marque, etat, type, idSalle, idOs, idSwitch, idInterface) VALUES (?,?,?,?,?,?,?,?,?);");
 			pstmt.setInt(1, a.getIdAppareil());
 			pstmt.setString(2, a.getNomAppareil());
 			pstmt.setString(3, a.getMarqueAppareil());
 			pstmt.setBoolean(4, a.getEtatAppareil());
 			pstmt.setInt(6, salle.getIdSalle());
 			pstmt.setInt(7, a.getOs().getIdOS());
+			pstmt.setInt(9, a.getInterfaceReseau().getAdresseMAC());
 			
 			if (a instanceof Terminal)
 			{
@@ -465,6 +466,37 @@ public abstract class PostgreSQL {
 		{
 			eSQL.printStackTrace();
 		}
+		return salles;
+	}
+	
+	public static HashMap<Integer, Salle> lireAppareils(HashMap<Integer, Salle> salles, HashMap<Integer, SystemeExploitation> os, HashMap<Integer, InterfaceReseau> cr)
+	{
+		
+//		HashMap<Integer, Appareil> appareils= new HashMap<Integer, Appareil>();
+//		try
+//		{
+//			Connection db= connexion();
+//			Statement s = null;
+//		    ResultSet r = null; 
+//			/* Création de l'objet gérant les requêtes */
+//	        s = db.createStatement();
+//	        /* Exécution d'une requête de lecture */
+//	        r = s.executeQuery( "SELECT * FROM appareil;");
+//	 
+//	        /* Récupération des données du résultat de la requête de lecture */
+//	        while ( r.next() ) 
+//	        {
+//	        	if (!os.containsKey(r.getInt("")))
+//	        	
+//	        } 
+//	        r.close();
+//	        s.close();
+//	        db.close();
+//		}
+//		catch (Exception eSQL)
+//		{
+//			eSQL.printStackTrace();
+//		}
 		return salles;
 	}
 	
