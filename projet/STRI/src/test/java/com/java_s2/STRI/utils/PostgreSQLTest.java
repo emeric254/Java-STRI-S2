@@ -343,6 +343,28 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(true);
     }
     
+    public void testImportBase()
+    {
+    	System.out.println("Test Import base ---------------------------------------------------------------------");
+    	HashMap<Integer, Local> locaux = new HashMap<Integer, Local> ();
+    	HashMap<Integer, Salle> salles = new HashMap<Integer, Salle> ();
+    	HashMap<Integer, Appareil> appareils = new HashMap<Integer, Appareil> ();
+    	HashMap<Integer, InterfaceReseau> cr = new HashMap<Integer, InterfaceReseau> ();
+    	HashMap<Integer, Firmware> firmwares = new HashMap<Integer, Firmware>();
+    	HashMap <Integer, SystemeExploitation> os= new HashMap<Integer, SystemeExploitation>();
+    	
+    	PostgreSQL.importBase(locaux, salles, os, cr, appareils, firmwares);
+    	
+    	System.out.println(locaux);
+    	System.out.println(salles);
+    	System.out.println(appareils);
+    	System.out.println(cr);
+    	System.out.println(firmwares);
+    	System.out.println(os);
+    	
+    	assertTrue(true);
+    }
+    
     
 //    public void testSaveBD()
 //    {

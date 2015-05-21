@@ -552,6 +552,34 @@ public abstract class PostgreSQL {
 		}
 		return appareils;
 	}
+	
+	public static void importBase(HashMap<Integer, Local> locaux, HashMap<Integer, Salle> salles, HashMap<Integer, SystemeExploitation> os, HashMap<Integer, InterfaceReseau> cr, HashMap<Integer, Appareil> appareils, HashMap<Integer, Firmware> firmwares)
+	{
+		locaux.clear();
+		salles.clear();
+		os.clear();
+		cr.clear();
+		appareils.clear();
+		firmwares.clear();
+		
+		for(Local l: lireLocaux().values())
+			locaux.put(l.getIdLocal(), l);
+
+		for (SystemeExploitation osL : lireOs().values())
+			os.put(osL.getIdOS(), osL);
+		
+		for (Firmware f : lireFirmwares().values())
+			firmwares.put(f.getIdFirmware(), f);
+		
+		for(InterfaceReseau i: lireInterfaces(firmwares).values())
+			cr.put(i.getAdresseMAC(), i);
+		
+    	for (Salle s: PostgreSQL.lireSalles(locaux).values())
+    		salles.put(s.getIdSalle(), s);
+    	
+    	for(Appareil a : lireAppareils(salles, os, cr).values())
+    		appareils.put(a.getIdAppareil(), a);
+	}
 
 
 //	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
