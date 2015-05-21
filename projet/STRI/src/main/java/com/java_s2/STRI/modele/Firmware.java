@@ -104,5 +104,11 @@ public class Firmware implements Serializable{
     //
     // Other methods
     //
+    
+@Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return (idFirmware+" "+nomFirmware+" "+versionFirmware);
+    }
 
 }

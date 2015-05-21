@@ -363,6 +363,37 @@ public abstract class PostgreSQL {
 		}
 		return os;
 	}
+	
+	public static HashMap<Integer, Firmware> lireFirmware()
+	{
+		HashMap<Integer, Firmware> firm = new HashMap<Integer, Firmware>();
+		
+		try
+		{
+			Connection db= connexion();
+			Statement s = null;
+		    ResultSet r = null; 
+			/* Création de l'objet gérant les requêtes */
+	        s = db.createStatement();
+	        /* Exécution d'une requête de lecture */
+	        r = s.executeQuery( "SELECT * FROM firmware;");
+	 
+	        /* Récupération des données du résultat de la requête de lecture */
+	        while ( r.next() ) 
+	        {
+	        	Firmware f= new Firmware(r.getInt("id"), r.getString("nom"), r.getString("version"));
+	        	firm.put(f.getIdFirmware(), f);
+	        } 
+	        r.close();
+	        s.close();
+	        db.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return firm;
+	}
 
 
 //	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
