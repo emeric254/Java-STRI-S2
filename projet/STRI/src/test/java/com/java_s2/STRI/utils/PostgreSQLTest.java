@@ -274,6 +274,15 @@ public class PostgreSQLTest extends TestCase {
     	assertTrue(true);
     }
     
+    public void testLireOs()
+    {
+    	for (SystemeExploitation os : PostgreSQL.lireOs().values())
+    	{
+    		System.out.println(os);
+    	}
+    	assertTrue(true);
+    }
+    
     
     
 //    public void testSaveBD()

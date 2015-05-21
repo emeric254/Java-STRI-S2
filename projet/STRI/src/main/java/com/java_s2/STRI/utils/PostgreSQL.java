@@ -332,6 +332,38 @@ public abstract class PostgreSQL {
 		}
 		return locaux;
 	}
+	
+	public static HashMap<Integer, SystemeExploitation> lireOs()
+	{
+		HashMap<Integer, SystemeExploitation> os = new HashMap<Integer, SystemeExploitation>();
+		
+		try
+		{
+			Connection db= connexion();
+			Statement s = null;
+		    ResultSet r = null; 
+			/* Création de l'objet gérant les requêtes */
+	        s = db.createStatement();
+	        /* Exécution d'une requête de lecture */
+	        r = s.executeQuery( "SELECT * FROM os;");
+	 
+	        /* Récupération des données du résultat de la requête de lecture */
+	        while ( r.next() ) 
+	        {
+	        	SystemeExploitation osL= new SystemeExploitation(r.getInt("id"), r.getString("nom"), r.getString("version"));
+	        	os.put(osL.getIdOS(), osL);
+	        } 
+	        r.close();
+	        s.close();
+	        db.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return os;
+	}
+
 
 //	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
 //
