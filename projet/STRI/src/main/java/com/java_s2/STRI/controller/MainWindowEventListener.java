@@ -48,7 +48,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         firmwares = pFirmwares;
         OS = pOS;
         
-        PostgreSQL.importBase(pLocaux, pSalles, pOS, pCartesReseaux, pAppareils, pFirmwares);
+        PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
 
         fenetre.getBouton1().addActionListener(this);
         fenetre.getBouton2().addActionListener(this);
