@@ -47,7 +47,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         cartesReseaux = pCartesReseaux;
         firmwares = pFirmwares;
         OS = pOS;
-        
+			
         PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
 
         fenetre.getBouton1().addActionListener(this);
@@ -70,7 +70,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
             createChild();
         else
             if(source == fenetre.getBouton3())
-                refreshTree(locaux);
+                refreshTree();
             else
             	if(source == fenetre.getBouton4())
             		details();
@@ -111,7 +111,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 								default:
 									break;
 								}
-	                            fenetre.removeComponent(noeudSelect);
+                            	fenetre.removeComponent(noeudSelect);
 	                            refreshTree();
 	                        }
     }
@@ -262,6 +262,11 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     
 	public void refreshTree() {
     	
+		// deja integrée a create celle la 
+		// PostgreSQL.detruireBase();
+		
+		PostgreSQL.creerBase();
+		
     	PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS);
     	
     	PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
