@@ -47,6 +47,8 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
         cartesReseaux = pCartesReseaux;
         firmwares = pFirmwares;
         OS = pOS;
+        
+        PostgreSQL.importBase(pLocaux, pSalles, pOS, pCartesReseaux, pAppareils, pFirmwares);
 
         fenetre.getBouton1().addActionListener(this);
         fenetre.getBouton2().addActionListener(this);
@@ -57,7 +59,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     	// TODO faire les icones stylées selon le noeud
     	fenetre.getTree().setCellRenderer(null);
     	
-        refreshTree(locaux);
+        refreshTree();
     }
 
     // action listener boutons
@@ -110,6 +112,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 									break;
 								}
 	                            fenetre.removeComponent(noeudSelect);
+	                            refreshTree();
 	                        }
     }
 
@@ -122,6 +125,10 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     
     public void refreshTree(HashMap<Integer, Local> locaux)
     {   
+    	PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS);
+    	
+    	PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
+    	
     	fenetre.clearAllComponent();
         for (Integer id : locaux.keySet())
         {
