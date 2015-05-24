@@ -59,7 +59,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     	// TODO faire les icones stylées selon le noeud
     	fenetre.getTree().setCellRenderer(null);
     	
-        refreshTree();
+        refreshTree(locaux);
     }
 
     // action listener boutons
@@ -125,10 +125,6 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     
     public void refreshTree(HashMap<Integer, Local> locaux)
     {   
-    	PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS);
-    	
-    	PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
-    	
     	fenetre.clearAllComponent();
         for (Integer id : locaux.keySet())
         {
@@ -265,6 +261,11 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     }
     
 	public void refreshTree() {
+    	
+    	PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS);
+    	
+    	PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
+    	
 		refreshTree(locaux);
 	}
 
