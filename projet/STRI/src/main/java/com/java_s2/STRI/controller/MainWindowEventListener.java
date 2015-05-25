@@ -264,8 +264,6 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
     	
     	PostgreSQL.exportBase(locaux, salles, appareils, cartesReseaux, firmwares, OS);
     	
-    	PostgreSQL.importBase(locaux, salles, OS, cartesReseaux, appareils, firmwares);
-    	
 		refreshTree(locaux);
 	}
 
