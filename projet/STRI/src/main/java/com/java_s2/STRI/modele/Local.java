@@ -137,7 +137,7 @@ public class Local implements Serializable{
     
     /**
      * 
-     * @param salle2
+     * @param salle
      * @return
      */
     public Boolean ajouterSalle (Salle salle) 
