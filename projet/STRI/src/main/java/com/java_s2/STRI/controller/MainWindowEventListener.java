@@ -82,9 +82,23 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 	                        	int id = Integer.parseInt(noeudSelect.toString().split(" - ")[0]);
 	                        	switch (noeudSelect.getLevel()) {
 								case 1:
+									for(Salle s : locaux.get(id).getSallesLocal())
+									{
+										for(Appareil a : s.getAppareils())
+										{
+											cartesReseaux.remove(a.getInterfaceReseau().getAdresseMAC());
+											appareils.remove(a.getIdAppareil());
+										}
+										salles.remove(s.getIdSalle());
+									}
 									locaux.remove(id);
 									break;
 								case 2:
+									for(Appareil a : salles.get(id).getAppareils())
+									{
+										cartesReseaux.remove(a.getInterfaceReseau().getAdresseMAC());
+										appareils.remove(a.getIdAppareil());
+									}
 									locaux.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getSallesLocal().remove(salles.get(id));
 									salles.remove(id);
 									break;
@@ -96,6 +110,7 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
 												if(((Switch)a).getEquipementsAppareil().contains(appareils.get(id)))
 													((Switch)a).getEquipementsAppareil().remove(appareils.get(id));
 										salles.get(Integer.parseInt(noeudSelect.getParent().toString().split(" - ")[0])).getAppareils().remove(appareils.get(id));
+										cartesReseaux.remove(appareils.get(id).getInterfaceReseau().getAdresseMAC());
 										appareils.remove(id);
 									}
 									break;
