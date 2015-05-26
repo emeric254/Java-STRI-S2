@@ -361,7 +361,7 @@ public abstract class PostgreSQL {
 		//Interface Reseau
 		for (InterfaceReseau i : cartesReseaux.values())
 		{
-			System.out.println(i);
+			System.err.println(i);
 			ecrireInterface(db, i);
 		}
 		

@@ -199,7 +199,9 @@ public class MainWindowEventListener implements ActionListener, TreeSelectionLis
                 break;
 
             case 2:
-                Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(appareils.keySet()), "", "", "", false, null, new InterfaceReseau(GestionMAC.prochainMAC(cartesReseaux.keySet()), "defaut", firmwares.get(0)));
+            	InterfaceReseau carte = new InterfaceReseau(GestionMAC.prochainMAC(cartesReseaux.keySet()), "defaut", firmwares.get(0));
+                cartesReseaux.put(carte.getAdresseMAC(), carte);
+            	Appareil newAppareil = new Appareil(GestionSerial.prochainSerial(appareils.keySet()), "", "", "", false, null, carte);
                 Salle salleParent = salles.get(id);
                 new CreateAppareilWindowEventListener(new CreateAppareilWindow(), this, newAppareil, appareils, salleParent, firmwares, OS);
                 break;
