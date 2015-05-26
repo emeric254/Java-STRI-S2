@@ -23,6 +23,7 @@ public class Switch extends Appareil implements Serializable{
     // Constructors
     //
 	/**
+	 * Constructeur de la classe switch 
 	 * 
 	 * @param idAppareil
 	 * @param nomAppareil
@@ -48,7 +49,7 @@ public class Switch extends Appareil implements Serializable{
     //
     
     /**
-     * 
+     * Retourne la liste des appareils connectés à ce switch
      * @return
      */
     public ArrayList<Appareil> getEquipementsAppareil()
@@ -61,7 +62,7 @@ public class Switch extends Appareil implements Serializable{
     //
     
     /**
-     * 
+     * Retourne la liste des appareils connectes au switch
      * @param appareil
      * @return
      * @throws Exception
@@ -80,9 +81,8 @@ public class Switch extends Appareil implements Serializable{
 		return equipements;
 	}
     
-
     /**
-     * 
+     * Retourne la liste des appareils qui sont dependants du switch (fork de la vraie liste)
      * @return
      */
     public ArrayList<Appareil> dependences()
@@ -92,6 +92,9 @@ public class Switch extends Appareil implements Serializable{
     	return dependances;
     }
     
+    /* (non-Javadoc)
+     * @see com.java_s2.STRI.modele.Appareil#toString()
+     */
     @Override
     public String toString() {
     	// TODO Auto-generated method stub
