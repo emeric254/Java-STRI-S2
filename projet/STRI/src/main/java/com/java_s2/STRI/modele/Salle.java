@@ -80,7 +80,7 @@ public class Salle implements Serializable{
     }
 
     /**
-     * 
+     * Retourne la liste d'appareils que contient la salle
      * @return
      */
 	public ArrayList<Appareil> getAppareils() {
@@ -88,7 +88,7 @@ public class Salle implements Serializable{
 	}
 
 	/**
-	 * 
+	 * Modifie la liste d'appareils que contient la salle
 	 * @param appareils
 	 */
 	public void setAppareils(ArrayList<Appareil> appareils) {
@@ -119,6 +119,9 @@ public class Salle implements Serializable{
 		return this.appareils;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() 
 	{
