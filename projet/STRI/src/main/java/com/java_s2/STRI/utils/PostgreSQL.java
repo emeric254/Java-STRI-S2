@@ -22,6 +22,10 @@ import com.java_s2.STRI.modele.Type;
  */
 
 
+/**
+ * @author robin
+ *
+ */
 public abstract class PostgreSQL {
 	/*
 		int foovalue = 500; // var
@@ -46,6 +50,12 @@ public abstract class PostgreSQL {
 		st.close(); // fermer la requete
 	 */
 
+	/**
+	 * Retourne une connexion à la base de donnees;
+	 * Les id de connexion sont a faire dans la fonction
+	 * 
+	 * @return Connection
+	 */
 	public static Connection connexion ()
 	{
 		String url="jdbc:postgresql://boulic.fr:5432/java";
@@ -65,6 +75,12 @@ public abstract class PostgreSQL {
 
 	}
 
+	
+	/**
+	 *Cree une base de donnees 
+	 *
+	 * @return
+	 */
 	public static boolean creerBase()
 	{
 		try
@@ -89,6 +105,10 @@ public abstract class PostgreSQL {
 		return true;
 	}
 
+	/**
+	 * Detruit la base de donnees
+	 * @return
+	 */
 	public static boolean detruireBase()
 	{
 		try
@@ -113,6 +133,12 @@ public abstract class PostgreSQL {
 		return true;
 	}
 	
+	/**
+	 * Ecrit le local passe en parametre dans la base bd
+	 * 
+	 * @param db
+	 * @param local
+	 */
 	public static void ecrireLocal(Connection db, Local local)
 	{
 		try
@@ -132,6 +158,12 @@ public abstract class PostgreSQL {
 		
 	}
 	
+	/**
+	 * Ecrit une la hash de locaux passee a parametres dans la base db
+	 * 
+	 * @param db
+	 * @param locaux
+	 */
 	public static void ecrireHashLocal (Connection db, HashMap<Integer, Local> locaux)
 	{
 		for (Integer i : locaux.keySet())
@@ -140,6 +172,13 @@ public abstract class PostgreSQL {
 		}
 	}
 	
+	/**
+	 * Ecrit la salle passee en parametre dans la base db
+	 * 
+	 * @param db
+	 * @param salle
+	 * @param idLocal
+	 */
 	public static void ecrireSalle(Connection db, Salle salle, int idLocal )
 	{
 		try
@@ -158,6 +197,12 @@ public abstract class PostgreSQL {
 		
 	}
 	
+	/**
+	 * Ecrit l'os passe en parametre dans la base db
+	 * 
+	 * @param db
+	 * @param os
+	 */
 	public static void ecrireOs(Connection db, SystemeExploitation os)
 	{
 		try
@@ -176,6 +221,13 @@ public abstract class PostgreSQL {
 	}
 	
 	
+	
+	/**
+	 * Ecrit le firmware f dans la base db
+	 * 
+	 * @param db
+	 * @param f
+	 */
 	public static void ecrireFirmware(Connection db , Firmware f)
 	{
 		try
@@ -193,6 +245,12 @@ public abstract class PostgreSQL {
 		}
 	}
 	
+	/**
+	 * Ecrit l'interface reseeau i dans la base db
+	 * 
+	 * @param db
+	 * @param i
+	 */
 	public static void ecrireInterface(Connection db , InterfaceReseau i)
 	{
 		try
@@ -211,6 +269,13 @@ public abstract class PostgreSQL {
 		}
 	}
 	
+	/**
+	 * Ecrit l'appareil a dans la base db
+	 * 
+	 * @param db
+	 * @param a
+	 * @param salle
+	 */
 	public static void ecrireAppareil(Connection db, Appareil a, Salle salle)
 	{
 		try
@@ -262,12 +327,22 @@ public abstract class PostgreSQL {
 	}
 
 
-	public static boolean importBase()
-	{
-		Connection db= connexion();
-		return true;
-	}
+//	public static boolean importBase()
+//	{
+//		Connection db= connexion();
+//		return true;
+//	}
 
+	/**
+	 * Exporte les hashMap du programme (locaux, salles, appareils, os, firmware, carte reseaux ) dans la base de donnees
+	 * @param locaux
+	 * @param salles
+	 * @param appareils
+	 * @param cartesReseaux
+	 * @param firmwares
+	 * @param OS
+	 * @return
+	 */
 	public static boolean exportBase(HashMap<Integer, Local> locaux, HashMap<Integer, Salle> salles, HashMap<Integer, Appareil> appareils, HashMap<Integer, InterfaceReseau> cartesReseaux, HashMap<Integer, Firmware> firmwares, HashMap <Integer, SystemeExploitation> OS)
 	{
 		Connection db= connexion();
@@ -307,6 +382,11 @@ public abstract class PostgreSQL {
 		return true;
 	}
 	
+	/**
+	 * Cree une hashMap locaux correspondant a la table locaux
+	 * 
+	 * @return
+	 */
 	public static HashMap<Integer, Local> lireLocaux()
 	{
 		HashMap<Integer, Local> locaux = new HashMap<Integer, Local>();
@@ -338,6 +418,11 @@ public abstract class PostgreSQL {
 		return locaux;
 	}
 	
+	/**
+	 * Cree une hashMap os correspondant a la table os
+	 * 
+	 * @return
+	 */
 	public static HashMap<Integer, SystemeExploitation> lireOs()
 	{
 		HashMap<Integer, SystemeExploitation> os = new HashMap<Integer, SystemeExploitation>();
@@ -369,6 +454,11 @@ public abstract class PostgreSQL {
 		return os;
 	}
 	
+	/**
+	 * Cree une hashMap firmware correspondant a la table firmware de la base
+	 * 
+	 * @return
+	 */
 	public static HashMap<Integer, Firmware> lireFirmwares()
 	{
 		HashMap<Integer, Firmware> firm = new HashMap<Integer, Firmware>();
@@ -400,6 +490,11 @@ public abstract class PostgreSQL {
 		return firm;
 	}
 	
+	/**
+	 * Cree une hashMap interfacesReseau correspondant a la table interfaces de la base
+	 * @param firmwares
+	 * @return
+	 */
 	public static HashMap<Integer, InterfaceReseau> lireInterfaces(HashMap<Integer, Firmware> firmwares)
 	{
 		
@@ -437,6 +532,12 @@ public abstract class PostgreSQL {
 	}
 	
 	
+	/**
+	 * Cree une hashMap salles correspondant à la table salle de la base
+	 * 
+	 * @param locaux
+	 * @return
+	 */
 	public static HashMap<Integer, Salle> lireSalles(HashMap<Integer, Local> locaux)
 	{
 		
@@ -553,6 +654,15 @@ public abstract class PostgreSQL {
 		return appareils;
 	}
 	
+	/**
+	 * Lit la totalite de la base et importe dans les hashMap locaux, salles, appareils, os, interfacesReseau, firmware
+	 * @param locaux
+	 * @param salles
+	 * @param os
+	 * @param cr
+	 * @param appareils
+	 * @param firmwares
+	 */
 	public static void importBase(HashMap<Integer, Local> locaux, HashMap<Integer, Salle> salles, HashMap<Integer, SystemeExploitation> os, HashMap<Integer, InterfaceReseau> cr, HashMap<Integer, Appareil> appareils, HashMap<Integer, Firmware> firmwares)
 	{
 		locaux.clear();
@@ -580,46 +690,4 @@ public abstract class PostgreSQL {
     	for(Appareil a : lireAppareils(salles, os, cr).values())
     		appareils.put(a.getIdAppareil(), a);
 	}
-
-
-//	static final String WRITE_OBJECT_SQL = "INSERT INTO java(nom, object) VALUES (?, ?)";
-//
-//	static final String READ_OBJECT_SQL = "SELECT object FROM java WHERE id = ?";
-//
-//	public static long writeJavaObject(Connection conn, Object object) throws Exception {
-//		String className = object.getClass().getName();
-//		PreparedStatement pstmt = conn.prepareStatement(WRITE_OBJECT_SQL);
-//
-//		// set input parameters
-//		pstmt.setString(1, className);
-//		pstmt.setObject(2, object);
-//		pstmt.executeUpdate();
-//
-//		// get the generated key for the id
-//		ResultSet rs = pstmt.getGeneratedKeys();
-//		int id = -1;
-//		if (rs.next()) {
-//			id = rs.getInt(1);
-//		}
-//
-//		rs.close();
-//		pstmt.close();
-//		System.out.println("writeJavaObject: done serializing: " + className);
-//		return id;
-//	}
-//
-//	public static Object readJavaObject(Connection conn, long id) throws Exception {
-//		PreparedStatement pstmt = conn.prepareStatement(READ_OBJECT_SQL);
-//		pstmt.setLong(1, id);
-//		ResultSet rs = pstmt.executeQuery();
-//		rs.next();
-//		Object object = rs.getObject(1);
-//		String className = object.getClass().getName();
-//
-//		rs.close();
-//		pstmt.close();
-//		System.out.println("readJavaObject: done de-serializing: " + className);
-//		return object;
-//	}
-//	
 }
